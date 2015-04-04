@@ -7,19 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 
 @interface Travel : NSObject <NSCoding>
 
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSDate *startDate;
 @property (strong, nonatomic) NSDate *endDate;
-@property (strong, nonatomic) UIImage *image;
+@property (strong, nonatomic) NSString *image;
 @property (strong, nonatomic) NSArray *currencies;
 @property (strong, nonatomic) NSString *mainCurrency;
 
 
-- (id)initWithName:(NSString *)name startDate:(NSDate *)startDate endDate:(NSDate *)endDate image:(UIImage*)image currencies:(NSArray*)currencies mainCurrency:(NSString *)mainCurrency;
+- (id)initWithName:(NSString *)name startDate:(NSDate *)startDate endDate:(NSDate *)endDate image:(NSString*)image currencies:(NSArray*)currencies mainCurrency:(NSString *)mainCurrency;
 
 
 @end

@@ -10,14 +10,14 @@
 	<string>myTravelExpenses</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>E4348E028D5027118DBD53460F93147C10D647C7</key>
+		<key>7CDBA7B01BCAE0F4BF88597CC71E31FAB96ABFCA</key>
 		<string>github.com:smeusling/myTravelExpenses.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>myTravelExpenses.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>E4348E028D5027118DBD53460F93147C10D647C7</key>
+		<key>7CDBA7B01BCAE0F4BF88597CC71E31FAB96ABFCA</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>E4348E028D5027118DBD53460F93147C10D647C7</string>
+	<string>7CDBA7B01BCAE0F4BF88597CC71E31FAB96ABFCA</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>E4348E028D5027118DBD53460F93147C10D647C7</string>
+			<string>7CDBA7B01BCAE0F4BF88597CC71E31FAB96ABFCA</string>
 			<key>IDESourceControlWCCName</key>
 			<string>my-travel-expenses</string>
 		</dict>
