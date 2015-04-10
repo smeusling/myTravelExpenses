@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Helper.h"
+#import "Theme.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [ThemeManager customizeAppAppearance];
     // Override point for customization after application launch.
     [Helper initProfile];
     [Helper initTravelDataTest];

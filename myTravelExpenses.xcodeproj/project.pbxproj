@@ -20,6 +20,8 @@
 		5074FF191AD0852B009FD06D /* ConfigUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF181AD0852B009FD06D /* ConfigUtil.m */; };
 		5074FF1C1AD08632009FD06D /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF1B1AD08632009FD06D /* Helper.m */; };
 		5074FF1F1AD08747009FD06D /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF1E1AD08747009FD06D /* Profile.m */; };
+		5074FF221AD82731009FD06D /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF211AD82731009FD06D /* Theme.m */; };
+		5074FF251AD82744009FD06D /* DefaultTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF241AD82744009FD06D /* DefaultTheme.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,20 @@
 		5074FF1B1AD08632009FD06D /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
 		5074FF1D1AD08747009FD06D /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
 		5074FF1E1AD08747009FD06D /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
+		5074FF201AD82731009FD06D /* Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Theme.h; sourceTree = "<group>"; };
+		5074FF211AD82731009FD06D /* Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Theme.m; sourceTree = "<group>"; };
+		5074FF231AD82744009FD06D /* DefaultTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultTheme.h; sourceTree = "<group>"; };
+		5074FF241AD82744009FD06D /* DefaultTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultTheme.m; sourceTree = "<group>"; };
+		5074FF281AD832B3009FD06D /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		5074FF291AD832B3009FD06D /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		5074FF2A1AD832B3009FD06D /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		5074FF2B1AD832B3009FD06D /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		5074FF2C1AD832B3009FD06D /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		5074FF2D1AD832B3009FD06D /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		5074FF2E1AD832B3009FD06D /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		5074FF2F1AD832B3009FD06D /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		5074FF301AD832B3009FD06D /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
+		5074FF311AD832B3009FD06D /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +133,7 @@
 		5074FEE51AD05451009FD06D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5074FF261AD83269009FD06D /* Fonts */,
 				5074FEE61AD05451009FD06D /* Info.plist */,
 				5074FEE71AD05451009FD06D /* main.m */,
 			);
@@ -169,8 +186,37 @@
 				5074FF181AD0852B009FD06D /* ConfigUtil.m */,
 				5074FF1A1AD08632009FD06D /* Helper.h */,
 				5074FF1B1AD08632009FD06D /* Helper.m */,
+				5074FF201AD82731009FD06D /* Theme.h */,
+				5074FF211AD82731009FD06D /* Theme.m */,
+				5074FF231AD82744009FD06D /* DefaultTheme.h */,
+				5074FF241AD82744009FD06D /* DefaultTheme.m */,
 			);
 			name = Util;
+			sourceTree = "<group>";
+		};
+		5074FF261AD83269009FD06D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5074FF271AD83280009FD06D /* Open Sans */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		5074FF271AD83280009FD06D /* Open Sans */ = {
+			isa = PBXGroup;
+			children = (
+				5074FF281AD832B3009FD06D /* OpenSans-Bold.ttf */,
+				5074FF291AD832B3009FD06D /* OpenSans-BoldItalic.ttf */,
+				5074FF2A1AD832B3009FD06D /* OpenSans-ExtraBold.ttf */,
+				5074FF2B1AD832B3009FD06D /* OpenSans-ExtraBoldItalic.ttf */,
+				5074FF2C1AD832B3009FD06D /* OpenSans-Italic.ttf */,
+				5074FF2D1AD832B3009FD06D /* OpenSans-Light.ttf */,
+				5074FF2E1AD832B3009FD06D /* OpenSans-LightItalic.ttf */,
+				5074FF2F1AD832B3009FD06D /* OpenSans-Regular.ttf */,
+				5074FF301AD832B3009FD06D /* OpenSans-Semibold.ttf */,
+				5074FF311AD832B3009FD06D /* OpenSans-SemiboldItalic.ttf */,
+			);
+			name = "Open Sans";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,7 +321,9 @@
 			files = (
 				5074FF111AD05A9B009FD06D /* TravelTableViewCell.m in Sources */,
 				5074FF151AD066D5009FD06D /* Travel.m in Sources */,
+				5074FF251AD82744009FD06D /* DefaultTheme.m in Sources */,
 				5074FEEE1AD05451009FD06D /* ViewController.m in Sources */,
+				5074FF221AD82731009FD06D /* Theme.m in Sources */,
 				5074FF1F1AD08747009FD06D /* Profile.m in Sources */,
 				5074FF1C1AD08632009FD06D /* Helper.m in Sources */,
 				5074FEEB1AD05451009FD06D /* AppDelegate.m in Sources */,
