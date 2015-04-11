@@ -9,14 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+@class Currency;
 @interface Profile : NSObject <NSCoding>
 
 @property (strong, nonatomic) NSString *firstName;
 @property (strong, nonatomic) NSString *lastName;
 @property (strong, nonatomic) NSString *image;
-@property (strong, nonatomic) NSString *currency;
+@property (strong, nonatomic) Currency *currency;
 
 
-- (id)initWithFirstName:(NSString *)firstName lastName:(NSString *)lastName image:(NSString*)image currency:(NSString*)currency;
+- (id)initWithFirstName:(NSString *)firstName lastName:(NSString *)lastName image:(NSString*)image currency:(Currency*)currency;
 
 @end

@@ -25,6 +25,8 @@
 		5074FF331AD93FA2009FD06D /* TravelListEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5074FF321AD93FA2009FD06D /* TravelListEmptyView.xib */; };
 		5074FF361AD9430B009FD06D /* TravelListEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF351AD9430B009FD06D /* TravelListEmptyView.m */; };
 		5074FF391AD9454B009FD06D /* AddTravelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF381AD9454B009FD06D /* AddTravelViewController.m */; };
+		5074FF3C1AD98514009FD06D /* CurrencyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF3B1AD98514009FD06D /* CurrencyTableViewCell.m */; };
+		5074FF3F1AD9878D009FD06D /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF3E1AD9878D009FD06D /* Currency.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +84,10 @@
 		5074FF351AD9430B009FD06D /* TravelListEmptyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TravelListEmptyView.m; sourceTree = "<group>"; };
 		5074FF371AD9454B009FD06D /* AddTravelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTravelViewController.h; sourceTree = "<group>"; };
 		5074FF381AD9454B009FD06D /* AddTravelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTravelViewController.m; sourceTree = "<group>"; };
+		5074FF3A1AD98514009FD06D /* CurrencyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyTableViewCell.h; sourceTree = "<group>"; };
+		5074FF3B1AD98514009FD06D /* CurrencyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyTableViewCell.m; sourceTree = "<group>"; };
+		5074FF3D1AD9878D009FD06D /* Currency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Currency.h; sourceTree = "<group>"; };
+		5074FF3E1AD9878D009FD06D /* Currency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Currency.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +183,8 @@
 				5074FF351AD9430B009FD06D /* TravelListEmptyView.m */,
 				5074FF371AD9454B009FD06D /* AddTravelViewController.h */,
 				5074FF381AD9454B009FD06D /* AddTravelViewController.m */,
+				5074FF3A1AD98514009FD06D /* CurrencyTableViewCell.h */,
+				5074FF3B1AD98514009FD06D /* CurrencyTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -188,6 +196,8 @@
 				5074FF141AD066D5009FD06D /* Travel.m */,
 				5074FF1D1AD08747009FD06D /* Profile.h */,
 				5074FF1E1AD08747009FD06D /* Profile.m */,
+				5074FF3D1AD9878D009FD06D /* Currency.h */,
+				5074FF3E1AD9878D009FD06D /* Currency.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -339,6 +349,7 @@
 				5074FF151AD066D5009FD06D /* Travel.m in Sources */,
 				5074FF251AD82744009FD06D /* DefaultTheme.m in Sources */,
 				5074FEEE1AD05451009FD06D /* ViewController.m in Sources */,
+				5074FF3C1AD98514009FD06D /* CurrencyTableViewCell.m in Sources */,
 				5074FF221AD82731009FD06D /* Theme.m in Sources */,
 				5074FF1F1AD08747009FD06D /* Profile.m in Sources */,
 				5074FF1C1AD08632009FD06D /* Helper.m in Sources */,
@@ -346,6 +357,7 @@
 				5074FF0E1AD0583A009FD06D /* TravelListViewController.m in Sources */,
 				5074FEE81AD05451009FD06D /* main.m in Sources */,
 				5074FF191AD0852B009FD06D /* ConfigUtil.m in Sources */,
+				5074FF3F1AD9878D009FD06D /* Currency.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,10 +7,11 @@
 //
 
 #import "Travel.h"
+#import "Currency.h"
 
 @implementation Travel
 
-- (id)initWithName:(NSString *)name startDate:(NSDate *)startDate endDate:(NSDate *)endDate image:(NSString*)image currencies:(NSArray*)currencies mainCurrency:(NSString *)mainCurrency
+- (id)initWithName:(NSString *)name startDate:(NSDate *)startDate endDate:(NSDate *)endDate image:(UIImage*)image currencies:(NSArray*)currencies
 {
     self = [super init];
     if (self) {
@@ -19,7 +20,6 @@
         _endDate = endDate;
         _image = image;
         _currencies = currencies;
-        _mainCurrency = mainCurrency;
     }
     return self;
 }
@@ -31,7 +31,6 @@
     [coder encodeObject:_endDate forKey:@"endDate"];
     [coder encodeObject:_image forKey:@"image"];
     [coder encodeObject:_currencies forKey:@"currencies"];
-    [coder encodeObject:_mainCurrency forKey:@"mainCurrency"];
     
 }
 
@@ -45,9 +44,18 @@
         _endDate = [coder decodeObjectForKey:@"endDate"];
         _image = [coder decodeObjectForKey:@"image"];
         _currencies = [coder decodeObjectForKey:@"currencies"];
-        _mainCurrency = [coder decodeObjectForKey:@"mainCurrency"];
     }
     return self;
+}
+
+- (Currency *)primaryCurrency
+{
+    for (Currency *currency in self.currencies) {
+        if (currency.isPrimary){
+            return currency;
+        }
+    }
+    return nil;
 }
 
 

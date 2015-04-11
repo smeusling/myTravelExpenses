@@ -13,6 +13,7 @@
 #import "Profile.h"
 #import "TravelListEmptyView.h"
 #import "AddTravelViewController.h"
+#import "Currency.h"
 
 @interface TravelListViewController ()
 
@@ -85,9 +86,10 @@
     
     cell.travelName.text = travel.name;
     cell.travelDates.text = [self convertDatesToStringWithFirstDate:travel.startDate secondDate:travel.endDate];
-    cell.travelImageView.image = [UIImage imageNamed:travel.image];
-    cell.travelCurrency.text = travel.mainCurrency;
-    cell.travelUserCurrency.text = self.profile.currency;
+    //cell.travelImageView.image = travel.image;
+    cell.travelImageView.image = [UIImage imageNamed:@"japon"];
+    cell.travelCurrency.text = [travel primaryCurrency].name;
+    cell.travelUserCurrency.text = self.profile.currency.name;
     
     return cell;
     

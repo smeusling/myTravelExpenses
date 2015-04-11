@@ -11,7 +11,7 @@
 @implementation Profile
 
 
-- (id)initWithFirstName:(NSString *)firstName lastName:(NSString *)lastName image:(NSString*)image currency:(NSString*)currency;
+- (id)initWithFirstName:(NSString *)firstName lastName:(NSString *)lastName image:(NSString*)image currency:(Currency*)currency;
 {
     self = [super init];
     if (self) {

@@ -10,11 +10,16 @@
 #import "Travel.h"
 #import "Profile.h"
 #import "ConfigUtil.h"
+#import "Currency.h"
+
 @implementation Helper
 
 + (void) initTravelDataTest
 {
-    Travel *japan = [[Travel alloc]initWithName:@"UEFA App" startDate:[NSDate date] endDate:[NSDate date] image:@"japon" currencies:@[@"CHF", @"JYN"] mainCurrency:@"JYN"];
+    Currency *chf = [[Currency alloc]initWithName:@"CHF" isPrimary:NO];
+    Currency *jyn = [[Currency alloc]initWithName:@"JYN" isPrimary:YES];
+    
+    Travel *japan = [[Travel alloc]initWithName:@"UEFA App" startDate:[NSDate date] endDate:[NSDate date] image:[UIImage imageNamed:@"japon"] currencies:@[chf, jyn]];
     
     
     NSArray *travels = @[japan];
@@ -25,7 +30,8 @@
 
 + (void) initProfile
 {
-    Profile *profile = [[Profile alloc]initWithFirstName:@"Stéphanie" lastName:@"Meusling" image:@"image" currency:@"CHF"];
+    Currency *chf = [[Currency alloc]initWithName:@"CHF" isPrimary:NO];
+    Profile *profile = [[Profile alloc]initWithFirstName:@"Stéphanie" lastName:@"Meusling" image:@"image" currency:chf];
     
     [ConfigUtil setProfile:profile];
 }

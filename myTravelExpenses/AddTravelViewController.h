@@ -10,14 +10,17 @@
 
 @interface AddTravelViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextField *travelNameLabel;
-@property (weak, nonatomic) IBOutlet UITextField *startDateLabel;
+@property (weak, nonatomic) IBOutlet UITextField *travelNameTextField;
+@property (weak, nonatomic) IBOutlet UILabel *startDateLabel;
+@property (weak, nonatomic) IBOutlet UITextField *startDateTextField;
+@property (weak, nonatomic) IBOutlet UILabel *endDateLabel;
+@property (weak, nonatomic) IBOutlet UITextField *endDateTextField;
 
-@property (weak, nonatomic) IBOutlet UITextField *endDatelabel;
 @property (weak, nonatomic) IBOutlet UIButton *addPhotoButton;
 - (IBAction)addPhotoButtonClicked:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UITableView *currencyTableView;
+
 @property (weak, nonatomic) IBOutlet UIButton *addCurrencyButton;
 - (IBAction)addCurrencyButtonClicked:(id)sender;
 @end

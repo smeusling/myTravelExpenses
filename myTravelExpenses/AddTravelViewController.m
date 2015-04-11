@@ -7,10 +7,20 @@
 //
 
 #import "AddTravelViewController.h"
-#import "TravelTableViewCell.h"
+#import "CurrencyTableViewCell.h"
 #import "Theme.h"
+#import "Travel.h"
+#import "Profile.h"
+#import "ConfigUtil.h"
+#import "Currency.h"
 
 @interface AddTravelViewController ()
+
+@property (nonatomic, strong) NSMutableArray *currencies;
+@property (nonatomic, strong) NSDate *startDate;
+@property (nonatomic, strong) NSDate *endDate;
+@property (nonatomic, strong) UIImage *travelImage;
+@property (nonatomic, strong) Profile *profile;
 
 @end
 
@@ -18,6 +28,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.currencies = [[NSMutableArray alloc]init];
+    self.profile = [ConfigUtil profile];
+    
+    [self.currencies addObject:self.profile.currency];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd MMMM yyyy"];
+    
+    self.startDateLabel.text = @"Start date".uppercaseString;
+    self.startDateTextField.text = [formatter stringFromDate:[NSDate date]];
+    
+    self.endDateLabel.text = @"End date".uppercaseString;
+    self.endDateTextField.text = [formatter stringFromDate:[NSDate date]];
+    
+    self.travelNameTextField.placeholder = @"Enter Name";
+    
     [self setupNavBar];
     [self setupButton];
 }
@@ -25,7 +52,7 @@
 - (void)setupButton
 {
     self.addCurrencyButton.backgroundColor = [[ThemeManager sharedTheme]buttonColor];
-    [self.addCurrencyButton setTitle:@"Add Currency" forState:UIControlStateNormal];
+    [self.addCurrencyButton setTitle:@"Add Currency".uppercaseString forState:UIControlStateNormal];
     [self.addCurrencyButton setTitleColor:[[ThemeManager sharedTheme]mainTextColor] forState:UIControlStateNormal];
 }
 
@@ -55,16 +82,23 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return [self.currencies count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    TravelTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TravelTableViewCell" forIndexPath:indexPath];
+    CurrencyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CurrencyTableViewCell" forIndexPath:indexPath];
+    Currency *currency = self.currencies[indexPath.row];
+    cell.currencyLabel.text = currency.name;
     return cell;
     
     
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return @"currency".uppercaseString;
 }
 
 
@@ -82,6 +116,11 @@
 
 - (void)addTravel
 {
+    Travel *newTravel = [[Travel alloc]initWithName:self.travelNameTextField.text
+                                          startDate:self.startDate
+                                            endDate:self.endDate
+                                              image:self.travelImage
+                                         currencies:self.currencies];
     
 }
 
