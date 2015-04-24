@@ -110,6 +110,8 @@
          Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
          
          */
+        
+        //Si ça fait un abort c'est parce que la base de donnée à été changée et que le model n'est plus le même; il suffit d'effacer les fihcier qui se trouvent ici :/Users/stephaniemeusling/Library/Developer/CoreSimulator/Devices/AFC3EF74-7DCC-4057-BAC4-1EE366C45010/data/Containers/Data/Application/DAD2D514-D3F2-4C4F-88BC-5D18C9666AA1/Documents
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
@@ -133,6 +135,7 @@
     MTETravel *travel = [NSEntityDescription
                          insertNewObjectForEntityForName:@"Travel"
                          inManagedObjectContext:context];
+    travel.uuid = [[NSUUID UUID] UUIDString];
     travel.name = @"Travel";
     
 //    MTEExpense *expense = [NSEntityDescription

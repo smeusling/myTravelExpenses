@@ -13,10 +13,12 @@
 
 @interface MTETravel : NSManagedObject
 
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSDate * startDate;
 @property (nonatomic, retain) NSDate * endDate;
 @property (nonatomic, retain) NSData * image;
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSDate * startDate;
+@property (nonatomic, retain) NSString * uuid;
+@property (nonatomic, retain) NSString * currencyCode;
 @property (nonatomic, retain) NSSet *expenses;
 @end
 

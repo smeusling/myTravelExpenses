@@ -12,10 +12,12 @@
 
 @implementation MTETravel
 
-@dynamic name;
-@dynamic startDate;
 @dynamic endDate;
 @dynamic image;
+@dynamic name;
+@dynamic startDate;
+@dynamic uuid;
+@dynamic currencyCode;
 @dynamic expenses;
 
 @end
