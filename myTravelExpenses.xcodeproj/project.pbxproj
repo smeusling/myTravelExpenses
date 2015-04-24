@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		502C2E3D1AEA9255001D0B88 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 502C2E3C1AEA9255001D0B88 /* CoreData.framework */; };
+		502C2E411AEA937A001D0B88 /* myTravelExpenses.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 502C2E3F1AEA937A001D0B88 /* myTravelExpenses.xcdatamodeld */; };
 		5074FEE81AD05451009FD06D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FEE71AD05451009FD06D /* main.m */; };
 		5074FEEB1AD05451009FD06D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FEEA1AD05451009FD06D /* AppDelegate.m */; };
 		5074FEEE1AD05451009FD06D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FEED1AD05451009FD06D /* ViewController.m */; };
@@ -40,6 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		502C2E3C1AEA9255001D0B88 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		502C2E3E1AEA9306001D0B88 /* myTravelExpenses-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "myTravelExpenses-Prefix.pch"; sourceTree = "<group>"; };
+		502C2E401AEA937A001D0B88 /* myTravelExpenses.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myTravelExpenses.xcdatamodel; sourceTree = "<group>"; };
 		5074FEE21AD05451009FD06D /* myTravelExpenses.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myTravelExpenses.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5074FEE61AD05451009FD06D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5074FEE71AD05451009FD06D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -95,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				502C2E3D1AEA9255001D0B88 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +117,7 @@
 		5074FED91AD05451009FD06D = {
 			isa = PBXGroup;
 			children = (
+				502C2E3C1AEA9255001D0B88 /* CoreData.framework */,
 				5074FEE41AD05451009FD06D /* myTravelExpenses */,
 				5074FEFE1AD05451009FD06D /* myTravelExpensesTests */,
 				5074FEE31AD05451009FD06D /* Products */,
@@ -150,6 +157,7 @@
 				5074FF261AD83269009FD06D /* Fonts */,
 				5074FEE61AD05451009FD06D /* Info.plist */,
 				5074FEE71AD05451009FD06D /* main.m */,
+				502C2E3E1AEA9306001D0B88 /* myTravelExpenses-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -198,6 +206,7 @@
 				5074FF1E1AD08747009FD06D /* Profile.m */,
 				5074FF3D1AD9878D009FD06D /* Currency.h */,
 				5074FF3E1AD9878D009FD06D /* Currency.m */,
+				502C2E3F1AEA937A001D0B88 /* myTravelExpenses.xcdatamodeld */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -347,6 +356,7 @@
 				5074FF111AD05A9B009FD06D /* TravelTableViewCell.m in Sources */,
 				5074FF391AD9454B009FD06D /* AddTravelViewController.m in Sources */,
 				5074FF151AD066D5009FD06D /* Travel.m in Sources */,
+				502C2E411AEA937A001D0B88 /* myTravelExpenses.xcdatamodeld in Sources */,
 				5074FF251AD82744009FD06D /* DefaultTheme.m in Sources */,
 				5074FEEE1AD05451009FD06D /* ViewController.m in Sources */,
 				5074FF3C1AD98514009FD06D /* CurrencyTableViewCell.m in Sources */,
@@ -562,6 +572,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		502C2E3F1AEA937A001D0B88 /* myTravelExpenses.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				502C2E401AEA937A001D0B88 /* myTravelExpenses.xcdatamodel */,
+			);
+			currentVersion = 502C2E401AEA937A001D0B88 /* myTravelExpenses.xcdatamodel */;
+			path = myTravelExpenses.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5074FEDA1AD05451009FD06D /* Project object */;
 }
