@@ -7,6 +7,7 @@
 //
 
 #import "MTETravelListViewController.h"
+#import <CoreData/CoreData.h>
 #import "MTETravelTableViewCell.h"
 #import "MTEConfigUtil.h"
 #import "MTETravel.h"
@@ -14,6 +15,7 @@
 #import "MTETravelListEmptyView.h"
 #import "MTEAddTravelViewController.h"
 //#import "MTECurrency.h"
+#import "MTEModel.h"
 
 @interface MTETravelListViewController ()
 
@@ -26,13 +28,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.travels = [MTEConfigUtil travelDataTest];
+    
+    // Test listing all FailedBankInfos from the store
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Travel"
+                                              inManagedObjectContext:[[MTEModel sharedInstance]managedObjectContext]];
+    [fetchRequest setEntity:entity];
+    NSError *error = nil;
+    NSArray *fetchedObjects = [[[MTEModel sharedInstance]managedObjectContext] executeFetchRequest:fetchRequest error:&error];
+    
+    self.travels = fetchedObjects;
 //    if(!self.travels || [self.travels count]>1){
 //        self.tableView.backgroundView = [self setupEmptyView];
 //    }else{
 //         self.tableView.backgroundView = nil;
 //    }
-//    self.profile = [MTEConfigUtil profile];
+    //self.profile = [MTEConfigUtil profile];
     [self setupNavBar];
 }
 
@@ -84,7 +95,7 @@
     MTETravelTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TravelTableViewCell" forIndexPath:indexPath];
     MTETravel *travel = self.travels[indexPath.row];
     
-//    cell.travelName.text = travel.name;
+    cell.travelName.text = travel.name;
 //    cell.travelDates.text = [self convertDatesToStringWithFirstDate:travel.startDate secondDate:travel.endDate];
 //    //cell.travelImageView.image = travel.image;
 //    cell.travelImageView.image = [UIImage imageNamed:@"japon"];

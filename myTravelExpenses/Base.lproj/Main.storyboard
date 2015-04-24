@@ -107,6 +107,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="epI-4M-GWb" secondAttribute="bottom" id="qaY-Fu-Sl8"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="travelCurrency" destination="c17-HV-Nda" id="90w-d7-IUV"/>
                                             <outlet property="travelDates" destination="f1a-OV-yxS" id="fEu-Zm-nel"/>

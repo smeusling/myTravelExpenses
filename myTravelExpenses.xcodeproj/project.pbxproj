@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50150B5F1AEADDAD005A63CF /* MTEModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50150B5E1AEADDAD005A63CF /* MTEModel.m */; };
 		502C2E3D1AEA9255001D0B88 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 502C2E3C1AEA9255001D0B88 /* CoreData.framework */; };
 		502C2E411AEA937A001D0B88 /* myTravelExpenses.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 502C2E3F1AEA937A001D0B88 /* myTravelExpenses.xcdatamodeld */; };
 		5074FEE81AD05451009FD06D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FEE71AD05451009FD06D /* main.m */; };
@@ -40,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		50150B5D1AEADDAD005A63CF /* MTEModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTEModel.h; sourceTree = "<group>"; };
+		50150B5E1AEADDAD005A63CF /* MTEModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTEModel.m; sourceTree = "<group>"; };
 		502C2E3C1AEA9255001D0B88 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		502C2E3E1AEA9306001D0B88 /* myTravelExpenses-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "myTravelExpenses-Prefix.pch"; sourceTree = "<group>"; };
 		502C2E401AEA937A001D0B88 /* myTravelExpenses.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myTravelExpenses.xcdatamodel; sourceTree = "<group>"; };
@@ -192,6 +195,8 @@
 		5074FF121AD05C0E009FD06D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				50150B5D1AEADDAD005A63CF /* MTEModel.h */,
+				50150B5E1AEADDAD005A63CF /* MTEModel.m */,
 				502C2E3F1AEA937A001D0B88 /* myTravelExpenses.xcdatamodeld */,
 				50BCF8E41AEAD57300329CF2 /* MTEExpense.h */,
 				50BCF8E51AEAD57300329CF2 /* MTEExpense.m */,
@@ -342,6 +347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50150B5F1AEADDAD005A63CF /* MTEModel.m in Sources */,
 				5074FF361AD9430B009FD06D /* MTETravelListEmptyView.m in Sources */,
 				5074FF111AD05A9B009FD06D /* MTETravelTableViewCell.m in Sources */,
 				50BCF8E31AEAD57300329CF2 /* MTETravel.m in Sources */,

@@ -13,6 +13,7 @@
 //#import "MTEProfile.h"
 #import "MTEConfigUtil.h"
 //#import "MTECurrency.h"
+#import "MTEModel.h"
 
 @interface MTEAddTravelViewController ()
 
@@ -121,6 +122,9 @@
 //                                            endDate:self.endDate
 //                                              image:self.travelImage
 //                                         currencies:self.currencies];
+    
+    MTETravel *newTravel =[[MTEModel sharedInstance]createTravel];
+    newTravel.name = self.travelNameTextField.text;
     
 }
 
