@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 smeusling. All rights reserved.
 //
 
-#import "CurrencyTableViewCell.h"
+#import "MTECurrencyTableViewCell.h"
 
-@implementation CurrencyTableViewCell
+@implementation MTECurrencyTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code

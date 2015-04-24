@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddTravelViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface MTEAddTravelViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *travelNameTextField;
 @property (weak, nonatomic) IBOutlet UILabel *startDateLabel;

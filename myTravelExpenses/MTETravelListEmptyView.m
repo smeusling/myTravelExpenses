@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 smeusling. All rights reserved.
 //
 
-#import "TravelListEmptyView.h"
+#import "MTETravelListEmptyView.h"
 
-@implementation TravelListEmptyView
+@implementation MTETravelListEmptyView
 
 /*
 // Only override drawRect: if you perform custom drawing.

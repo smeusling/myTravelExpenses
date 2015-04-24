@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol Theme <NSObject>
+@protocol MTETheme <NSObject>
 
 - (UIColor *)mainColor;
 - (UIColor *)mainTextColor;
@@ -27,9 +27,9 @@
 
 @end
 
-@interface ThemeManager : NSObject
+@interface MTEThemeManager : NSObject
 
-+ (id<Theme>)sharedTheme;
++ (id<MTETheme>)sharedTheme;
 
 + (void)customizeAppAppearance;
 

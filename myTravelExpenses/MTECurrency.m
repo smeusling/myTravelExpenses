@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 smeusling. All rights reserved.
 //
 
-#import "Currency.h"
+#import "MTECurrency.h"
 
-@implementation Currency
+@implementation MTECurrency
 
 - (id)initWithName:(NSString *)name isPrimary:(BOOL)isPrimary
 {

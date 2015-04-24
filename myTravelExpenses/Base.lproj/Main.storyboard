@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13F1066" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Pva-Bk-mcu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Pva-Bk-mcu">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -20,7 +20,7 @@
         <!--Travel List View Controller-->
         <scene sceneID="cI8-Pd-hav">
             <objects>
-                <viewController storyboardIdentifier="TravelListViewController" id="eUz-Ii-pBD" customClass="TravelListViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TravelListViewController" id="eUz-Ii-pBD" customClass="MTETravelListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="krt-vb-EEk"/>
                         <viewControllerLayoutGuide type="bottom" id="rJ7-w8-7yt"/>
@@ -33,7 +33,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleAspectFill" restorationIdentifier="TravelTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="TravelTableViewCell" id="DZv-tC-3XF" customClass="TravelTableViewCell">
+                                    <tableViewCell contentMode="scaleAspectFill" restorationIdentifier="TravelTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="TravelTableViewCell" id="DZv-tC-3XF" customClass="MTETravelTableViewCell">
                                         <rect key="frame" x="0.0" y="225" width="600" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DZv-tC-3XF" id="rCC-4o-tP6">
@@ -142,7 +142,7 @@
         <!--Add Travel View Controller-->
         <scene sceneID="cpX-dm-unb">
             <objects>
-                <viewController storyboardIdentifier="AddTravelViewController" id="PnP-gz-ktf" customClass="AddTravelViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddTravelViewController" id="PnP-gz-ktf" customClass="MTEAddTravelViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1nO-MT-fX7"/>
                         <viewControllerLayoutGuide type="bottom" id="Oik-ZH-sUy"/>
@@ -251,7 +251,7 @@
                                 <rect key="frame" x="0.0" y="279" width="600" height="251"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="CurrencyTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="CurrencyTableViewCell" id="tZC-43-yaA" customClass="CurrencyTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="CurrencyTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="CurrencyTableViewCell" id="tZC-43-yaA" customClass="MTECurrencyTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tZC-43-yaA" id="DdG-Jf-S1z">

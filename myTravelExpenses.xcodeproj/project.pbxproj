@@ -11,24 +11,23 @@
 		502C2E411AEA937A001D0B88 /* myTravelExpenses.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 502C2E3F1AEA937A001D0B88 /* myTravelExpenses.xcdatamodeld */; };
 		5074FEE81AD05451009FD06D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FEE71AD05451009FD06D /* main.m */; };
 		5074FEEB1AD05451009FD06D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FEEA1AD05451009FD06D /* AppDelegate.m */; };
-		5074FEEE1AD05451009FD06D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FEED1AD05451009FD06D /* ViewController.m */; };
 		5074FEF11AD05451009FD06D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5074FEEF1AD05451009FD06D /* Main.storyboard */; };
 		5074FEF31AD05451009FD06D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5074FEF21AD05451009FD06D /* Images.xcassets */; };
 		5074FEF61AD05451009FD06D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5074FEF41AD05451009FD06D /* LaunchScreen.xib */; };
 		5074FF021AD05451009FD06D /* myTravelExpensesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF011AD05451009FD06D /* myTravelExpensesTests.m */; };
-		5074FF0E1AD0583A009FD06D /* TravelListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF0D1AD0583A009FD06D /* TravelListViewController.m */; };
-		5074FF111AD05A9B009FD06D /* TravelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF101AD05A9B009FD06D /* TravelTableViewCell.m */; };
-		5074FF151AD066D5009FD06D /* Travel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF141AD066D5009FD06D /* Travel.m */; };
-		5074FF191AD0852B009FD06D /* ConfigUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF181AD0852B009FD06D /* ConfigUtil.m */; };
-		5074FF1C1AD08632009FD06D /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF1B1AD08632009FD06D /* Helper.m */; };
-		5074FF1F1AD08747009FD06D /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF1E1AD08747009FD06D /* Profile.m */; };
-		5074FF221AD82731009FD06D /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF211AD82731009FD06D /* Theme.m */; };
-		5074FF251AD82744009FD06D /* DefaultTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF241AD82744009FD06D /* DefaultTheme.m */; };
-		5074FF331AD93FA2009FD06D /* TravelListEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5074FF321AD93FA2009FD06D /* TravelListEmptyView.xib */; };
-		5074FF361AD9430B009FD06D /* TravelListEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF351AD9430B009FD06D /* TravelListEmptyView.m */; };
-		5074FF391AD9454B009FD06D /* AddTravelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF381AD9454B009FD06D /* AddTravelViewController.m */; };
-		5074FF3C1AD98514009FD06D /* CurrencyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF3B1AD98514009FD06D /* CurrencyTableViewCell.m */; };
-		5074FF3F1AD9878D009FD06D /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF3E1AD9878D009FD06D /* Currency.m */; };
+		5074FF0E1AD0583A009FD06D /* MTETravelListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF0D1AD0583A009FD06D /* MTETravelListViewController.m */; };
+		5074FF111AD05A9B009FD06D /* MTETravelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF101AD05A9B009FD06D /* MTETravelTableViewCell.m */; };
+		5074FF151AD066D5009FD06D /* MTETravel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF141AD066D5009FD06D /* MTETravel.m */; };
+		5074FF191AD0852B009FD06D /* MTEConfigUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF181AD0852B009FD06D /* MTEConfigUtil.m */; };
+		5074FF1C1AD08632009FD06D /* MTEHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF1B1AD08632009FD06D /* MTEHelper.m */; };
+		5074FF1F1AD08747009FD06D /* MTEProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF1E1AD08747009FD06D /* MTEProfile.m */; };
+		5074FF221AD82731009FD06D /* MTETheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF211AD82731009FD06D /* MTETheme.m */; };
+		5074FF251AD82744009FD06D /* MTEDefaultTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF241AD82744009FD06D /* MTEDefaultTheme.m */; };
+		5074FF331AD93FA2009FD06D /* MTETravelListEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5074FF321AD93FA2009FD06D /* MTETravelListEmptyView.xib */; };
+		5074FF361AD9430B009FD06D /* MTETravelListEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF351AD9430B009FD06D /* MTETravelListEmptyView.m */; };
+		5074FF391AD9454B009FD06D /* MTEAddTravelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF381AD9454B009FD06D /* MTEAddTravelViewController.m */; };
+		5074FF3C1AD98514009FD06D /* MTECurrencyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF3B1AD98514009FD06D /* MTECurrencyTableViewCell.m */; };
+		5074FF3F1AD9878D009FD06D /* MTECurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF3E1AD9878D009FD06D /* MTECurrency.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,30 +49,28 @@
 		5074FEE71AD05451009FD06D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5074FEE91AD05451009FD06D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5074FEEA1AD05451009FD06D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		5074FEEC1AD05451009FD06D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		5074FEED1AD05451009FD06D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		5074FEF01AD05451009FD06D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5074FEF21AD05451009FD06D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5074FEF51AD05451009FD06D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		5074FEFB1AD05451009FD06D /* myTravelExpensesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myTravelExpensesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5074FF001AD05451009FD06D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5074FF011AD05451009FD06D /* myTravelExpensesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myTravelExpensesTests.m; sourceTree = "<group>"; };
-		5074FF0C1AD0583A009FD06D /* TravelListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TravelListViewController.h; sourceTree = "<group>"; };
-		5074FF0D1AD0583A009FD06D /* TravelListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TravelListViewController.m; sourceTree = "<group>"; };
-		5074FF0F1AD05A9B009FD06D /* TravelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TravelTableViewCell.h; sourceTree = "<group>"; };
-		5074FF101AD05A9B009FD06D /* TravelTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TravelTableViewCell.m; sourceTree = "<group>"; };
-		5074FF131AD066D5009FD06D /* Travel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Travel.h; sourceTree = "<group>"; };
-		5074FF141AD066D5009FD06D /* Travel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Travel.m; sourceTree = "<group>"; };
-		5074FF171AD0852B009FD06D /* ConfigUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigUtil.h; sourceTree = "<group>"; };
-		5074FF181AD0852B009FD06D /* ConfigUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigUtil.m; sourceTree = "<group>"; };
-		5074FF1A1AD08632009FD06D /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
-		5074FF1B1AD08632009FD06D /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
-		5074FF1D1AD08747009FD06D /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
-		5074FF1E1AD08747009FD06D /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
-		5074FF201AD82731009FD06D /* Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Theme.h; sourceTree = "<group>"; };
-		5074FF211AD82731009FD06D /* Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Theme.m; sourceTree = "<group>"; };
-		5074FF231AD82744009FD06D /* DefaultTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultTheme.h; sourceTree = "<group>"; };
-		5074FF241AD82744009FD06D /* DefaultTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultTheme.m; sourceTree = "<group>"; };
+		5074FF0C1AD0583A009FD06D /* MTETravelListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTETravelListViewController.h; sourceTree = "<group>"; };
+		5074FF0D1AD0583A009FD06D /* MTETravelListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTETravelListViewController.m; sourceTree = "<group>"; };
+		5074FF0F1AD05A9B009FD06D /* MTETravelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTETravelTableViewCell.h; sourceTree = "<group>"; };
+		5074FF101AD05A9B009FD06D /* MTETravelTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTETravelTableViewCell.m; sourceTree = "<group>"; };
+		5074FF131AD066D5009FD06D /* MTETravel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTETravel.h; sourceTree = "<group>"; };
+		5074FF141AD066D5009FD06D /* MTETravel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTETravel.m; sourceTree = "<group>"; };
+		5074FF171AD0852B009FD06D /* MTEConfigUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTEConfigUtil.h; sourceTree = "<group>"; };
+		5074FF181AD0852B009FD06D /* MTEConfigUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTEConfigUtil.m; sourceTree = "<group>"; };
+		5074FF1A1AD08632009FD06D /* MTEHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTEHelper.h; sourceTree = "<group>"; };
+		5074FF1B1AD08632009FD06D /* MTEHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTEHelper.m; sourceTree = "<group>"; };
+		5074FF1D1AD08747009FD06D /* MTEProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTEProfile.h; sourceTree = "<group>"; };
+		5074FF1E1AD08747009FD06D /* MTEProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTEProfile.m; sourceTree = "<group>"; };
+		5074FF201AD82731009FD06D /* MTETheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTETheme.h; sourceTree = "<group>"; };
+		5074FF211AD82731009FD06D /* MTETheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTETheme.m; sourceTree = "<group>"; };
+		5074FF231AD82744009FD06D /* MTEDefaultTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTEDefaultTheme.h; sourceTree = "<group>"; };
+		5074FF241AD82744009FD06D /* MTEDefaultTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTEDefaultTheme.m; sourceTree = "<group>"; };
 		5074FF281AD832B3009FD06D /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		5074FF291AD832B3009FD06D /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		5074FF2A1AD832B3009FD06D /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -84,15 +81,15 @@
 		5074FF2F1AD832B3009FD06D /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		5074FF301AD832B3009FD06D /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		5074FF311AD832B3009FD06D /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
-		5074FF321AD93FA2009FD06D /* TravelListEmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TravelListEmptyView.xib; sourceTree = "<group>"; };
-		5074FF341AD9430B009FD06D /* TravelListEmptyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TravelListEmptyView.h; sourceTree = "<group>"; };
-		5074FF351AD9430B009FD06D /* TravelListEmptyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TravelListEmptyView.m; sourceTree = "<group>"; };
-		5074FF371AD9454B009FD06D /* AddTravelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTravelViewController.h; sourceTree = "<group>"; };
-		5074FF381AD9454B009FD06D /* AddTravelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTravelViewController.m; sourceTree = "<group>"; };
-		5074FF3A1AD98514009FD06D /* CurrencyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyTableViewCell.h; sourceTree = "<group>"; };
-		5074FF3B1AD98514009FD06D /* CurrencyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyTableViewCell.m; sourceTree = "<group>"; };
-		5074FF3D1AD9878D009FD06D /* Currency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Currency.h; sourceTree = "<group>"; };
-		5074FF3E1AD9878D009FD06D /* Currency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Currency.m; sourceTree = "<group>"; };
+		5074FF321AD93FA2009FD06D /* MTETravelListEmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTETravelListEmptyView.xib; sourceTree = "<group>"; };
+		5074FF341AD9430B009FD06D /* MTETravelListEmptyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTETravelListEmptyView.h; sourceTree = "<group>"; };
+		5074FF351AD9430B009FD06D /* MTETravelListEmptyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTETravelListEmptyView.m; sourceTree = "<group>"; };
+		5074FF371AD9454B009FD06D /* MTEAddTravelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTEAddTravelViewController.h; sourceTree = "<group>"; };
+		5074FF381AD9454B009FD06D /* MTEAddTravelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTEAddTravelViewController.m; sourceTree = "<group>"; };
+		5074FF3A1AD98514009FD06D /* MTECurrencyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTECurrencyTableViewCell.h; sourceTree = "<group>"; };
+		5074FF3B1AD98514009FD06D /* MTECurrencyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTECurrencyTableViewCell.m; sourceTree = "<group>"; };
+		5074FF3D1AD9878D009FD06D /* MTECurrency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTECurrency.h; sourceTree = "<group>"; };
+		5074FF3E1AD9878D009FD06D /* MTECurrency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTECurrency.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,8 +138,6 @@
 				5074FF0B1AD05807009FD06D /* Views */,
 				5074FEE91AD05451009FD06D /* AppDelegate.h */,
 				5074FEEA1AD05451009FD06D /* AppDelegate.m */,
-				5074FEEC1AD05451009FD06D /* ViewController.h */,
-				5074FEED1AD05451009FD06D /* ViewController.m */,
 				5074FEEF1AD05451009FD06D /* Main.storyboard */,
 				5074FEF21AD05451009FD06D /* Images.xcassets */,
 				5074FEF41AD05451009FD06D /* LaunchScreen.xib */,
@@ -182,17 +177,17 @@
 		5074FF0B1AD05807009FD06D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5074FF0C1AD0583A009FD06D /* TravelListViewController.h */,
-				5074FF0D1AD0583A009FD06D /* TravelListViewController.m */,
-				5074FF0F1AD05A9B009FD06D /* TravelTableViewCell.h */,
-				5074FF101AD05A9B009FD06D /* TravelTableViewCell.m */,
-				5074FF321AD93FA2009FD06D /* TravelListEmptyView.xib */,
-				5074FF341AD9430B009FD06D /* TravelListEmptyView.h */,
-				5074FF351AD9430B009FD06D /* TravelListEmptyView.m */,
-				5074FF371AD9454B009FD06D /* AddTravelViewController.h */,
-				5074FF381AD9454B009FD06D /* AddTravelViewController.m */,
-				5074FF3A1AD98514009FD06D /* CurrencyTableViewCell.h */,
-				5074FF3B1AD98514009FD06D /* CurrencyTableViewCell.m */,
+				5074FF0C1AD0583A009FD06D /* MTETravelListViewController.h */,
+				5074FF0D1AD0583A009FD06D /* MTETravelListViewController.m */,
+				5074FF0F1AD05A9B009FD06D /* MTETravelTableViewCell.h */,
+				5074FF101AD05A9B009FD06D /* MTETravelTableViewCell.m */,
+				5074FF321AD93FA2009FD06D /* MTETravelListEmptyView.xib */,
+				5074FF341AD9430B009FD06D /* MTETravelListEmptyView.h */,
+				5074FF351AD9430B009FD06D /* MTETravelListEmptyView.m */,
+				5074FF371AD9454B009FD06D /* MTEAddTravelViewController.h */,
+				5074FF381AD9454B009FD06D /* MTEAddTravelViewController.m */,
+				5074FF3A1AD98514009FD06D /* MTECurrencyTableViewCell.h */,
+				5074FF3B1AD98514009FD06D /* MTECurrencyTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -200,12 +195,12 @@
 		5074FF121AD05C0E009FD06D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5074FF131AD066D5009FD06D /* Travel.h */,
-				5074FF141AD066D5009FD06D /* Travel.m */,
-				5074FF1D1AD08747009FD06D /* Profile.h */,
-				5074FF1E1AD08747009FD06D /* Profile.m */,
-				5074FF3D1AD9878D009FD06D /* Currency.h */,
-				5074FF3E1AD9878D009FD06D /* Currency.m */,
+				5074FF131AD066D5009FD06D /* MTETravel.h */,
+				5074FF141AD066D5009FD06D /* MTETravel.m */,
+				5074FF1D1AD08747009FD06D /* MTEProfile.h */,
+				5074FF1E1AD08747009FD06D /* MTEProfile.m */,
+				5074FF3D1AD9878D009FD06D /* MTECurrency.h */,
+				5074FF3E1AD9878D009FD06D /* MTECurrency.m */,
 				502C2E3F1AEA937A001D0B88 /* myTravelExpenses.xcdatamodeld */,
 			);
 			name = Model;
@@ -214,14 +209,14 @@
 		5074FF161AD08509009FD06D /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				5074FF171AD0852B009FD06D /* ConfigUtil.h */,
-				5074FF181AD0852B009FD06D /* ConfigUtil.m */,
-				5074FF1A1AD08632009FD06D /* Helper.h */,
-				5074FF1B1AD08632009FD06D /* Helper.m */,
-				5074FF201AD82731009FD06D /* Theme.h */,
-				5074FF211AD82731009FD06D /* Theme.m */,
-				5074FF231AD82744009FD06D /* DefaultTheme.h */,
-				5074FF241AD82744009FD06D /* DefaultTheme.m */,
+				5074FF171AD0852B009FD06D /* MTEConfigUtil.h */,
+				5074FF181AD0852B009FD06D /* MTEConfigUtil.m */,
+				5074FF1A1AD08632009FD06D /* MTEHelper.h */,
+				5074FF1B1AD08632009FD06D /* MTEHelper.m */,
+				5074FF201AD82731009FD06D /* MTETheme.h */,
+				5074FF211AD82731009FD06D /* MTETheme.m */,
+				5074FF231AD82744009FD06D /* MTEDefaultTheme.h */,
+				5074FF241AD82744009FD06D /* MTEDefaultTheme.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -331,7 +326,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5074FF331AD93FA2009FD06D /* TravelListEmptyView.xib in Resources */,
+				5074FF331AD93FA2009FD06D /* MTETravelListEmptyView.xib in Resources */,
 				5074FEF11AD05451009FD06D /* Main.storyboard in Resources */,
 				5074FEF61AD05451009FD06D /* LaunchScreen.xib in Resources */,
 				5074FEF31AD05451009FD06D /* Images.xcassets in Resources */,
@@ -352,22 +347,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5074FF361AD9430B009FD06D /* TravelListEmptyView.m in Sources */,
-				5074FF111AD05A9B009FD06D /* TravelTableViewCell.m in Sources */,
-				5074FF391AD9454B009FD06D /* AddTravelViewController.m in Sources */,
-				5074FF151AD066D5009FD06D /* Travel.m in Sources */,
+				5074FF361AD9430B009FD06D /* MTETravelListEmptyView.m in Sources */,
+				5074FF111AD05A9B009FD06D /* MTETravelTableViewCell.m in Sources */,
+				5074FF391AD9454B009FD06D /* MTEAddTravelViewController.m in Sources */,
+				5074FF151AD066D5009FD06D /* MTETravel.m in Sources */,
 				502C2E411AEA937A001D0B88 /* myTravelExpenses.xcdatamodeld in Sources */,
-				5074FF251AD82744009FD06D /* DefaultTheme.m in Sources */,
-				5074FEEE1AD05451009FD06D /* ViewController.m in Sources */,
-				5074FF3C1AD98514009FD06D /* CurrencyTableViewCell.m in Sources */,
-				5074FF221AD82731009FD06D /* Theme.m in Sources */,
-				5074FF1F1AD08747009FD06D /* Profile.m in Sources */,
-				5074FF1C1AD08632009FD06D /* Helper.m in Sources */,
+				5074FF251AD82744009FD06D /* MTEDefaultTheme.m in Sources */,
+				5074FF3C1AD98514009FD06D /* MTECurrencyTableViewCell.m in Sources */,
+				5074FF221AD82731009FD06D /* MTETheme.m in Sources */,
+				5074FF1F1AD08747009FD06D /* MTEProfile.m in Sources */,
+				5074FF1C1AD08632009FD06D /* MTEHelper.m in Sources */,
 				5074FEEB1AD05451009FD06D /* AppDelegate.m in Sources */,
-				5074FF0E1AD0583A009FD06D /* TravelListViewController.m in Sources */,
+				5074FF0E1AD0583A009FD06D /* MTETravelListViewController.m in Sources */,
 				5074FEE81AD05451009FD06D /* main.m in Sources */,
-				5074FF191AD0852B009FD06D /* ConfigUtil.m in Sources */,
-				5074FF3F1AD9878D009FD06D /* Currency.m in Sources */,
+				5074FF191AD0852B009FD06D /* MTEConfigUtil.m in Sources */,
+				5074FF3F1AD9878D009FD06D /* MTECurrency.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,12 +6,12 @@
 //  Copyright (c) 2015 smeusling. All rights reserved.
 //
 
-#import "Profile.h"
+#import "MTEProfile.h"
 
-@implementation Profile
+@implementation MTEProfile
 
 
-- (id)initWithFirstName:(NSString *)firstName lastName:(NSString *)lastName image:(NSString*)image currency:(Currency*)currency;
+- (id)initWithFirstName:(NSString *)firstName lastName:(NSString *)lastName image:(NSString*)image currency:(MTECurrency*)currency;
 {
     self = [super init];
     if (self) {

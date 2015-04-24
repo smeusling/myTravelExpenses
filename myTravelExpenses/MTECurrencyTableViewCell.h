@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CurrencyTableViewCell : UITableViewCell
+@interface MTECurrencyTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *currencyLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *checkMarkImageView;

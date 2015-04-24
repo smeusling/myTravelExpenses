@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Currency : NSObject <NSCoding>
+@interface MTECurrency : NSObject <NSCoding>
 
 @property (strong, nonatomic) NSString *name;
 @property (nonatomic) BOOL isPrimary;

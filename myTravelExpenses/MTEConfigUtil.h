@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@class Profile;
-@interface ConfigUtil : NSObject
+@class MTEProfile;
+@interface MTEConfigUtil : NSObject
 
-+ (Profile *)profile;
-+ (void)setProfile:(Profile*)profile;
++ (MTEProfile *)profile;
++ (void)setProfile:(MTEProfile*)profile;
 
 + (NSArray *)travelDataTest;
 + (void)setTravelDataTest:(NSArray *)travelDataTest;

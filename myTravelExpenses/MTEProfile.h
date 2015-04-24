@@ -9,15 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@class Currency;
-@interface Profile : NSObject <NSCoding>
+@class MTECurrency;
+@interface MTEProfile : NSObject <NSCoding>
 
 @property (strong, nonatomic) NSString *firstName;
 @property (strong, nonatomic) NSString *lastName;
 @property (strong, nonatomic) NSString *image;
-@property (strong, nonatomic) Currency *currency;
+@property (strong, nonatomic) MTECurrency *currency;
 
 
-- (id)initWithFirstName:(NSString *)firstName lastName:(NSString *)lastName image:(NSString*)image currency:(Currency*)currency;
+- (id)initWithFirstName:(NSString *)firstName lastName:(NSString *)lastName image:(NSString*)image currency:(MTECurrency*)currency;
 
 @end

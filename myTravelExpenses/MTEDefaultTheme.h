@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 smeusling. All rights reserved.
 //
 
-#import "Theme.h"
+#import "MTETheme.h"
 
-@interface DefaultTheme : NSObject <Theme>
+@interface MTEDefaultTheme : NSObject <MTETheme>
 
 @end

@@ -6,17 +6,17 @@
 //  Copyright (c) 2015 smeusling. All rights reserved.
 //
 
-#import "Theme.h"
-#import "DefaultTheme.h"
+#import "MTETheme.h"
+#import "MTEDefaultTheme.h"
 
-@implementation ThemeManager
+@implementation MTEThemeManager
 
-+ (id<Theme>)sharedTheme
++ (id<MTETheme>)sharedTheme
 {
-    static id<Theme> sharedTheme = nil;
+    static id<MTETheme> sharedTheme = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedTheme = [[DefaultTheme alloc] init];
+        sharedTheme = [[MTEDefaultTheme alloc] init];
     });
     
     return sharedTheme;
@@ -24,7 +24,7 @@
 
 + (void)customizeAppAppearance
 {
-    id<Theme> theme = [self sharedTheme];
+    id<MTETheme> theme = [self sharedTheme];
     
     [[UINavigationBar appearance] setBarTintColor:[theme navBarTintColor]];
     [[UINavigationBar appearance] setTintColor:[theme navTintColor]];

@@ -6,10 +6,10 @@
 //  Copyright (c) 2015 smeusling. All rights reserved.
 //
 
-#import "Travel.h"
-#import "Currency.h"
+#import "MTETravel.h"
+#import "MTECurrency.h"
 
-@implementation Travel
+@implementation MTETravel
 
 - (id)initWithName:(NSString *)name startDate:(NSDate *)startDate endDate:(NSDate *)endDate image:(UIImage*)image currencies:(NSArray*)currencies
 {
@@ -48,9 +48,9 @@
     return self;
 }
 
-- (Currency *)primaryCurrency
+- (MTECurrency *)primaryCurrency
 {
-    for (Currency *currency in self.currencies) {
+    for (MTECurrency *currency in self.currencies) {
         if (currency.isPrimary){
             return currency;
         }

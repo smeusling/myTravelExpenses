@@ -6,31 +6,31 @@
 //  Copyright (c) 2015 smeusling. All rights reserved.
 //
 
-#import "AddTravelViewController.h"
-#import "CurrencyTableViewCell.h"
-#import "Theme.h"
-#import "Travel.h"
-#import "Profile.h"
-#import "ConfigUtil.h"
-#import "Currency.h"
+#import "MTEAddTravelViewController.h"
+#import "MTECurrencyTableViewCell.h"
+#import "MTETheme.h"
+#import "MTETravel.h"
+#import "MTEProfile.h"
+#import "MTEConfigUtil.h"
+#import "MTECurrency.h"
 
-@interface AddTravelViewController ()
+@interface MTEAddTravelViewController ()
 
 @property (nonatomic, strong) NSMutableArray *currencies;
 @property (nonatomic, strong) NSDate *startDate;
 @property (nonatomic, strong) NSDate *endDate;
 @property (nonatomic, strong) UIImage *travelImage;
-@property (nonatomic, strong) Profile *profile;
+@property (nonatomic, strong) MTEProfile *profile;
 
 @end
 
-@implementation AddTravelViewController
+@implementation MTEAddTravelViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.currencies = [[NSMutableArray alloc]init];
-    self.profile = [ConfigUtil profile];
+    self.profile = [MTEConfigUtil profile];
     
     [self.currencies addObject:self.profile.currency];
     
@@ -51,9 +51,9 @@
 
 - (void)setupButton
 {
-    self.addCurrencyButton.backgroundColor = [[ThemeManager sharedTheme]buttonColor];
+    self.addCurrencyButton.backgroundColor = [[MTEThemeManager sharedTheme]buttonColor];
     [self.addCurrencyButton setTitle:@"Add Currency".uppercaseString forState:UIControlStateNormal];
-    [self.addCurrencyButton setTitleColor:[[ThemeManager sharedTheme]mainTextColor] forState:UIControlStateNormal];
+    [self.addCurrencyButton setTitleColor:[[MTEThemeManager sharedTheme]mainTextColor] forState:UIControlStateNormal];
 }
 
 - (void)setupNavBar
@@ -88,8 +88,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    CurrencyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CurrencyTableViewCell" forIndexPath:indexPath];
-    Currency *currency = self.currencies[indexPath.row];
+    MTECurrencyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CurrencyTableViewCell" forIndexPath:indexPath];
+    MTECurrency *currency = self.currencies[indexPath.row];
     cell.currencyLabel.text = currency.name;
     return cell;
     
@@ -116,7 +116,7 @@
 
 - (void)addTravel
 {
-    Travel *newTravel = [[Travel alloc]initWithName:self.travelNameTextField.text
+    MTETravel *newTravel = [[MTETravel alloc]initWithName:self.travelNameTextField.text
                                           startDate:self.startDate
                                             endDate:self.endDate
                                               image:self.travelImage

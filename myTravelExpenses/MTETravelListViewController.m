@@ -6,33 +6,33 @@
 //  Copyright (c) 2015 smeusling. All rights reserved.
 //
 
-#import "TravelListViewController.h"
-#import "TravelTableViewCell.h"
-#import "ConfigUtil.h"
-#import "Travel.h"
-#import "Profile.h"
-#import "TravelListEmptyView.h"
-#import "AddTravelViewController.h"
-#import "Currency.h"
+#import "MTETravelListViewController.h"
+#import "MTETravelTableViewCell.h"
+#import "MTEConfigUtil.h"
+#import "MTETravel.h"
+#import "MTEProfile.h"
+#import "MTETravelListEmptyView.h"
+#import "MTEAddTravelViewController.h"
+#import "MTECurrency.h"
 
-@interface TravelListViewController ()
+@interface MTETravelListViewController ()
 
 @property (nonatomic, strong) NSArray *travels;
-@property (nonatomic, strong) Profile *profile;
+@property (nonatomic, strong) MTEProfile *profile;
 
 @end
 
-@implementation TravelListViewController
+@implementation MTETravelListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.travels = [ConfigUtil travelDataTest];
+    self.travels = [MTEConfigUtil travelDataTest];
     if(!self.travels || [self.travels count]>1){
         self.tableView.backgroundView = [self setupEmptyView];
     }else{
          self.tableView.backgroundView = nil;
     }
-    self.profile = [ConfigUtil profile];
+    self.profile = [MTEConfigUtil profile];
     [self setupNavBar];
 }
 
@@ -56,7 +56,7 @@
 - (UIView *)setupEmptyView
 {
     
-    TravelListEmptyView *view = [[[NSBundle mainBundle]
+    MTETravelListEmptyView *view = [[[NSBundle mainBundle]
                      loadNibNamed:@"TravelListEmptyView"
                      owner:self options:nil]
                     firstObject];
@@ -81,8 +81,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    TravelTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TravelTableViewCell" forIndexPath:indexPath];
-    Travel *travel = self.travels[indexPath.row];
+    MTETravelTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TravelTableViewCell" forIndexPath:indexPath];
+    MTETravel *travel = self.travels[indexPath.row];
     
     cell.travelName.text = travel.name;
     cell.travelDates.text = [self convertDatesToStringWithFirstDate:travel.startDate secondDate:travel.endDate];
@@ -108,7 +108,7 @@
 
 - (void)addButtonTapped
 {
-    AddTravelViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AddTravelViewController"];
+    MTEAddTravelViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AddTravelViewController"];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
     
     [self presentViewController:navigationController animated:YES completion:nil];

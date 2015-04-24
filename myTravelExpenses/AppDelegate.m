@@ -7,8 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "Helper.h"
-#import "Theme.h"
+#import "MTEHelper.h"
+#import "MTETheme.h"
 
 @interface AppDelegate ()
 
@@ -21,10 +21,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [ThemeManager customizeAppAppearance];
+    [MTEThemeManager customizeAppAppearance];
     // Override point for customization after application launch.
-    [Helper initProfile];
-    [Helper initTravelDataTest];
+    [MTEHelper initProfile];
+    [MTEHelper initTravelDataTest];
     return YES;
 }
 

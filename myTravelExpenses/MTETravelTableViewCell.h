@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TravelTableViewCell : UITableViewCell
+@interface MTETravelTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *travelImageView;
 @property (weak, nonatomic) IBOutlet UILabel *travelName;
 @property (weak, nonatomic) IBOutlet UILabel *travelDates;

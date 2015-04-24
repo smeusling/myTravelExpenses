@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TravelListEmptyView : UIView
+@interface MTETravelListEmptyView : UIView
 
 @property (weak, nonatomic) IBOutlet UILabel *placeholderLabel;
 

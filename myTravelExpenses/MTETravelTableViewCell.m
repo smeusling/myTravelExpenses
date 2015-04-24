@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 smeusling. All rights reserved.
 //
 
-#import "TravelTableViewCell.h"
+#import "MTETravelTableViewCell.h"
 
-@implementation TravelTableViewCell
+@implementation MTETravelTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code

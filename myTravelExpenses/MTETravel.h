@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@class Currency;
-@interface Travel : NSObject <NSCoding>
+@class MTECurrency;
+@interface MTETravel : NSObject <NSCoding>
 
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSDate *startDate;
@@ -21,7 +21,7 @@
 
 - (id)initWithName:(NSString *)name startDate:(NSDate *)startDate endDate:(NSDate *)endDate image:(UIImage*)image currencies:(NSArray*)currencies;
 
-- (Currency *)primaryCurrency;
+- (MTECurrency *)primaryCurrency;
 
 
 @end

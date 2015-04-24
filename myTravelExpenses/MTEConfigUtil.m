@@ -6,18 +6,18 @@
 //  Copyright (c) 2015 smeusling. All rights reserved.
 //
 
-#import "ConfigUtil.h"
-#import "Profile.h"
+#import "MTEConfigUtil.h"
+#import "MTEProfile.h"
 
-@implementation ConfigUtil
+@implementation MTEConfigUtil
 
-+ (Profile *)profile
++ (MTEProfile *)profile
 {
     NSData *encodedObject = [[NSUserDefaults standardUserDefaults] objectForKey:@"MTEProfile"];
     return [NSKeyedUnarchiver unarchiveObjectWithData:encodedObject];
 }
 
-+ (void)setProfile:(Profile*)profile
++ (void)setProfile:(MTEProfile*)profile
 {
     NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:profile];
     [[NSUserDefaults standardUserDefaults] setObject:encodedObject forKey:@"MTEProfile"];
