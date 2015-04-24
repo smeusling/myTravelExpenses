@@ -10,15 +10,15 @@
 #import "MTETravelTableViewCell.h"
 #import "MTEConfigUtil.h"
 #import "MTETravel.h"
-#import "MTEProfile.h"
+//#import "MTEProfile.h"
 #import "MTETravelListEmptyView.h"
 #import "MTEAddTravelViewController.h"
-#import "MTECurrency.h"
+//#import "MTECurrency.h"
 
 @interface MTETravelListViewController ()
 
 @property (nonatomic, strong) NSArray *travels;
-@property (nonatomic, strong) MTEProfile *profile;
+//@property (nonatomic, strong) MTEProfile *profile;
 
 @end
 
@@ -26,13 +26,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.travels = [MTEConfigUtil travelDataTest];
-    if(!self.travels || [self.travels count]>1){
-        self.tableView.backgroundView = [self setupEmptyView];
-    }else{
-         self.tableView.backgroundView = nil;
-    }
-    self.profile = [MTEConfigUtil profile];
+//    self.travels = [MTEConfigUtil travelDataTest];
+//    if(!self.travels || [self.travels count]>1){
+//        self.tableView.backgroundView = [self setupEmptyView];
+//    }else{
+//         self.tableView.backgroundView = nil;
+//    }
+//    self.profile = [MTEConfigUtil profile];
     [self setupNavBar];
 }
 
@@ -84,12 +84,12 @@
     MTETravelTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TravelTableViewCell" forIndexPath:indexPath];
     MTETravel *travel = self.travels[indexPath.row];
     
-    cell.travelName.text = travel.name;
-    cell.travelDates.text = [self convertDatesToStringWithFirstDate:travel.startDate secondDate:travel.endDate];
-    //cell.travelImageView.image = travel.image;
-    cell.travelImageView.image = [UIImage imageNamed:@"japon"];
-    cell.travelCurrency.text = [travel primaryCurrency].name;
-    cell.travelUserCurrency.text = self.profile.currency.name;
+//    cell.travelName.text = travel.name;
+//    cell.travelDates.text = [self convertDatesToStringWithFirstDate:travel.startDate secondDate:travel.endDate];
+//    //cell.travelImageView.image = travel.image;
+//    cell.travelImageView.image = [UIImage imageNamed:@"japon"];
+//    cell.travelCurrency.text = [travel primaryCurrency].name;
+//    cell.travelUserCurrency.text = self.profile.currency.name;
     
     return cell;
     

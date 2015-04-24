@@ -17,17 +17,16 @@
 		5074FF021AD05451009FD06D /* myTravelExpensesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF011AD05451009FD06D /* myTravelExpensesTests.m */; };
 		5074FF0E1AD0583A009FD06D /* MTETravelListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF0D1AD0583A009FD06D /* MTETravelListViewController.m */; };
 		5074FF111AD05A9B009FD06D /* MTETravelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF101AD05A9B009FD06D /* MTETravelTableViewCell.m */; };
-		5074FF151AD066D5009FD06D /* MTETravel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF141AD066D5009FD06D /* MTETravel.m */; };
 		5074FF191AD0852B009FD06D /* MTEConfigUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF181AD0852B009FD06D /* MTEConfigUtil.m */; };
 		5074FF1C1AD08632009FD06D /* MTEHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF1B1AD08632009FD06D /* MTEHelper.m */; };
-		5074FF1F1AD08747009FD06D /* MTEProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF1E1AD08747009FD06D /* MTEProfile.m */; };
 		5074FF221AD82731009FD06D /* MTETheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF211AD82731009FD06D /* MTETheme.m */; };
 		5074FF251AD82744009FD06D /* MTEDefaultTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF241AD82744009FD06D /* MTEDefaultTheme.m */; };
 		5074FF331AD93FA2009FD06D /* MTETravelListEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5074FF321AD93FA2009FD06D /* MTETravelListEmptyView.xib */; };
 		5074FF361AD9430B009FD06D /* MTETravelListEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF351AD9430B009FD06D /* MTETravelListEmptyView.m */; };
 		5074FF391AD9454B009FD06D /* MTEAddTravelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF381AD9454B009FD06D /* MTEAddTravelViewController.m */; };
 		5074FF3C1AD98514009FD06D /* MTECurrencyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF3B1AD98514009FD06D /* MTECurrencyTableViewCell.m */; };
-		5074FF3F1AD9878D009FD06D /* MTECurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF3E1AD9878D009FD06D /* MTECurrency.m */; };
+		50BCF8E31AEAD57300329CF2 /* MTETravel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50BCF8E21AEAD57300329CF2 /* MTETravel.m */; };
+		50BCF8E61AEAD57300329CF2 /* MTEExpense.m in Sources */ = {isa = PBXBuildFile; fileRef = 50BCF8E51AEAD57300329CF2 /* MTEExpense.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,14 +58,10 @@
 		5074FF0D1AD0583A009FD06D /* MTETravelListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTETravelListViewController.m; sourceTree = "<group>"; };
 		5074FF0F1AD05A9B009FD06D /* MTETravelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTETravelTableViewCell.h; sourceTree = "<group>"; };
 		5074FF101AD05A9B009FD06D /* MTETravelTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTETravelTableViewCell.m; sourceTree = "<group>"; };
-		5074FF131AD066D5009FD06D /* MTETravel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTETravel.h; sourceTree = "<group>"; };
-		5074FF141AD066D5009FD06D /* MTETravel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTETravel.m; sourceTree = "<group>"; };
 		5074FF171AD0852B009FD06D /* MTEConfigUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTEConfigUtil.h; sourceTree = "<group>"; };
 		5074FF181AD0852B009FD06D /* MTEConfigUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTEConfigUtil.m; sourceTree = "<group>"; };
 		5074FF1A1AD08632009FD06D /* MTEHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTEHelper.h; sourceTree = "<group>"; };
 		5074FF1B1AD08632009FD06D /* MTEHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTEHelper.m; sourceTree = "<group>"; };
-		5074FF1D1AD08747009FD06D /* MTEProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTEProfile.h; sourceTree = "<group>"; };
-		5074FF1E1AD08747009FD06D /* MTEProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTEProfile.m; sourceTree = "<group>"; };
 		5074FF201AD82731009FD06D /* MTETheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTETheme.h; sourceTree = "<group>"; };
 		5074FF211AD82731009FD06D /* MTETheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTETheme.m; sourceTree = "<group>"; };
 		5074FF231AD82744009FD06D /* MTEDefaultTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTEDefaultTheme.h; sourceTree = "<group>"; };
@@ -88,8 +83,10 @@
 		5074FF381AD9454B009FD06D /* MTEAddTravelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTEAddTravelViewController.m; sourceTree = "<group>"; };
 		5074FF3A1AD98514009FD06D /* MTECurrencyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTECurrencyTableViewCell.h; sourceTree = "<group>"; };
 		5074FF3B1AD98514009FD06D /* MTECurrencyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTECurrencyTableViewCell.m; sourceTree = "<group>"; };
-		5074FF3D1AD9878D009FD06D /* MTECurrency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTECurrency.h; sourceTree = "<group>"; };
-		5074FF3E1AD9878D009FD06D /* MTECurrency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTECurrency.m; sourceTree = "<group>"; };
+		50BCF8E11AEAD57300329CF2 /* MTETravel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTETravel.h; sourceTree = "<group>"; };
+		50BCF8E21AEAD57300329CF2 /* MTETravel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTETravel.m; sourceTree = "<group>"; };
+		50BCF8E41AEAD57300329CF2 /* MTEExpense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTEExpense.h; sourceTree = "<group>"; };
+		50BCF8E51AEAD57300329CF2 /* MTEExpense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTEExpense.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,13 +192,11 @@
 		5074FF121AD05C0E009FD06D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5074FF131AD066D5009FD06D /* MTETravel.h */,
-				5074FF141AD066D5009FD06D /* MTETravel.m */,
-				5074FF1D1AD08747009FD06D /* MTEProfile.h */,
-				5074FF1E1AD08747009FD06D /* MTEProfile.m */,
-				5074FF3D1AD9878D009FD06D /* MTECurrency.h */,
-				5074FF3E1AD9878D009FD06D /* MTECurrency.m */,
 				502C2E3F1AEA937A001D0B88 /* myTravelExpenses.xcdatamodeld */,
+				50BCF8E41AEAD57300329CF2 /* MTEExpense.h */,
+				50BCF8E51AEAD57300329CF2 /* MTEExpense.m */,
+				50BCF8E11AEAD57300329CF2 /* MTETravel.h */,
+				50BCF8E21AEAD57300329CF2 /* MTETravel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -349,19 +344,18 @@
 			files = (
 				5074FF361AD9430B009FD06D /* MTETravelListEmptyView.m in Sources */,
 				5074FF111AD05A9B009FD06D /* MTETravelTableViewCell.m in Sources */,
+				50BCF8E31AEAD57300329CF2 /* MTETravel.m in Sources */,
 				5074FF391AD9454B009FD06D /* MTEAddTravelViewController.m in Sources */,
-				5074FF151AD066D5009FD06D /* MTETravel.m in Sources */,
 				502C2E411AEA937A001D0B88 /* myTravelExpenses.xcdatamodeld in Sources */,
 				5074FF251AD82744009FD06D /* MTEDefaultTheme.m in Sources */,
 				5074FF3C1AD98514009FD06D /* MTECurrencyTableViewCell.m in Sources */,
 				5074FF221AD82731009FD06D /* MTETheme.m in Sources */,
-				5074FF1F1AD08747009FD06D /* MTEProfile.m in Sources */,
 				5074FF1C1AD08632009FD06D /* MTEHelper.m in Sources */,
 				5074FEEB1AD05451009FD06D /* AppDelegate.m in Sources */,
 				5074FF0E1AD0583A009FD06D /* MTETravelListViewController.m in Sources */,
+				50BCF8E61AEAD57300329CF2 /* MTEExpense.m in Sources */,
 				5074FEE81AD05451009FD06D /* main.m in Sources */,
 				5074FF191AD0852B009FD06D /* MTEConfigUtil.m in Sources */,
-				5074FF3F1AD9878D009FD06D /* MTECurrency.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

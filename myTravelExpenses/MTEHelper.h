@@ -10,9 +10,9 @@
 
 @interface MTEHelper : NSObject
 
-+ (void) initTravelDataTest;
-
-+ (void) initProfile;
+//+ (void) initTravelDataTest;
+//
+//+ (void) initProfile;
 
 
 

@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "MTEHelper.h"
 #import "MTETheme.h"
+#import "MTETravel.h"
+#import "MTEExpense.h"
 
 @interface AppDelegate ()
 
@@ -23,8 +25,39 @@
     
     [MTEThemeManager customizeAppAppearance];
     // Override point for customization after application launch.
-    [MTEHelper initProfile];
-    [MTEHelper initTravelDataTest];
+//    [MTEHelper initProfile];
+//    [MTEHelper initTravelDataTest];
+    NSManagedObjectContext *context = [self managedObjectContext];
+    MTETravel *travel = [NSEntityDescription
+                                      insertNewObjectForEntityForName:@"Travel"
+                                      inManagedObjectContext:context];
+    travel.name = @"Travel";
+    
+    MTEExpense *expense = [NSEntityDescription
+                                            insertNewObjectForEntityForName:@"Expense"
+                                            inManagedObjectContext:context];
+    expense.date = [NSDate date];
+    expense.name = @"exp";
+    expense.amount = [NSNumber numberWithFloat:12345.9];
+    expense.travel = travel;
+    
+    travel.expenses = [NSSet setWithObjects:expense, nil];
+
+    NSError *error;
+    if (![context save:&error]) {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
+    
+    // Test listing all FailedBankInfos from the store
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Travel"
+                                              inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+    for (MTETravel *info in fetchedObjects) {
+        NSLog(@"Name: %@", info.name);
+    }
+    
     return YES;
 }
 

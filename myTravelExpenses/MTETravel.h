@@ -1,27 +1,30 @@
 //
-//  Travel.h
+//  MTETravel.h
 //  myTravelExpenses
 //
-//  Created by Stéphanie Meusling on 04.04.15.
+//  Created by Stéphanie Meusling on 24.04.15.
 //  Copyright (c) 2015 smeusling. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
 
-@class MTECurrency;
-@interface MTETravel : NSObject <NSCoding>
+@class MTEExpense;
 
-@property (strong, nonatomic) NSString *name;
-@property (strong, nonatomic) NSDate *startDate;
-@property (strong, nonatomic) NSDate *endDate;
-@property (strong, nonatomic) UIImage *image;
-@property (strong, nonatomic) NSArray *currencies;
+@interface MTETravel : NSManagedObject
 
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSDate * startDate;
+@property (nonatomic, retain) NSDate * endDate;
+@property (nonatomic, retain) NSData * image;
+@property (nonatomic, retain) NSSet *expenses;
+@end
 
-- (id)initWithName:(NSString *)name startDate:(NSDate *)startDate endDate:(NSDate *)endDate image:(UIImage*)image currencies:(NSArray*)currencies;
+@interface MTETravel (CoreDataGeneratedAccessors)
 
-- (MTECurrency *)primaryCurrency;
-
+- (void)addExpensesObject:(MTEExpense *)value;
+- (void)removeExpensesObject:(MTEExpense *)value;
+- (void)addExpenses:(NSSet *)values;
+- (void)removeExpenses:(NSSet *)values;
 
 @end

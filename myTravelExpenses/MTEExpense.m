@@ -1,21 +1,20 @@
 //
-//  MTETravel.m
+//  MTEExpense.m
 //  myTravelExpenses
 //
 //  Created by Stéphanie Meusling on 24.04.15.
 //  Copyright (c) 2015 smeusling. All rights reserved.
 //
 
-#import "MTETravel.h"
 #import "MTEExpense.h"
+#import "MTETravel.h"
 
 
-@implementation MTETravel
+@implementation MTEExpense
 
+@dynamic amount;
+@dynamic date;
 @dynamic name;
-@dynamic startDate;
-@dynamic endDate;
-@dynamic image;
-@dynamic expenses;
+@dynamic travel;
 
 @end
