@@ -153,7 +153,25 @@
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
     }
     return travel;
+}
 
+-(void)createTravelWithName:(NSString *)name startDate:(NSDate *)startDate endDate:(NSDate *)endDate image:(NSData *)image currencyCode:(NSString *)currencyCode
+{
+    NSManagedObjectContext *context = [self managedObjectContext];
+    MTETravel *travel = [NSEntityDescription
+                         insertNewObjectForEntityForName:@"Travel"
+                         inManagedObjectContext:context];
+    travel.uuid = [[NSUUID UUID] UUIDString];
+    travel.name = name;
+    travel.startDate = startDate;
+    travel.endDate = endDate;
+    travel.image = image;
+    travel.currencyCode = currencyCode;
+    
+    NSError *error;
+    if (![context save:&error]) {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
 }
 
 @end

@@ -1,27 +1,21 @@
 //
-//  AddTravelViewController.m
+//  TestViewController.m
 //  myTravelExpenses
 //
-//  Created by Stéphanie Meusling on 11.04.15.
+//  Created by Stéphanie Meusling on 28.04.15.
 //  Copyright (c) 2015 smeusling. All rights reserved.
 //
 
 #import "MTEAddTravelViewController.h"
-#import "MTECurrencyTableViewCell.h"
-#import "MTETheme.h"
-#import "MTETravel.h"
-//#import "MTEProfile.h"
-#import "MTEConfigUtil.h"
-//#import "MTECurrency.h"
 #import "MTEModel.h"
 
 @interface MTEAddTravelViewController ()
 
-@property (nonatomic, strong) NSMutableArray *currencies;
 @property (nonatomic, strong) NSDate *startDate;
 @property (nonatomic, strong) NSDate *endDate;
-@property (nonatomic, strong) UIImage *travelImage;
-//@property (nonatomic, strong) MTEProfile *profile;
+@property (nonatomic, strong) NSString *currencyCode;
+
+@property (nonatomic, strong) NSDateFormatter *formatter;
 
 @end
 
@@ -30,78 +24,64 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    self.currencies = [[NSMutableArray alloc]init];
-//    self.profile = [MTEConfigUtil profile];
-//    
-//    [self.currencies addObject:self.profile.currency];
-//    
-//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-//    [formatter setDateFormat:@"dd MMMM yyyy"];
-//    
-//    self.startDateLabel.text = @"Start date".uppercaseString;
-//    self.startDateTextField.text = [formatter stringFromDate:[NSDate date]];
-//    
-//    self.endDateLabel.text = @"End date".uppercaseString;
-//    self.endDateTextField.text = [formatter stringFromDate:[NSDate date]];
-//    
-//    self.travelNameTextField.placeholder = @"Enter Name";
+    self.formatter = [[NSDateFormatter alloc] init];
+    [self.formatter setDateFormat:@"dd MMMM yyyy"];
     
     [self setupNavBar];
-    [self setupButton];
+    [self setupTextFields];
+    [self setupDatePickers];
 }
 
-- (void)setupButton
-{
-    self.addCurrencyButton.backgroundColor = [[MTEThemeManager sharedTheme]buttonColor];
-    [self.addCurrencyButton setTitle:@"Add Currency".uppercaseString forState:UIControlStateNormal];
-    [self.addCurrencyButton setTitleColor:[[MTEThemeManager sharedTheme]mainTextColor] forState:UIControlStateNormal];
-}
+#pragma mark - Setup
 
 - (void)setupNavBar
 {
     self.title = @"Add Travel";
     
-    UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [closeButton setFrame:CGRectMake(0, 0, 50, 40)];
-    [closeButton setTitle:@"Close" forState:UIControlStateNormal];
-    [closeButton addTarget:self action:@selector(closeButtonTapped) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:closeButton];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(closeButtonTapped)];
     
-    UIButton *saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [saveButton setFrame:CGRectMake(0, 0, 50, 40)];
-    [saveButton setTitle:@"Save" forState:UIControlStateNormal];
-    [saveButton addTarget:self action:@selector(saveButtonTapped) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:saveButton];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveButtonTapped)];
 }
 
-#pragma mark - Table view data source / delegate
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (void)setupTextFields
 {
-    return 1;
+    self.startDateTextField.text = [self.formatter stringFromDate:[NSDate date]];
+    self.endDateTextField.text = [self.formatter stringFromDate:[NSDate date]];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (void)setupDatePickers
 {
-    return [self.currencies count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+    UIDatePicker *datePicker = [[UIDatePicker alloc]init];
+    datePicker.datePickerMode = UIDatePickerModeDate;
+    [datePicker setDate:[NSDate date]];
+    [datePicker addTarget:self action:@selector(updateStartDateTextField:) forControlEvents:UIControlEventValueChanged];
+    [self.startDateTextField setInputView:datePicker];
     
-    MTECurrencyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CurrencyTableViewCell" forIndexPath:indexPath];
-//    MTECurrency *currency = self.currencies[indexPath.row];
-//    cell.currencyLabel.text = currency.name;
-    return cell;
-    
-    
+    UIDatePicker *endDatePicker = [[UIDatePicker alloc]init];
+    endDatePicker.datePickerMode = UIDatePickerModeDate;
+    [endDatePicker setDate:[NSDate date]];
+    [endDatePicker addTarget:self action:@selector(updateEndDateTextField:) forControlEvents:UIControlEventValueChanged];
+    [self.endDateTextField setInputView:endDatePicker];
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+#pragma mark - DatePicker
+
+-(void)updateStartDateTextField:(id)sender
 {
-    return @"currency".uppercaseString;
+    UIDatePicker *startDatePicker = (UIDatePicker*)self.startDateTextField.inputView;
+    
+    self.startDateTextField.text = [self.formatter stringFromDate:startDatePicker.date];
+    self.startDate = startDatePicker.date;
 }
 
+-(void)updateEndDateTextField:(id)sender
+{
+    UIDatePicker *datePicker = (UIDatePicker*)self.endDateTextField.inputView;
+    
+    self.endDateTextField.text = [self.formatter stringFromDate:datePicker.date];
+    self.endDate = datePicker.date;
+}
+#pragma mark - Nav Bar Button
 
 - (void)closeButtonTapped
 {
@@ -115,26 +95,19 @@
     }];
 }
 
+#pragma mark - Other method
+
 - (void)addTravel
 {
-//    MTETravel *newTravel = [[MTETravel alloc]initWithName:self.travelNameTextField.text
-//                                          startDate:self.startDate
-//                                            endDate:self.endDate
-//                                              image:self.travelImage
-//                                         currencies:self.currencies];
+    //    MTETravel *newTravel = [[MTETravel alloc]initWithName:self.travelNameTextField.text
+    //                                          startDate:self.startDate
+    //                                            endDate:self.endDate
+    //                                              image:self.travelImage
+    //                                         currencies:self.currencies];
     
-    MTETravel *newTravel =[[MTEModel sharedInstance]createTravel];
-    newTravel.name = self.travelNameTextField.text;
-    
+    [[MTEModel sharedInstance]createTravelWithName:self.nameTextField.text startDate:self.startDate endDate:self.endDate image:nil currencyCode:self.currencyCode];
 }
 
-
-
-- (IBAction)addCurrencyButtonClicked:(id)sender
-{
-}
-
-- (IBAction)addPhotoButtonClicked:(id)sender
-{
+- (IBAction)addPhotoButtonClicked:(id)sender {
 }
 @end

@@ -19,5 +19,6 @@
 - (void)saveContext;
 
 - (MTETravel *)createTravel;
+-(void)createTravelWithName:(NSString *)name startDate:(NSDate *)startDate endDate:(NSDate *)endDate image:(NSData *)image currencyCode:(NSString *)currencyCode;
 
 @end

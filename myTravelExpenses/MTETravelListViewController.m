@@ -13,9 +13,9 @@
 #import "MTETravel.h"
 //#import "MTEProfile.h"
 #import "MTETravelListEmptyView.h"
-#import "MTEAddTravelViewController.h"
 //#import "MTECurrency.h"
 #import "MTEModel.h"
+#import "MTEAddTravelViewController.h"
 
 @interface MTETravelListViewController ()
 
@@ -51,17 +51,9 @@
 {
     self.title = @"Travel Expenses";
     
-    UIButton *addButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [addButton setFrame:CGRectMake(0, 0, 40, 40)];
-    [addButton setImage:[UIImage imageNamed:@"add-button"] forState:UIControlStateNormal];
-    [addButton addTarget:self action:@selector(addButtonTapped) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:addButton];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"menu-button"] style:UIBarButtonItemStylePlain target:self action:@selector(menuButtonTapped)];
     
-    UIButton *menuButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [menuButton setFrame:CGRectMake(0, 0, 40, 40)];
-    [menuButton setImage:[UIImage imageNamed:@"menu-button"] forState:UIControlStateNormal];
-    [menuButton addTarget:self action:@selector(menuButtonTapped) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:menuButton];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"add-button"] style:UIBarButtonItemStylePlain target:self action:@selector(addButtonTapped)];
 }
 
 - (UIView *)setupEmptyView
@@ -119,7 +111,7 @@
 
 - (void)addButtonTapped
 {
-    MTEAddTravelViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AddTravelViewController"];
+    MTEAddTravelViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MTEAddTravelViewController"];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
     
     [self presentViewController:navigationController animated:YES completion:nil];
