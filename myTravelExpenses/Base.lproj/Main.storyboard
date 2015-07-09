@@ -144,7 +144,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Category" id="2XW-ab-IgV"/>
+                    <tabBarItem key="tabBarItem" title="Category" image="tab-pie" id="2XW-ab-IgV"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="va5-cN-ifa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -171,7 +171,7 @@
                             <outlet property="delegate" destination="Vn7-9c-yBl" id="UVB-Gp-QVg"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Daily" id="NcV-hW-DSn"/>
+                    <tabBarItem key="tabBarItem" title="Daily" image="tab-daily" id="NcV-hW-DSn"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VZQ-pv-sA3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -190,7 +190,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Edit" id="Oml-0W-QGs"/>
+                    <tabBarItem key="tabBarItem" title="Edit" image="tab-edit" id="Oml-0W-QGs"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NVW-ED-Nol" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -316,5 +316,8 @@
     </scenes>
     <resources>
         <image name="add-photo-button" width="102" height="102"/>
+        <image name="tab-daily" width="25" height="25"/>
+        <image name="tab-edit" width="25" height="25"/>
+        <image name="tab-pie" width="25" height="25"/>
     </resources>
 </document>

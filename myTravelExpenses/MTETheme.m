@@ -30,7 +30,11 @@
     [[UINavigationBar appearance] setTintColor:[theme navTintColor]];
     [[UINavigationBar appearance] setBarStyle:[theme navBarStyle]];
     
-    [[UITabBar appearance] setTintColor:[theme tabBarTintColor]];
+    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
+    //[[UITabBar appearance] setBackgroundColor:[theme tabBarTintColor]];
+    //[[UITabBar appearance] setTranslucent:YES];
+    [[UITabBar appearance] setBarTintColor:[theme tabBarTintColor]];
+    [[UIView appearanceWhenContainedIn:[UITabBar class], nil] setTintColor: [UIColor redColor]];
 }
 
 @end
