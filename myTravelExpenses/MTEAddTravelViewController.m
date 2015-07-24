@@ -17,6 +17,9 @@
 
 @property (nonatomic, strong) NSDateFormatter *formatter;
 
+@property (nonatomic, strong)UIImagePickerController *imagePickerController;
+@property (nonatomic, strong)UIImage *travelImage;
+
 @end
 
 @implementation MTEAddTravelViewController
@@ -30,6 +33,7 @@
     [self setupNavBar];
     [self setupTextFields];
     [self setupDatePickers];
+
 }
 
 #pragma mark - Setup
@@ -85,14 +89,15 @@
 
 - (void)closeButtonTapped
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    id<MTEAddTravelDelegate> delegate = self.addTravelDelegate;
+    if (delegate) {
+        [delegate addTravelCancelled];
+    }
 }
 
 - (void)saveButtonTapped
 {
-    [self dismissViewControllerAnimated:YES completion:^{
-        [self addTravel];
-    }];
+    [self addTravel];
 }
 
 #pragma mark - Other method
@@ -104,10 +109,90 @@
     //                                            endDate:self.endDate
     //                                              image:self.travelImage
     //                                         currencies:self.currencies];
-    
-    [[MTEModel sharedInstance]createTravelWithName:self.nameTextField.text startDate:self.startDate endDate:self.endDate image:nil currencyCode:self.currencyCode];
+
+    NSData *imageData;
+
+    if(self.travelImage){
+        //imageData = UIImagePNGRepresentation(self.travelImage);
+
+        imageData = UIImageJPEGRepresentation(self.travelImage, 1.0);
+    }
+
+    MTETravel *newTravel = [[MTEModel sharedInstance]createTravelWithName:self.nameTextField.text startDate:self.startDate endDate:self.endDate image:imageData currencyCode:self.currencyCode];
+
+    id<MTEAddTravelDelegate> delegate = self.addTravelDelegate;
+    if (delegate) {
+        [delegate addTravel:newTravel];
+    }
 }
 
-- (IBAction)addPhotoButtonClicked:(id)sender {
+- (IBAction)addPhotoButtonClicked:(id)sender
+{
+    UIAlertController * view=   [UIAlertController
+                                 alertControllerWithTitle:nil
+                                 message:nil
+                                 preferredStyle:UIAlertControllerStyleActionSheet];
+
+    UIAlertAction* takePhoto = [UIAlertAction
+                         actionWithTitle:@"Prendre une photo"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [self showImagePickerForSourceType:UIImagePickerControllerSourceTypeCamera];
+                             [view dismissViewControllerAnimated:YES completion:nil];
+
+                         }];
+
+    UIAlertAction* photoFromLibrary = [UIAlertAction
+                         actionWithTitle:@"Bibliothèque photo"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [self showImagePickerForSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+                             [view dismissViewControllerAnimated:YES completion:nil];
+
+                         }];
+
+    UIAlertAction* cancel = [UIAlertAction
+                             actionWithTitle:@"Annuler"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [view dismissViewControllerAnimated:YES completion:nil];
+
+                             }];
+
+
+    [view addAction:takePhoto];
+    [view addAction:photoFromLibrary];
+    [view addAction:cancel];
+    [self presentViewController:view animated:YES completion:nil];
+
 }
+
+- (void)showImagePickerForSourceType:(UIImagePickerControllerSourceType)sourceType
+{
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    imagePickerController.sourceType = sourceType;
+    imagePickerController.delegate = self;
+
+    self.imagePickerController = imagePickerController;
+    [self presentViewController:self.imagePickerController animated:YES completion:nil];
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    self.travelImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+    //[self.addPhotoButton setImage:image forState:UIControlStateNormal];
+
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 @end

@@ -17,9 +17,9 @@
 #import "MTEModel.h"
 #import "MTEAddTravelViewController.h"
 
-@interface MTETravelListViewController ()
+@interface MTETravelListViewController () <MTEAddTravelDelegate>
 
-@property (nonatomic, strong) NSArray *travels;
+@property (nonatomic, strong) NSMutableArray *travels;
 //@property (nonatomic, strong) MTEProfile *profile;
 
 @end
@@ -37,7 +37,10 @@
     NSError *error = nil;
     NSArray *fetchedObjects = [[[MTEModel sharedInstance]managedObjectContext] executeFetchRequest:fetchRequest error:&error];
     
-    self.travels = fetchedObjects;
+    self.travels = fetchedObjects.mutableCopy;
+
+    self.tableView.allowsMultipleSelectionDuringEditing = NO;
+
 //    if(!self.travels || [self.travels count]>1){
 //        self.tableView.backgroundView = [self setupEmptyView];
 //    }else{
@@ -88,9 +91,14 @@
     MTETravel *travel = self.travels[indexPath.row];
     
     cell.travelName.text = travel.name;
-//    cell.travelDates.text = [self convertDatesToStringWithFirstDate:travel.startDate secondDate:travel.endDate];
-//    //cell.travelImageView.image = travel.image;
-//    cell.travelImageView.image = [UIImage imageNamed:@"japon"];
+    cell.travelDates.text = [self convertDatesToStringWithFirstDate:travel.startDate secondDate:travel.endDate];
+    cell.travelImageView.clipsToBounds = YES;
+    if(travel.image){
+        cell.travelImageView.image = [UIImage imageWithData:travel.image];
+    }else{
+        cell.travelImageView.image = [UIImage imageNamed:@"japon"];
+    }
+
 //    cell.travelCurrency.text = [travel primaryCurrency].name;
 //    cell.travelUserCurrency.text = self.profile.currency.name;
     
@@ -99,10 +107,50 @@
     
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 150;
+}
+
+
+// Override to support conditional editing of the table view.
+// This only needs to be implemented if you are going to be returning NO
+// for some items. By default, all items are editable.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return YES if you want the specified item to be editable.
+    return YES;
+}
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        MTETravel *travel = self.travels[indexPath.row];
+        [[[MTEModel sharedInstance]managedObjectContext] deleteObject:travel];
+        [self.travels removeObjectAtIndex:indexPath.row];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+        //[tableView reloadData];
+    }
+}
+
+#pragma mark - MTEAddTravelDelegate
+- (void)addTravelCancelled
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)addTravel:(MTETravel *)travel
+{
+    [self.travels addObject:travel];
+    [self.tableView reloadData];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark
+
 -(NSString *)convertDatesToStringWithFirstDate:(NSDate *)firstDate secondDate:(NSDate *)secondDate
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"dd mm yyyy"];
+    [formatter setDateFormat:@"dd MM yyyy"];
     
    return [NSString stringWithFormat:@"%@ - %@",[formatter stringFromDate:firstDate], [formatter stringFromDate:secondDate] ];
 }
@@ -112,6 +160,7 @@
 - (void)addButtonTapped
 {
     MTEAddTravelViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MTEAddTravelViewController"];
+    viewController.addTravelDelegate = self;
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
     
     [self presentViewController:navigationController animated:YES completion:nil];

@@ -155,7 +155,7 @@
     return travel;
 }
 
--(void)createTravelWithName:(NSString *)name startDate:(NSDate *)startDate endDate:(NSDate *)endDate image:(NSData *)image currencyCode:(NSString *)currencyCode
+-(MTETravel *)createTravelWithName:(NSString *)name startDate:(NSDate *)startDate endDate:(NSDate *)endDate image:(NSData *)image currencyCode:(NSString *)currencyCode
 {
     NSManagedObjectContext *context = [self managedObjectContext];
     MTETravel *travel = [NSEntityDescription
@@ -172,6 +172,8 @@
     if (![context save:&error]) {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
     }
+
+    return travel;
 }
 
 @end
