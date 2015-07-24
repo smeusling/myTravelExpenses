@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class MTETravel;
+
 @interface MTEExpenseListTableViewController : UITableViewController
+
+@property(nonatomic, strong)MTETravel *travel;
 
 @end

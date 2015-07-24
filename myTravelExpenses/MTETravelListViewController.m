@@ -16,10 +16,12 @@
 //#import "MTECurrency.h"
 #import "MTEModel.h"
 #import "MTEAddTravelViewController.h"
+#import "MTEExpenseListTableViewController.h"
 
 @interface MTETravelListViewController () <MTEAddTravelDelegate>
 
 @property (nonatomic, strong) NSMutableArray *travels;
+@property (nonatomic, strong) MTETravel *selectedTravel;
 //@property (nonatomic, strong) MTEProfile *profile;
 
 @end
@@ -138,6 +140,11 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.selectedTravel = self.travels[indexPath.row];
+}
+
 #pragma mark - MTEAddTravelDelegate
 - (void)addTravelCancelled
 {
@@ -151,6 +158,33 @@
     [self setupBackgroundView];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+#pragma mark - Segue 
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Make sure your segue name in storyboard is the same as this line
+    if ([[segue identifier] isEqualToString:@"travelExpenseList"])
+    {
+        NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
+
+        // Get reference to the destination view controller
+        UITabBarController *tabBarController = [segue destinationViewController];
+
+        for (UIViewController *v in tabBarController.viewControllers)
+        {
+            UIViewController *vc = v;
+
+            if ([v isKindOfClass:[MTEExpenseListTableViewController class]]){
+                MTEExpenseListTableViewController *travelViewController = (MTEExpenseListTableViewController *)v;
+                travelViewController = self.travels[selectedRowIndex.row];
+            }
+
+        }
+    }
+}
+
+
 
 #pragma mark
 

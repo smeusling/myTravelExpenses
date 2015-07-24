@@ -104,7 +104,7 @@
                                             <outlet property="travelImageView" destination="epI-4M-GWb" id="B0O-k2-WnG"/>
                                             <outlet property="travelName" destination="Wq2-Is-xsL" id="nzu-NB-lxe"/>
                                             <outlet property="travelUserCurrency" destination="RcY-Tj-b9F" id="PoF-eD-x3u"/>
-                                            <segue destination="sEX-kI-I0z" kind="show" id="z8i-hz-5Tg"/>
+                                            <segue destination="sEX-kI-I0z" kind="show" identifier="travelExpenseList" id="z8i-hz-5Tg"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
