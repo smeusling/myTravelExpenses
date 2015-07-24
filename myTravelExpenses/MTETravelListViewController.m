@@ -41,11 +41,7 @@
 
     self.tableView.allowsMultipleSelectionDuringEditing = NO;
 
-//    if(!self.travels || [self.travels count]>1){
-//        self.tableView.backgroundView = [self setupEmptyView];
-//    }else{
-//         self.tableView.backgroundView = nil;
-//    }
+    [self setupBackgroundView];
     //self.profile = [MTEConfigUtil profile];
     [self setupNavBar];
 }
@@ -59,11 +55,20 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"add-button"] style:UIBarButtonItemStylePlain target:self action:@selector(addButtonTapped)];
 }
 
+- (void)setupBackgroundView
+{
+    if(!self.travels || [self.travels count]<1){
+        self.tableView.backgroundView = [self setupEmptyView];
+    }else{
+        self.tableView.backgroundView = nil;
+    }
+}
+
 - (UIView *)setupEmptyView
 {
     
     MTETravelListEmptyView *view = [[[NSBundle mainBundle]
-                     loadNibNamed:@"TravelListEmptyView"
+                     loadNibNamed:@"MTETravelListEmptyView"
                      owner:self options:nil]
                     firstObject];
     view.placeholderLabel.text = @"No Travel Expenses Yet";
@@ -126,9 +131,10 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         MTETravel *travel = self.travels[indexPath.row];
         [[[MTEModel sharedInstance]managedObjectContext] deleteObject:travel];
+        [[[MTEModel sharedInstance]managedObjectContext] save:nil];
         [self.travels removeObjectAtIndex:indexPath.row];
         [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
-        //[tableView reloadData];
+        [self setupBackgroundView];
     }
 }
 
@@ -142,6 +148,7 @@
 {
     [self.travels addObject:travel];
     [self.tableView reloadData];
+    [self setupBackgroundView];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -150,7 +157,7 @@
 -(NSString *)convertDatesToStringWithFirstDate:(NSDate *)firstDate secondDate:(NSDate *)secondDate
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"dd MM yyyy"];
+    [formatter setDateFormat:@"dd MMM yyyy"];
     
    return [NSString stringWithFormat:@"%@ - %@",[formatter stringFromDate:firstDate], [formatter stringFromDate:secondDate] ];
 }
