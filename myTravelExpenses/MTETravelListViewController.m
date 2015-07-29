@@ -73,7 +73,7 @@
                      loadNibNamed:@"MTETravelListEmptyView"
                      owner:self options:nil]
                     firstObject];
-    view.placeholderLabel.text = @"No Travel Expenses Yet";
+    view.placeholderLabel.text = @"No Travel Yet";
     return view;
 }
 
@@ -171,16 +171,19 @@
         // Get reference to the destination view controller
         UITabBarController *tabBarController = [segue destinationViewController];
 
+
+
         for (UIViewController *v in tabBarController.viewControllers)
         {
             UIViewController *vc = v;
 
             if ([v isKindOfClass:[MTEExpenseListTableViewController class]]){
                 MTEExpenseListTableViewController *travelViewController = (MTEExpenseListTableViewController *)v;
-                travelViewController = self.travels[selectedRowIndex.row];
+                travelViewController.travel = self.travels[selectedRowIndex.row];
             }
 
         }
+        tabBarController.selectedIndex = 1;
     }
 }
 

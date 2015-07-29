@@ -57,6 +57,11 @@
     return [UIColor colorWithRed:24/255.f green:211/255.f blue:233/255.f alpha:1];
 }
 
+- (UIColor *)tabBarButtonColor
+{
+    return [UIColor colorWithRed:0/255.f green:160/255.f blue:180/255.f alpha:1];
+}
+
 - (UIColor *)tableViewBackgroundColor
 {
     return [UIColor colorWithRed:248/255.0f green:248/255.0f blue:248/255.0f alpha:1.0f];

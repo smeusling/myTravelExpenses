@@ -22,6 +22,7 @@
 - (UIBarStyle)navBarStyle;                  // Navigation bar style (title + status bar color)
 
 - (UIColor *)tabBarTintColor;
+- (UIColor *)tabBarButtonColor;
 
 - (UIColor *)tableViewBackgroundColor;
 

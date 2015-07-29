@@ -20,11 +20,14 @@ PODS:
   - AFNetworking/UIKit (2.4.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - IQDropDownTextField (1.0.6)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.4.1)
+  - IQDropDownTextField
 
 SPEC CHECKSUMS:
   AFNetworking: 41d45d2c14219af0fa5addf3cfd433a002c13c9f
+  IQDropDownTextField: 361e4a4ea879c4ed0c15cbd89aceb5e60aa19d33
 
-COCOAPODS: 0.37.1
+COCOAPODS: 0.38.0

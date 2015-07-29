@@ -29,6 +29,9 @@
     
     self.formatter = [[NSDateFormatter alloc] init];
     [self.formatter setDateFormat:@"dd MMMM yyyy"];
+
+    self.startDate = [NSDate date];
+    self.endDate = [NSDate date];
     
     [self setupNavBar];
     [self setupTextFields];
@@ -49,8 +52,8 @@
 
 - (void)setupTextFields
 {
-    self.startDateTextField.text = [self.formatter stringFromDate:[NSDate date]];
-    self.endDateTextField.text = [self.formatter stringFromDate:[NSDate date]];
+    self.startDateTextField.text = [self.formatter stringFromDate:self.startDate];
+    self.endDateTextField.text = [self.formatter stringFromDate:self.endDate];
 }
 
 - (void)setupDatePickers

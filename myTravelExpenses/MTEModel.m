@@ -8,6 +8,7 @@
 
 #import "MTEModel.h"
 #import "MTETravel.h"
+#import "MTEExpense.h"
 
 @interface MTEModel()
 
@@ -175,5 +176,31 @@
 
     return travel;
 }
+
+-(MTEExpense *)createExpenseWithName:(NSString *)name date:(NSDate *)date amount:(NSNumber *)amount travel:(MTETravel *)travel currencyCode:(NSString *)currencyCode category:(MTECategory *)category
+{
+    NSManagedObjectContext *context = [self managedObjectContext];
+    MTEExpense *expense = [NSEntityDescription
+                         insertNewObjectForEntityForName:@"Expense"
+                         inManagedObjectContext:context];
+    expense.uuid = [[NSUUID UUID] UUIDString];
+    expense.name = name;
+    expense.date = date;
+    expense.amount = amount;
+    expense.travel = travel;
+    expense.currencyCode = currencyCode;
+    expense.category = category;
+
+    travel.expenses = [NSSet setWithObject:expense];
+
+    NSError *error;
+    if (![context save:&error]) {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
+
+    return expense;
+}
+
+
 
 @end

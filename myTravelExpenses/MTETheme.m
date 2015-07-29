@@ -34,7 +34,7 @@
     //[[UITabBar appearance] setBackgroundColor:[theme tabBarTintColor]];
     //[[UITabBar appearance] setTranslucent:YES];
     [[UITabBar appearance] setBarTintColor:[theme tabBarTintColor]];
-    [[UIView appearanceWhenContainedIn:[UITabBar class], nil] setTintColor: [UIColor redColor]];
+    [[UIView appearanceWhenContainedIn:[UITabBar class], nil] setTintColor: [theme tabBarButtonColor]];
 }
 
 @end

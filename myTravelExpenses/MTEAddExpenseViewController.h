@@ -8,6 +8,25 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MTEAddExpenseViewController : UIViewController
+@class MTEExpense, MTETravel, IQDropDownTextField;
+
+@protocol MTEAddExpenseDelegate;
+
+@interface MTEAddExpenseViewController : UIViewController <UITextFieldDelegate>
+
+@property (nonatomic, weak) id<MTEAddExpenseDelegate> addExpenseDelegate;
+@property (strong, nonatomic) IBOutlet UITextField *descriptionTextField;
+@property (strong, nonatomic) IBOutlet UITextField *dateTextField;
+@property (strong, nonatomic) IBOutlet UITextField *amountTextField;
+@property (strong, nonatomic) IBOutlet IQDropDownTextField *categoryTextField;
+
+@property (weak, nonatomic) MTETravel *travel;
+
+@end
+
+@protocol MTEAddExpenseDelegate <NSObject>
+
+- (void)addExpenseCancelled;
+- (void)addExpense:(MTEExpense *)expense;
 
 @end
