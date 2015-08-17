@@ -18,7 +18,9 @@
 @property (strong, nonatomic) IBOutlet UITextField *descriptionTextField;
 @property (strong, nonatomic) IBOutlet UITextField *dateTextField;
 @property (strong, nonatomic) IBOutlet UITextField *amountTextField;
-@property (strong, nonatomic) IBOutlet IQDropDownTextField *categoryTextField;
+@property (strong, nonatomic) IBOutlet UITextField *categoryTextField;
+
+- (IBAction)openCategoryList:(id)sender;
 
 @property (weak, nonatomic) MTETravel *travel;
 

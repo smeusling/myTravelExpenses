@@ -10,7 +10,7 @@
 
 @class MTETravel;
 
-@interface MTEExpenseListTableViewController : UITableViewController
+@interface MTEExpenseListTableViewController : UITableViewController <UITextFieldDelegate>
 
 @property(nonatomic, strong)MTETravel *travel;
 

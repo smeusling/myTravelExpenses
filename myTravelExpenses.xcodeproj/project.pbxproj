@@ -8,10 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		50150B5F1AEADDAD005A63CF /* MTEModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50150B5E1AEADDAD005A63CF /* MTEModel.m */; };
-		50150B621AEAE379005A63CF /* MTECategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 50150B611AEAE379005A63CF /* MTECategory.m */; };
 		50150B681AEAE4BB005A63CF /* MTETravel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50150B671AEAE4BB005A63CF /* MTETravel.m */; };
 		502C2E3D1AEA9255001D0B88 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 502C2E3C1AEA9255001D0B88 /* CoreData.framework */; };
 		502C2E411AEA937A001D0B88 /* myTravelExpenses.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 502C2E3F1AEA937A001D0B88 /* myTravelExpenses.xcdatamodeld */; };
+		50657BC51B824B2300BDBBEC /* MTECategoriesList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50657BC41B824B2300BDBBEC /* MTECategoriesList.plist */; };
+		50657BC81B824DC200BDBBEC /* MTECategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 50657BC71B824DC200BDBBEC /* MTECategory.m */; };
+		50657BCB1B824FC700BDBBEC /* MTECategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 50657BCA1B824FC700BDBBEC /* MTECategories.m */; };
+		50657BCE1B82510600BDBBEC /* UIColor+HexColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 50657BCD1B82510600BDBBEC /* UIColor+HexColors.m */; };
+		50657BD11B825E9100BDBBEC /* MTEExpense.m in Sources */ = {isa = PBXBuildFile; fileRef = 50657BD01B825E9100BDBBEC /* MTEExpense.m */; };
+		50657BD41B82764A00BDBBEC /* MTEUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 50657BD31B82764A00BDBBEC /* MTEUtil.m */; };
 		5074FEE81AD05451009FD06D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FEE71AD05451009FD06D /* main.m */; };
 		5074FEEB1AD05451009FD06D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FEEA1AD05451009FD06D /* AppDelegate.m */; };
 		5074FEF11AD05451009FD06D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5074FEEF1AD05451009FD06D /* Main.storyboard */; };
@@ -32,7 +37,6 @@
 		50E7747E1B2CC2F800D900FC /* MTEAddExpenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E7747D1B2CC2F800D900FC /* MTEAddExpenseViewController.m */; };
 		50E774811B2CC40700D900FC /* MTETravelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E774801B2CC40700D900FC /* MTETravelViewController.m */; };
 		50F70B241B68D7D30097282C /* MTECategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F70B231B68D7D30097282C /* MTECategoryViewController.m */; };
-		50F70B271B6903570097282C /* MTEExpense.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F70B261B6903570097282C /* MTEExpense.m */; };
 		5F2C85C52A209FBE1B4D517E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D11A70ADBD75CC683412FD8 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -51,13 +55,22 @@
 		2C54EAD2CC319F6CE46F4779 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		50150B5D1AEADDAD005A63CF /* MTEModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTEModel.h; sourceTree = "<group>"; };
 		50150B5E1AEADDAD005A63CF /* MTEModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTEModel.m; sourceTree = "<group>"; };
-		50150B601AEAE379005A63CF /* MTECategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTECategory.h; sourceTree = "<group>"; };
-		50150B611AEAE379005A63CF /* MTECategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTECategory.m; sourceTree = "<group>"; };
 		50150B661AEAE4BB005A63CF /* MTETravel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTETravel.h; sourceTree = "<group>"; };
 		50150B671AEAE4BB005A63CF /* MTETravel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTETravel.m; sourceTree = "<group>"; };
 		502C2E3C1AEA9255001D0B88 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		502C2E3E1AEA9306001D0B88 /* myTravelExpenses-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "myTravelExpenses-Prefix.pch"; sourceTree = "<group>"; };
 		502C2E401AEA937A001D0B88 /* myTravelExpenses.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myTravelExpenses.xcdatamodel; sourceTree = "<group>"; };
+		50657BC41B824B2300BDBBEC /* MTECategoriesList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MTECategoriesList.plist; sourceTree = "<group>"; };
+		50657BC61B824DC200BDBBEC /* MTECategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTECategory.h; sourceTree = "<group>"; };
+		50657BC71B824DC200BDBBEC /* MTECategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTECategory.m; sourceTree = "<group>"; };
+		50657BC91B824FC700BDBBEC /* MTECategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTECategories.h; sourceTree = "<group>"; };
+		50657BCA1B824FC700BDBBEC /* MTECategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTECategories.m; sourceTree = "<group>"; };
+		50657BCC1B82510600BDBBEC /* UIColor+HexColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexColors.h"; sourceTree = "<group>"; };
+		50657BCD1B82510600BDBBEC /* UIColor+HexColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexColors.m"; sourceTree = "<group>"; };
+		50657BCF1B825E9100BDBBEC /* MTEExpense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTEExpense.h; sourceTree = "<group>"; };
+		50657BD01B825E9100BDBBEC /* MTEExpense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTEExpense.m; sourceTree = "<group>"; };
+		50657BD21B82764A00BDBBEC /* MTEUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTEUtil.h; sourceTree = "<group>"; };
+		50657BD31B82764A00BDBBEC /* MTEUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTEUtil.m; sourceTree = "<group>"; };
 		5074FEE21AD05451009FD06D /* myTravelExpenses.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myTravelExpenses.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5074FEE61AD05451009FD06D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5074FEE71AD05451009FD06D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -106,8 +119,6 @@
 		50E774801B2CC40700D900FC /* MTETravelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTETravelViewController.m; sourceTree = "<group>"; };
 		50F70B221B68D7D30097282C /* MTECategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTECategoryViewController.h; sourceTree = "<group>"; };
 		50F70B231B68D7D30097282C /* MTECategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTECategoryViewController.m; sourceTree = "<group>"; };
-		50F70B251B6903570097282C /* MTEExpense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTEExpense.h; sourceTree = "<group>"; };
-		50F70B261B6903570097282C /* MTEExpense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTEExpense.m; sourceTree = "<group>"; };
 		733BCB9308CB06F82597A890 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -175,6 +186,7 @@
 				5074FEE61AD05451009FD06D /* Info.plist */,
 				5074FEE71AD05451009FD06D /* main.m */,
 				502C2E3E1AEA9306001D0B88 /* myTravelExpenses-Prefix.pch */,
+				50657BC41B824B2300BDBBEC /* MTECategoriesList.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -210,13 +222,15 @@
 			children = (
 				50150B5D1AEADDAD005A63CF /* MTEModel.h */,
 				50150B5E1AEADDAD005A63CF /* MTEModel.m */,
+				50657BCF1B825E9100BDBBEC /* MTEExpense.h */,
+				50657BD01B825E9100BDBBEC /* MTEExpense.m */,
 				502C2E3F1AEA937A001D0B88 /* myTravelExpenses.xcdatamodeld */,
-				50F70B251B6903570097282C /* MTEExpense.h */,
-				50F70B261B6903570097282C /* MTEExpense.m */,
 				50150B661AEAE4BB005A63CF /* MTETravel.h */,
 				50150B671AEAE4BB005A63CF /* MTETravel.m */,
-				50150B601AEAE379005A63CF /* MTECategory.h */,
-				50150B611AEAE379005A63CF /* MTECategory.m */,
+				50657BC61B824DC200BDBBEC /* MTECategory.h */,
+				50657BC71B824DC200BDBBEC /* MTECategory.m */,
+				50657BC91B824FC700BDBBEC /* MTECategories.h */,
+				50657BCA1B824FC700BDBBEC /* MTECategories.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -232,6 +246,10 @@
 				5074FF211AD82731009FD06D /* MTETheme.m */,
 				5074FF231AD82744009FD06D /* MTEDefaultTheme.h */,
 				5074FF241AD82744009FD06D /* MTEDefaultTheme.m */,
+				50657BCC1B82510600BDBBEC /* UIColor+HexColors.h */,
+				50657BCD1B82510600BDBBEC /* UIColor+HexColors.m */,
+				50657BD21B82764A00BDBBEC /* MTEUtil.h */,
+				50657BD31B82764A00BDBBEC /* MTEUtil.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -403,6 +421,7 @@
 			files = (
 				5074FF331AD93FA2009FD06D /* MTETravelListEmptyView.xib in Resources */,
 				5074FEF11AD05451009FD06D /* Main.storyboard in Resources */,
+				50657BC51B824B2300BDBBEC /* MTECategoriesList.plist in Resources */,
 				5074FEF61AD05451009FD06D /* LaunchScreen.xib in Resources */,
 				5074FEF31AD05451009FD06D /* Images.xcassets in Resources */,
 			);
@@ -456,22 +475,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				50150B5F1AEADDAD005A63CF /* MTEModel.m in Sources */,
+				50657BD11B825E9100BDBBEC /* MTEExpense.m in Sources */,
 				5074FF361AD9430B009FD06D /* MTETravelListEmptyView.m in Sources */,
 				5074FF111AD05A9B009FD06D /* MTETravelTableViewCell.m in Sources */,
 				502C2E411AEA937A001D0B88 /* myTravelExpenses.xcdatamodeld in Sources */,
 				50E7747E1B2CC2F800D900FC /* MTEAddExpenseViewController.m in Sources */,
-				50F70B271B6903570097282C /* MTEExpense.m in Sources */,
 				5074FF251AD82744009FD06D /* MTEDefaultTheme.m in Sources */,
 				5074FF3C1AD98514009FD06D /* MTECurrencyTableViewCell.m in Sources */,
+				50657BC81B824DC200BDBBEC /* MTECategory.m in Sources */,
+				50657BCE1B82510600BDBBEC /* UIColor+HexColors.m in Sources */,
 				5074FF221AD82731009FD06D /* MTETheme.m in Sources */,
 				50D4E1951B3F1DFD00011085 /* MTEExpenseListTableViewController.m in Sources */,
+				50657BD41B82764A00BDBBEC /* MTEUtil.m in Sources */,
 				5074FF1C1AD08632009FD06D /* MTEHelper.m in Sources */,
 				50150B681AEAE4BB005A63CF /* MTETravel.m in Sources */,
+				50657BCB1B824FC700BDBBEC /* MTECategories.m in Sources */,
 				5074FEEB1AD05451009FD06D /* AppDelegate.m in Sources */,
 				50F70B241B68D7D30097282C /* MTECategoryViewController.m in Sources */,
 				50CEE97E1AF02205008D59CE /* MTEAddTravelViewController.m in Sources */,
 				5074FF0E1AD0583A009FD06D /* MTETravelListViewController.m in Sources */,
-				50150B621AEAE379005A63CF /* MTECategory.m in Sources */,
 				5074FEE81AD05451009FD06D /* main.m in Sources */,
 				5074FF191AD0852B009FD06D /* MTEConfigUtil.m in Sources */,
 				50E774811B2CC40700D900FC /* MTETravelViewController.m in Sources */,

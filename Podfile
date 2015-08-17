@@ -5,5 +5,6 @@ platform :ios, '8.0'
 # Public pods
 pod 'AFNetworking', '~> 2.4.1'
 pod 'IQDropDownTextField'
+pod 'CZPicker'
 
 

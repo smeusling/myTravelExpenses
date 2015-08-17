@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E46" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Category" representedClassName="MTECategory" syncable="YES">
-        <attribute name="color" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="expense" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Expense" inverseName="category" inverseEntity="Expense" syncable="YES"/>
-    </entity>
     <entity name="Expense" representedClassName="MTEExpense" syncable="YES">
         <attribute name="amount" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="categoryId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="currencyCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="expense" inverseEntity="Category" syncable="YES"/>
         <relationship name="travel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Travel" inverseName="expenses" inverseEntity="Travel" syncable="YES"/>
     </entity>
     <entity name="Travel" representedClassName="MTETravel" syncable="YES">
@@ -24,8 +19,7 @@
         <relationship name="expenses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="travel" inverseEntity="Expense" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Category" positionX="232" positionY="-556" width="128" height="88"/>
-        <element name="Expense" positionX="162" positionY="-774" width="128" height="150"/>
+        <element name="Expense" positionX="162" positionY="-774" width="128" height="148"/>
         <element name="Travel" positionX="-63" positionY="-774" width="128" height="148"/>
     </elements>
 </model>

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class MTETravel, MTEExpense, MTECategory;
+@class MTETravel, MTEExpense;
 @interface MTEModel : NSObject
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
@@ -21,6 +21,6 @@
 - (MTETravel *)createTravel;
 - (MTETravel *)createTravelWithName:(NSString *)name startDate:(NSDate *)startDate endDate:(NSDate *)endDate image:(NSData *)image currencyCode:(NSString *)currencyCode;
 
--(MTEExpense *)createExpenseWithName:(NSString *)name date:(NSDate *)date amount:(NSNumber *)amount travel:(MTETravel *)travel currencyCode:(NSString *)currencyCode category:(MTECategory *)category;
+-(MTEExpense *)createExpenseWithName:(NSString *)name date:(NSDate *)date amount:(NSNumber *)amount travel:(MTETravel *)travel currencyCode:(NSString *)currencyCode categoryId:(NSString *)categoryId;
 
 @end

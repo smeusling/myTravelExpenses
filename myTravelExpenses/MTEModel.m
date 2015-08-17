@@ -177,7 +177,7 @@
     return travel;
 }
 
--(MTEExpense *)createExpenseWithName:(NSString *)name date:(NSDate *)date amount:(NSNumber *)amount travel:(MTETravel *)travel currencyCode:(NSString *)currencyCode category:(MTECategory *)category
+-(MTEExpense *)createExpenseWithName:(NSString *)name date:(NSDate *)date amount:(NSNumber *)amount travel:(MTETravel *)travel currencyCode:(NSString *)currencyCode categoryId:(NSString *)categoryId
 {
     NSManagedObjectContext *context = [self managedObjectContext];
     MTEExpense *expense = [NSEntityDescription
@@ -189,9 +189,12 @@
     expense.amount = amount;
     expense.travel = travel;
     expense.currencyCode = currencyCode;
-    expense.category = category;
+    expense.categoryId = categoryId;
+    
+    NSMutableSet *expenses = [travel mutableSetValueForKey:@"expenses"];
+    [expenses addObject:expense];
 
-    travel.expenses = [NSSet setWithObject:expense];
+    travel.expenses = expenses;
 
     NSError *error;
     if (![context save:&error]) {

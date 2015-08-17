@@ -2,19 +2,19 @@
 //  MTECategory.h
 //  myTravelExpenses
 //
-//  Created by Stéphanie Meusling on 24.04.15.
+//  Created by Stéphanie Meusling on 17.08.15.
 //  Copyright (c) 2015 smeusling. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
+#import <UIKit/UIKit.h>
 
-@class MTEExpense;
+@interface MTECategory : NSObject
 
-@interface MTECategory : NSManagedObject
+@property (nonatomic, strong) NSString *categoryId;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) UIColor *color;
 
-@property (nonatomic, retain) NSString * color;
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) MTEExpense *expense;
+-(id)initWithId:(NSString *)categoryId name:(NSString *)name color:(NSString *)color;
 
 @end

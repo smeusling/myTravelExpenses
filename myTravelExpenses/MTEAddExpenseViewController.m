@@ -11,11 +11,16 @@
 #import "MTEModel.h"
 #import "MTETravel.h"
 #import "MTEExpense.h"
+#import "CZPickerView.h"
+#import "MTECategories.h"
+#import "MTECategory.h"
 
-@interface MTEAddExpenseViewController ()
+@interface MTEAddExpenseViewController () <CZPickerViewDataSource, CZPickerViewDelegate>
 
 @property (nonatomic, strong) NSDate *expenseDate;
 @property (nonatomic, strong) NSString *currencyCode;
+@property (nonatomic, strong) NSArray *categories;
+@property (nonatomic, strong) MTECategory *selectedCategory;
 
 @property (nonatomic, strong) NSDateFormatter *formatter;
 
@@ -34,6 +39,10 @@
     [self setupNavBar];
     [self setupTextFields];
     [self setupDatePickers];
+    
+    self.categories = [[MTECategories sharedCategories] categories];
+    
+    [self.categoryTextField addTarget:self action:@selector(openCategoryList:)forControlEvents:UIControlEventTouchDown];
 
 }
 
@@ -51,9 +60,6 @@
 - (void)setupTextFields
 {
     self.dateTextField.text = [self.formatter stringFromDate:self.expenseDate];
-
-    self.categoryTextField.isOptionalDropDown = NO;
-    [self.categoryTextField setItemList:[NSArray arrayWithObjects:@"Transport",@"Sortie",@"Logement",@"Apéro",@"Nourriture",@"Souvenir", nil]];
 }
 
 - (void)setupDatePickers
@@ -63,6 +69,41 @@
     [datePicker setDate:[NSDate date]];
     [datePicker addTarget:self action:@selector(updateDateTextField:) forControlEvents:UIControlEventValueChanged];
     [self.dateTextField setInputView:datePicker];
+}
+
+#pragma mark - CZPickerView
+
+/* comment out this method to allow
+ CZPickerView:titleForRow: to work.
+ */
+- (NSAttributedString *)czpickerView:(CZPickerView *)pickerView attributedTitleForRow:(NSInteger)row
+{
+    
+    MTECategory *cat = self.categories[row];
+    NSAttributedString *att = [[NSAttributedString alloc]
+                               initWithString:cat.name
+                               attributes:@{
+                                            NSFontAttributeName:[UIFont fontWithName:@"Avenir-Light" size:18.0]
+                                            }];
+    return att;
+}
+
+- (NSString *)czpickerView:(CZPickerView *)pickerView titleForRow:(NSInteger)row
+{
+    MTECategory *cat = self.categories[row];
+    return cat.name;
+}
+
+- (NSInteger)numberOfRowsInPickerView:(CZPickerView *)pickerView
+{
+    return self.categories.count;
+}
+
+- (void)czpickerView:(CZPickerView *)pickerView didConfirmWithItemAtRow:(NSInteger)row
+{
+    MTECategory *cat = self.categories[row];
+    self.selectedCategory = cat;
+    self.categoryTextField.text =cat.name;
 }
 
 #pragma mark - DatePicker
@@ -90,12 +131,22 @@
     [self addExpense];
 }
 
+#pragma mark - TextField Delegate
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    if(textField.tag == 1){
+        return NO;
+    }
+    return YES;  // Hide both keyboard and blinking cursor.
+}
+
 #pragma mark - Other method
 
 - (void)addExpense
 {
     float amountFloat = [self.amountTextField.text floatValue];
-    MTEExpense *newExpense = [[MTEModel sharedInstance]createExpenseWithName:self.descriptionTextField.text date:self.expenseDate amount:[NSNumber numberWithFloat:amountFloat] travel:self.travel currencyCode:nil category:nil];
+    MTEExpense *newExpense = [[MTEModel sharedInstance]createExpenseWithName:self.descriptionTextField.text date:self.expenseDate amount:[NSNumber numberWithFloat:amountFloat] travel:self.travel currencyCode:nil categoryId:self.selectedCategory.categoryId];
 
     id<MTEAddExpenseDelegate> delegate = self.addExpenseDelegate;
     if (delegate) {
@@ -103,5 +154,13 @@
     }
 }
 
+- (IBAction)openCategoryList:(id)sender
+{
+    CZPickerView *picker = [[CZPickerView alloc] initWithHeaderTitle:@"Fruits" cancelButtonTitle:@"Cancel" confirmButtonTitle:@"Confirm"];
+    picker.delegate = self;
+    picker.dataSource = self;
+    picker.needFooterView = NO;
+    [picker show];
+}
 @end
 
