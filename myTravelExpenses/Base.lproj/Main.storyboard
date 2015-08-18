@@ -6,6 +6,12 @@
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+            <string>OpenSans</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Travel List View Controller-->
         <scene sceneID="cI8-Pd-hav">
@@ -154,30 +160,34 @@
         <scene sceneID="rbG-Jf-Ls0">
             <objects>
                 <tableViewController storyboardIdentifier="MTEExpenseListTableViewController" id="Vn7-9c-yBl" customClass="MTEExpenseListTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="22" sectionFooterHeight="22" id="EFd-Zv-zLI">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="83" sectionHeaderHeight="22" sectionFooterHeight="22" id="EFd-Zv-zLI">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="sectionIndexBackgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="Cell" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExpenseCell" rowHeight="66" id="KcF-hc-zpV">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="Cell" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExpenseCell" rowHeight="83" id="KcF-hc-zpV">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KcF-hc-zpV" id="aWk-AI-x1w">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCN-8u-uyo">
-                                            <rect key="frame" x="8" y="8" width="520" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCN-8u-uyo">
+                                            <rect key="frame" x="8" y="13" width="520" height="21"/>
+                                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vf3-1E-ypS">
-                                            <rect key="frame" x="550" y="8" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vf3-1E-ypS">
+                                            <rect key="frame" x="497" y="13" width="95" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="95" id="71o-JC-v9m"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vva-KI-lTc">
-                                            <rect key="frame" x="8" y="37" width="20" height="20"/>
+                                        <view tag="3" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vva-KI-lTc">
+                                            <rect key="frame" x="8" y="59" width="20" height="20"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="20" id="Nzr-DY-6mR"/>
@@ -188,13 +198,14 @@
                                     <constraints>
                                         <constraint firstItem="Vf3-1E-ypS" firstAttribute="leading" secondItem="CCN-8u-uyo" secondAttribute="trailing" constant="22" id="JFw-rp-jig"/>
                                         <constraint firstItem="CCN-8u-uyo" firstAttribute="leading" secondItem="aWk-AI-x1w" secondAttribute="leadingMargin" id="bw7-gz-UNf"/>
-                                        <constraint firstItem="CCN-8u-uyo" firstAttribute="top" secondItem="aWk-AI-x1w" secondAttribute="topMargin" id="dci-My-Uz8"/>
+                                        <constraint firstItem="CCN-8u-uyo" firstAttribute="top" secondItem="aWk-AI-x1w" secondAttribute="topMargin" constant="5" id="dci-My-Uz8"/>
                                         <constraint firstItem="vva-KI-lTc" firstAttribute="leading" secondItem="CCN-8u-uyo" secondAttribute="leading" id="iIK-sO-wP0"/>
                                         <constraint firstItem="Vf3-1E-ypS" firstAttribute="top" secondItem="CCN-8u-uyo" secondAttribute="top" id="iYc-Uf-HPB"/>
                                         <constraint firstItem="Vf3-1E-ypS" firstAttribute="trailing" secondItem="aWk-AI-x1w" secondAttribute="trailingMargin" id="ncN-1G-y5t"/>
-                                        <constraint firstItem="vva-KI-lTc" firstAttribute="top" secondItem="CCN-8u-uyo" secondAttribute="bottom" constant="8" id="qiG-CO-hfw"/>
+                                        <constraint firstItem="vva-KI-lTc" firstAttribute="top" secondItem="CCN-8u-uyo" secondAttribute="bottom" constant="15" id="qiG-CO-hfw"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>

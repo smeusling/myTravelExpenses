@@ -128,6 +128,57 @@
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 40;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *header = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, [self tableView:tableView heightForHeaderInSection:section])];
+    
+    header.backgroundColor = [UIColor whiteColor];
+    
+    UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 10, header.frame.size.width -20, header.frame.size.height - 20)];
+    titleLabel.textAlignment = NSTextAlignmentLeft;
+    titleLabel.textColor = [UIColor blackColor];
+    titleLabel.font = [UIFont fontWithName:@"OpenSans" size:16];
+    NSDate *dateRepresentingThisDay = [self.sortedDays objectAtIndex:section];
+    titleLabel.text = [self.sectionDateFormatter stringFromDate:dateRepresentingThisDay];
+
+    [header addSubview:titleLabel];
+    
+    UILabel *amountLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 10, header.frame.size.width -20, header.frame.size.height - 20)];
+    amountLabel.textAlignment = NSTextAlignmentRight;
+    amountLabel.textColor = [UIColor blackColor];
+    amountLabel.font = [UIFont fontWithName:@"OpenSans" size:16];
+    
+    NSArray *expensesOnThisDay = [self.sections objectForKey:dateRepresentingThisDay];
+    float total = 0;
+    for (MTEExpense *expense in expensesOnThisDay) {
+        total += [expense.amount floatValue];
+    }
+    
+    amountLabel.text = [NSString stringWithFormat:@"%.2f", total];
+    [header addSubview:amountLabel];
+    
+    UIView *separator = [[UIView alloc]initWithFrame:CGRectMake(0, header.frame.size.height - 1, header.frame.size.width, 1)];
+    
+    separator.backgroundColor = [UIColor colorWithRed:230/255.f green:230/255.f blue:230/255.f alpha:1];
+    
+    [header addSubview:separator];
+    
+    UIView *separatorTop = [[UIView alloc]initWithFrame:CGRectMake(0, 0, header.frame.size.width, 1)];
+    
+    separatorTop.backgroundColor = [UIColor colorWithRed:230/255.f green:230/255.f blue:230/255.f alpha:1];
+    
+    [header addSubview:separatorTop];
+
+
+    return header;
+}
+
+
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 //{
 //    return 50;
@@ -163,11 +214,25 @@
 {
     UIView *header = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 50)];
     
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 50)];
+    header.backgroundColor = [UIColor colorWithRed:0/255.f green:212/255.f blue:234/255.f alpha:1];
     
-    label.text = [NSString stringWithFormat:@"%.2f", self.travelTotalAmount];
+    UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 10, header.frame.size.width -20, header.frame.size.height - 20)];
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.textAlignment = NSTextAlignmentLeft;
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.font = [UIFont fontWithName:@"OpenSans-Light" size:20];
+    titleLabel.text = @"Total";
     
-    [header addSubview:label];
+    [header addSubview:titleLabel];
+    
+    UILabel *amountLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 10, header.frame.size.width -20, header.frame.size.height - 20)];
+    amountLabel.backgroundColor = [UIColor clearColor];
+    amountLabel.textAlignment = NSTextAlignmentRight;
+    amountLabel.textColor = [UIColor whiteColor];
+    amountLabel.font = [UIFont fontWithName:@"OpenSans" size:20];
+    amountLabel.text = [NSString stringWithFormat:@"%.2f", self.travelTotalAmount];
+    [header addSubview:amountLabel];
+
     
     self.tableView.tableHeaderView = header;
 
