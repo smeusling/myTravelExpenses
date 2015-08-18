@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -148,9 +149,26 @@
                     <view key="view" contentMode="scaleToFill" id="DkF-rk-zBB">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kRb-48-i41" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="64" width="600" height="715"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="kRb-48-i41" secondAttribute="height" multiplier="120:143" id="avc-XU-FO5"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kRb-48-i41" firstAttribute="top" secondItem="DkF-rk-zBB" secondAttribute="top" constant="64" id="966-KV-4Nd"/>
+                            <constraint firstAttribute="trailing" secondItem="kRb-48-i41" secondAttribute="trailing" id="CFw-nc-iUp"/>
+                            <constraint firstItem="kRb-48-i41" firstAttribute="leading" secondItem="DkF-rk-zBB" secondAttribute="leading" id="Yor-6E-Hhu"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Category" image="tab-pie" id="2XW-ab-IgV"/>
+                    <connections>
+                        <outlet property="pieChartView" destination="kRb-48-i41" id="Nlk-Pw-KZi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="va5-cN-ifa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

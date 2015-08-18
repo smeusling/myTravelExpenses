@@ -13,6 +13,7 @@
 #import "MTEExpense.h"
 #import "MTECategories.h"
 #import "MTECategory.h"
+#import "MTECategoryViewController.h"
 
 @interface MTEExpenseListTableViewController () <MTEAddExpenseDelegate>
 
@@ -40,6 +41,9 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
     self.expenses = [[NSMutableArray alloc]initWithArray:[self.travel.expenses allObjects]];
+    
+    MTECategoryViewController *categoryViewController = [self.tabBarController.viewControllers objectAtIndex:0];
+    categoryViewController.travel = self.travel;
 
     [self setupBackgroundView];
     

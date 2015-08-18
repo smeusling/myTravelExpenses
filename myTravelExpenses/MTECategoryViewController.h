@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Charts/Charts.h>
 
-@interface MTECategoryViewController : UIViewController
+@class MTETravel;
+@interface MTECategoryViewController : UIViewController <ChartViewDelegate>
+
+@property(nonatomic, strong)MTETravel *travel;
+
+@property (weak, nonatomic) IBOutlet PieChartView *pieChartView;
 
 @end

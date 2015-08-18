@@ -175,8 +175,6 @@
 
         for (UIViewController *v in tabBarController.viewControllers)
         {
-            UIViewController *vc = v;
-
             if ([v isKindOfClass:[MTEExpenseListTableViewController class]]){
                 MTEExpenseListTableViewController *travelViewController = (MTEExpenseListTableViewController *)v;
                 travelViewController.travel = self.travels[selectedRowIndex.row];

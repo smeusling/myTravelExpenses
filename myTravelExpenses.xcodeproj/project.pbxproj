@@ -27,6 +27,8 @@
 		50657BDC1B83167400BDBBEC /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5074FF2F1AD832B3009FD06D /* OpenSans-Regular.ttf */; };
 		50657BDD1B83167900BDBBEC /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5074FF301AD832B3009FD06D /* OpenSans-Semibold.ttf */; };
 		50657BDE1B83167C00BDBBEC /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5074FF311AD832B3009FD06D /* OpenSans-SemiboldItalic.ttf */; };
+		50657BF21B83C47D00BDBBEC /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50657BF11B83C41100BDBBEC /* Charts.framework */; };
+		50657BF31B83C47D00BDBBEC /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 50657BF11B83C41100BDBBEC /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5074FEE81AD05451009FD06D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FEE71AD05451009FD06D /* main.m */; };
 		5074FEEB1AD05451009FD06D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FEEA1AD05451009FD06D /* AppDelegate.m */; };
 		5074FEF11AD05451009FD06D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5074FEEF1AD05451009FD06D /* Main.storyboard */; };
@@ -51,6 +53,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		50657BF01B83C41100BDBBEC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50657BEC1B83C41100BDBBEC /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5BA8EC401A9D14DC00CE82E1;
+			remoteInfo = Charts;
+		};
+		50657BF41B83C47D00BDBBEC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50657BEC1B83C41100BDBBEC /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
+			remoteInfo = Charts;
+		};
 		5074FEFC1AD05451009FD06D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5074FEDA1AD05451009FD06D /* Project object */;
@@ -59,6 +75,20 @@
 			remoteInfo = myTravelExpenses;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		50657BF61B83C47D00BDBBEC /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				50657BF31B83C47D00BDBBEC /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1D11A70ADBD75CC683412FD8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +111,7 @@
 		50657BD01B825E9100BDBBEC /* MTEExpense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTEExpense.m; sourceTree = "<group>"; };
 		50657BD21B82764A00BDBBEC /* MTEUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTEUtil.h; sourceTree = "<group>"; };
 		50657BD31B82764A00BDBBEC /* MTEUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTEUtil.m; sourceTree = "<group>"; };
+		50657BEC1B83C41100BDBBEC /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../Downloads/ios-charts-master/Charts/Charts.xcodeproj"; sourceTree = "<group>"; };
 		5074FEE21AD05451009FD06D /* myTravelExpenses.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myTravelExpenses.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5074FEE61AD05451009FD06D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5074FEE71AD05451009FD06D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -137,6 +168,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50657BF21B83C47D00BDBBEC /* Charts.framework in Frameworks */,
 				502C2E3D1AEA9255001D0B88 /* CoreData.framework in Frameworks */,
 				5F2C85C52A209FBE1B4D517E /* libPods.a in Frameworks */,
 			);
@@ -152,9 +184,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		50657BED1B83C41100BDBBEC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				50657BF11B83C41100BDBBEC /* Charts.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		5074FED91AD05451009FD06D = {
 			isa = PBXGroup;
 			children = (
+				50657BEC1B83C41100BDBBEC /* Charts.xcodeproj */,
 				502C2E3C1AEA9255001D0B88 /* CoreData.framework */,
 				5074FEE41AD05451009FD06D /* myTravelExpenses */,
 				5074FEFE1AD05451009FD06D /* myTravelExpensesTests */,
@@ -359,10 +400,12 @@
 				5074FEDF1AD05451009FD06D /* Frameworks */,
 				5074FEE01AD05451009FD06D /* Resources */,
 				EB3F02553CBB5CE4E08F7C52 /* Copy Pods Resources */,
+				50657BF61B83C47D00BDBBEC /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				50657BF51B83C47D00BDBBEC /* PBXTargetDependency */,
 			);
 			name = myTravelExpenses;
 			productName = myTravelExpenses;
@@ -416,6 +459,12 @@
 			mainGroup = 5074FED91AD05451009FD06D;
 			productRefGroup = 5074FEE31AD05451009FD06D /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 50657BED1B83C41100BDBBEC /* Products */;
+					ProjectRef = 50657BEC1B83C41100BDBBEC /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				5074FEE11AD05451009FD06D /* myTravelExpenses */,
@@ -423,6 +472,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		50657BF11B83C41100BDBBEC /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 50657BF01B83C41100BDBBEC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		5074FEE01AD05451009FD06D /* Resources */ = {
@@ -531,6 +590,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		50657BF51B83C47D00BDBBEC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Charts;
+			targetProxy = 50657BF41B83C47D00BDBBEC /* PBXContainerItemProxy */;
+		};
 		5074FEFD1AD05451009FD06D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5074FEE11AD05451009FD06D /* myTravelExpenses */;
@@ -641,6 +705,7 @@
 			baseConfigurationReference = 2C54EAD2CC319F6CE46F4779 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = myTravelExpenses/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -652,6 +717,7 @@
 			baseConfigurationReference = 733BCB9308CB06F82597A890 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = myTravelExpenses/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
