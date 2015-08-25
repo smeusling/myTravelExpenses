@@ -8,14 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		50150B5F1AEADDAD005A63CF /* MTEModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50150B5E1AEADDAD005A63CF /* MTEModel.m */; };
-		50150B681AEAE4BB005A63CF /* MTETravel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50150B671AEAE4BB005A63CF /* MTETravel.m */; };
 		502C2E3D1AEA9255001D0B88 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 502C2E3C1AEA9255001D0B88 /* CoreData.framework */; };
 		502C2E411AEA937A001D0B88 /* myTravelExpenses.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 502C2E3F1AEA937A001D0B88 /* myTravelExpenses.xcdatamodeld */; };
 		50657BC51B824B2300BDBBEC /* MTECategoriesList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50657BC41B824B2300BDBBEC /* MTECategoriesList.plist */; };
 		50657BC81B824DC200BDBBEC /* MTECategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 50657BC71B824DC200BDBBEC /* MTECategory.m */; };
 		50657BCB1B824FC700BDBBEC /* MTECategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 50657BCA1B824FC700BDBBEC /* MTECategories.m */; };
 		50657BCE1B82510600BDBBEC /* UIColor+HexColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 50657BCD1B82510600BDBBEC /* UIColor+HexColors.m */; };
-		50657BD11B825E9100BDBBEC /* MTEExpense.m in Sources */ = {isa = PBXBuildFile; fileRef = 50657BD01B825E9100BDBBEC /* MTEExpense.m */; };
 		50657BD41B82764A00BDBBEC /* MTEUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 50657BD31B82764A00BDBBEC /* MTEUtil.m */; };
 		50657BD51B83165C00BDBBEC /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5074FF281AD832B3009FD06D /* OpenSans-Bold.ttf */; };
 		50657BD61B83165F00BDBBEC /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5074FF291AD832B3009FD06D /* OpenSans-BoldItalic.ttf */; };
@@ -29,6 +27,15 @@
 		50657BDE1B83167C00BDBBEC /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5074FF311AD832B3009FD06D /* OpenSans-SemiboldItalic.ttf */; };
 		50657BF21B83C47D00BDBBEC /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50657BF11B83C41100BDBBEC /* Charts.framework */; };
 		50657BF31B83C47D00BDBBEC /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 50657BF11B83C41100BDBBEC /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		50657C141B84849300BDBBEC /* currencies.csv in Resources */ = {isa = PBXBuildFile; fileRef = 50657C131B84849300BDBBEC /* currencies.csv */; };
+		50657C261B848C7700BDBBEC /* MTETravel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50657C251B848C7700BDBBEC /* MTETravel.m */; };
+		50657C291B848C7800BDBBEC /* MTEExpense.m in Sources */ = {isa = PBXBuildFile; fileRef = 50657C281B848C7800BDBBEC /* MTEExpense.m */; };
+		50657C2C1B848C7800BDBBEC /* MTEExchangeRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 50657C2B1B848C7800BDBBEC /* MTEExchangeRate.m */; };
+		50657C2F1B848E0A00BDBBEC /* MTECurrencies.m in Sources */ = {isa = PBXBuildFile; fileRef = 50657C2E1B848E0A00BDBBEC /* MTECurrencies.m */; };
+		50657C321B849A1000BDBBEC /* MTEExchangeRateTransient.m in Sources */ = {isa = PBXBuildFile; fileRef = 50657C311B849A1000BDBBEC /* MTEExchangeRateTransient.m */; };
+		50657C351B849BA900BDBBEC /* MTECurrencyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50657C341B849BA900BDBBEC /* MTECurrencyTableViewController.m */; };
+		50657C381B8CC86A00BDBBEC /* MTETravelTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50657C371B8CC86A00BDBBEC /* MTETravelTabBarController.m */; };
+		50657C3D1B8CCB1F00BDBBEC /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 50657C3C1B8CCB1F00BDBBEC /* UIImage+Color.m */; };
 		5074FEE81AD05451009FD06D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FEE71AD05451009FD06D /* main.m */; };
 		5074FEEB1AD05451009FD06D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FEEA1AD05451009FD06D /* AppDelegate.m */; };
 		5074FEF11AD05451009FD06D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5074FEEF1AD05451009FD06D /* Main.storyboard */; };
@@ -44,6 +51,7 @@
 		5074FF331AD93FA2009FD06D /* MTETravelListEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5074FF321AD93FA2009FD06D /* MTETravelListEmptyView.xib */; };
 		5074FF361AD9430B009FD06D /* MTETravelListEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF351AD9430B009FD06D /* MTETravelListEmptyView.m */; };
 		5074FF3C1AD98514009FD06D /* MTECurrencyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF3B1AD98514009FD06D /* MTECurrencyTableViewCell.m */; };
+		509AA6131B8D08FE00DDE1CD /* MTECurrencyTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 509AA6121B8D08FE00DDE1CD /* MTECurrencyTextField.m */; };
 		50CEE97E1AF02205008D59CE /* MTEAddTravelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50CEE97D1AF02205008D59CE /* MTEAddTravelViewController.m */; };
 		50D4E1951B3F1DFD00011085 /* MTEExpenseListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50D4E1941B3F1DFD00011085 /* MTEExpenseListTableViewController.m */; };
 		50E7747E1B2CC2F800D900FC /* MTEAddExpenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E7747D1B2CC2F800D900FC /* MTEAddExpenseViewController.m */; };
@@ -95,8 +103,6 @@
 		2C54EAD2CC319F6CE46F4779 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		50150B5D1AEADDAD005A63CF /* MTEModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTEModel.h; sourceTree = "<group>"; };
 		50150B5E1AEADDAD005A63CF /* MTEModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTEModel.m; sourceTree = "<group>"; };
-		50150B661AEAE4BB005A63CF /* MTETravel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTETravel.h; sourceTree = "<group>"; };
-		50150B671AEAE4BB005A63CF /* MTETravel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTETravel.m; sourceTree = "<group>"; };
 		502C2E3C1AEA9255001D0B88 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		502C2E3E1AEA9306001D0B88 /* myTravelExpenses-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "myTravelExpenses-Prefix.pch"; sourceTree = "<group>"; };
 		502C2E401AEA937A001D0B88 /* myTravelExpenses.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myTravelExpenses.xcdatamodel; sourceTree = "<group>"; };
@@ -107,11 +113,26 @@
 		50657BCA1B824FC700BDBBEC /* MTECategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTECategories.m; sourceTree = "<group>"; };
 		50657BCC1B82510600BDBBEC /* UIColor+HexColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexColors.h"; sourceTree = "<group>"; };
 		50657BCD1B82510600BDBBEC /* UIColor+HexColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexColors.m"; sourceTree = "<group>"; };
-		50657BCF1B825E9100BDBBEC /* MTEExpense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTEExpense.h; sourceTree = "<group>"; };
-		50657BD01B825E9100BDBBEC /* MTEExpense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTEExpense.m; sourceTree = "<group>"; };
 		50657BD21B82764A00BDBBEC /* MTEUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTEUtil.h; sourceTree = "<group>"; };
 		50657BD31B82764A00BDBBEC /* MTEUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTEUtil.m; sourceTree = "<group>"; };
 		50657BEC1B83C41100BDBBEC /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../Downloads/ios-charts-master/Charts/Charts.xcodeproj"; sourceTree = "<group>"; };
+		50657C131B84849300BDBBEC /* currencies.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = currencies.csv; sourceTree = "<group>"; };
+		50657C241B848C7700BDBBEC /* MTETravel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTETravel.h; sourceTree = "<group>"; };
+		50657C251B848C7700BDBBEC /* MTETravel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTETravel.m; sourceTree = "<group>"; };
+		50657C271B848C7800BDBBEC /* MTEExpense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTEExpense.h; sourceTree = "<group>"; };
+		50657C281B848C7800BDBBEC /* MTEExpense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTEExpense.m; sourceTree = "<group>"; };
+		50657C2A1B848C7800BDBBEC /* MTEExchangeRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTEExchangeRate.h; sourceTree = "<group>"; };
+		50657C2B1B848C7800BDBBEC /* MTEExchangeRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTEExchangeRate.m; sourceTree = "<group>"; };
+		50657C2D1B848E0A00BDBBEC /* MTECurrencies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTECurrencies.h; sourceTree = "<group>"; };
+		50657C2E1B848E0A00BDBBEC /* MTECurrencies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTECurrencies.m; sourceTree = "<group>"; };
+		50657C301B849A1000BDBBEC /* MTEExchangeRateTransient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTEExchangeRateTransient.h; sourceTree = "<group>"; };
+		50657C311B849A1000BDBBEC /* MTEExchangeRateTransient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTEExchangeRateTransient.m; sourceTree = "<group>"; };
+		50657C331B849BA900BDBBEC /* MTECurrencyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTECurrencyTableViewController.h; sourceTree = "<group>"; };
+		50657C341B849BA900BDBBEC /* MTECurrencyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTECurrencyTableViewController.m; sourceTree = "<group>"; };
+		50657C361B8CC86A00BDBBEC /* MTETravelTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTETravelTabBarController.h; sourceTree = "<group>"; };
+		50657C371B8CC86A00BDBBEC /* MTETravelTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTETravelTabBarController.m; sourceTree = "<group>"; };
+		50657C3B1B8CCB1F00BDBBEC /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
+		50657C3C1B8CCB1F00BDBBEC /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
 		5074FEE21AD05451009FD06D /* myTravelExpenses.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myTravelExpenses.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5074FEE61AD05451009FD06D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5074FEE71AD05451009FD06D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -150,6 +171,8 @@
 		5074FF351AD9430B009FD06D /* MTETravelListEmptyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTETravelListEmptyView.m; sourceTree = "<group>"; };
 		5074FF3A1AD98514009FD06D /* MTECurrencyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTECurrencyTableViewCell.h; sourceTree = "<group>"; };
 		5074FF3B1AD98514009FD06D /* MTECurrencyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTECurrencyTableViewCell.m; sourceTree = "<group>"; };
+		509AA6111B8D08FE00DDE1CD /* MTECurrencyTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTECurrencyTextField.h; sourceTree = "<group>"; };
+		509AA6121B8D08FE00DDE1CD /* MTECurrencyTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTECurrencyTextField.m; sourceTree = "<group>"; };
 		50CEE97C1AF02205008D59CE /* MTEAddTravelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTEAddTravelViewController.h; sourceTree = "<group>"; };
 		50CEE97D1AF02205008D59CE /* MTEAddTravelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTEAddTravelViewController.m; sourceTree = "<group>"; };
 		50D4E1931B3F1DFD00011085 /* MTEExpenseListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTEExpenseListTableViewController.h; sourceTree = "<group>"; };
@@ -192,6 +215,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		50657BF71B84836D00BDBBEC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				50657C131B84849300BDBBEC /* currencies.csv */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		5074FED91AD05451009FD06D = {
 			isa = PBXGroup;
 			children = (
@@ -217,6 +248,7 @@
 		5074FEE41AD05451009FD06D /* myTravelExpenses */ = {
 			isa = PBXGroup;
 			children = (
+				50657BF71B84836D00BDBBEC /* Resources */,
 				5074FF161AD08509009FD06D /* Util */,
 				5074FF121AD05C0E009FD06D /* Model */,
 				5074FF0B1AD05807009FD06D /* Views */,
@@ -264,6 +296,8 @@
 			children = (
 				50E774781B2CC11600D900FC /* Expense */,
 				50E774771B2CC0F100D900FC /* Travel */,
+				50657C331B849BA900BDBBEC /* MTECurrencyTableViewController.h */,
+				50657C341B849BA900BDBBEC /* MTECurrencyTableViewController.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -273,15 +307,21 @@
 			children = (
 				50150B5D1AEADDAD005A63CF /* MTEModel.h */,
 				50150B5E1AEADDAD005A63CF /* MTEModel.m */,
-				50657BCF1B825E9100BDBBEC /* MTEExpense.h */,
-				50657BD01B825E9100BDBBEC /* MTEExpense.m */,
 				502C2E3F1AEA937A001D0B88 /* myTravelExpenses.xcdatamodeld */,
-				50150B661AEAE4BB005A63CF /* MTETravel.h */,
-				50150B671AEAE4BB005A63CF /* MTETravel.m */,
+				50657C2A1B848C7800BDBBEC /* MTEExchangeRate.h */,
+				50657C2B1B848C7800BDBBEC /* MTEExchangeRate.m */,
+				50657C271B848C7800BDBBEC /* MTEExpense.h */,
+				50657C281B848C7800BDBBEC /* MTEExpense.m */,
+				50657C241B848C7700BDBBEC /* MTETravel.h */,
+				50657C251B848C7700BDBBEC /* MTETravel.m */,
 				50657BC61B824DC200BDBBEC /* MTECategory.h */,
 				50657BC71B824DC200BDBBEC /* MTECategory.m */,
 				50657BC91B824FC700BDBBEC /* MTECategories.h */,
 				50657BCA1B824FC700BDBBEC /* MTECategories.m */,
+				50657C2D1B848E0A00BDBBEC /* MTECurrencies.h */,
+				50657C2E1B848E0A00BDBBEC /* MTECurrencies.m */,
+				50657C301B849A1000BDBBEC /* MTEExchangeRateTransient.h */,
+				50657C311B849A1000BDBBEC /* MTEExchangeRateTransient.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -301,6 +341,8 @@
 				50657BCD1B82510600BDBBEC /* UIColor+HexColors.m */,
 				50657BD21B82764A00BDBBEC /* MTEUtil.h */,
 				50657BD31B82764A00BDBBEC /* MTEUtil.m */,
+				50657C3B1B8CCB1F00BDBBEC /* UIImage+Color.h */,
+				50657C3C1B8CCB1F00BDBBEC /* UIImage+Color.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -354,6 +396,8 @@
 				50CEE97C1AF02205008D59CE /* MTEAddTravelViewController.h */,
 				50CEE97D1AF02205008D59CE /* MTEAddTravelViewController.m */,
 				50E774731B2CBFEB00D900FC /* Cells */,
+				50657C361B8CC86A00BDBBEC /* MTETravelTabBarController.h */,
+				50657C371B8CC86A00BDBBEC /* MTETravelTabBarController.m */,
 			);
 			name = Travel;
 			sourceTree = "<group>";
@@ -367,6 +411,8 @@
 				50D4E1941B3F1DFD00011085 /* MTEExpenseListTableViewController.m */,
 				50F70B221B68D7D30097282C /* MTECategoryViewController.h */,
 				50F70B231B68D7D30097282C /* MTECategoryViewController.m */,
+				509AA6111B8D08FE00DDE1CD /* MTECurrencyTextField.h */,
+				509AA6121B8D08FE00DDE1CD /* MTECurrencyTextField.m */,
 			);
 			name = Expense;
 			sourceTree = "<group>";
@@ -499,6 +545,7 @@
 				50657BD61B83165F00BDBBEC /* OpenSans-BoldItalic.ttf in Resources */,
 				50657BC51B824B2300BDBBEC /* MTECategoriesList.plist in Resources */,
 				5074FEF61AD05451009FD06D /* LaunchScreen.xib in Resources */,
+				50657C141B84849300BDBBEC /* currencies.csv in Resources */,
 				50657BDA1B83166D00BDBBEC /* OpenSans-Light.ttf in Resources */,
 				50657BDC1B83167400BDBBEC /* OpenSans-Regular.ttf in Resources */,
 				50657BDD1B83167900BDBBEC /* OpenSans-Semibold.ttf in Resources */,
@@ -554,24 +601,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				50150B5F1AEADDAD005A63CF /* MTEModel.m in Sources */,
-				50657BD11B825E9100BDBBEC /* MTEExpense.m in Sources */,
 				5074FF361AD9430B009FD06D /* MTETravelListEmptyView.m in Sources */,
+				50657C261B848C7700BDBBEC /* MTETravel.m in Sources */,
+				509AA6131B8D08FE00DDE1CD /* MTECurrencyTextField.m in Sources */,
 				5074FF111AD05A9B009FD06D /* MTETravelTableViewCell.m in Sources */,
 				502C2E411AEA937A001D0B88 /* myTravelExpenses.xcdatamodeld in Sources */,
+				50657C2F1B848E0A00BDBBEC /* MTECurrencies.m in Sources */,
+				50657C291B848C7800BDBBEC /* MTEExpense.m in Sources */,
 				50E7747E1B2CC2F800D900FC /* MTEAddExpenseViewController.m in Sources */,
+				50657C351B849BA900BDBBEC /* MTECurrencyTableViewController.m in Sources */,
 				5074FF251AD82744009FD06D /* MTEDefaultTheme.m in Sources */,
 				5074FF3C1AD98514009FD06D /* MTECurrencyTableViewCell.m in Sources */,
+				50657C2C1B848C7800BDBBEC /* MTEExchangeRate.m in Sources */,
 				50657BC81B824DC200BDBBEC /* MTECategory.m in Sources */,
 				50657BCE1B82510600BDBBEC /* UIColor+HexColors.m in Sources */,
 				5074FF221AD82731009FD06D /* MTETheme.m in Sources */,
 				50D4E1951B3F1DFD00011085 /* MTEExpenseListTableViewController.m in Sources */,
 				50657BD41B82764A00BDBBEC /* MTEUtil.m in Sources */,
 				5074FF1C1AD08632009FD06D /* MTEHelper.m in Sources */,
-				50150B681AEAE4BB005A63CF /* MTETravel.m in Sources */,
+				50657C381B8CC86A00BDBBEC /* MTETravelTabBarController.m in Sources */,
 				50657BCB1B824FC700BDBBEC /* MTECategories.m in Sources */,
 				5074FEEB1AD05451009FD06D /* AppDelegate.m in Sources */,
 				50F70B241B68D7D30097282C /* MTECategoryViewController.m in Sources */,
+				50657C321B849A1000BDBBEC /* MTEExchangeRateTransient.m in Sources */,
 				50CEE97E1AF02205008D59CE /* MTEAddTravelViewController.m in Sources */,
+				50657C3D1B8CCB1F00BDBBEC /* UIImage+Color.m in Sources */,
 				5074FF0E1AD0583A009FD06D /* MTETravelListViewController.m in Sources */,
 				5074FEE81AD05451009FD06D /* main.m in Sources */,
 				5074FF191AD0852B009FD06D /* MTEConfigUtil.m in Sources */,

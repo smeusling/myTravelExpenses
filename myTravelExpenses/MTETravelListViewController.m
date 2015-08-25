@@ -17,6 +17,8 @@
 #import "MTEModel.h"
 #import "MTEAddTravelViewController.h"
 #import "MTEExpenseListTableViewController.h"
+#import "MTECurrencies.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface MTETravelListViewController () <MTEAddTravelDelegate>
 
@@ -105,8 +107,10 @@
     }else{
         cell.travelImageView.image = [UIImage imageNamed:@"japon"];
     }
+    
+    NSNumberFormatter *formatter = [MTECurrencies formatter:travel.currencyCode];
 
-//    cell.travelCurrency.text = [travel primaryCurrency].name;
+    cell.travelCurrency.text = [formatter stringFromNumber:[travel totalAmount]];
 //    cell.travelUserCurrency.text = self.profile.currency.name;
     
     return cell;
@@ -210,8 +214,21 @@
 
 - (void)menuButtonTapped
 {
-    
+    [self takeScreenShot];
 }
 
+-(void)takeScreenShot
+{
+    UIWindow *window = [[[UIApplication sharedApplication] windows] objectAtIndex:0];
+    if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)])
+        UIGraphicsBeginImageContextWithOptions(window.bounds.size, NO, [UIScreen mainScreen].scale);
+    else
+        UIGraphicsBeginImageContext(window.bounds.size);
+    
+    [window.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    self.imageView.image = image;
+}
 
 @end

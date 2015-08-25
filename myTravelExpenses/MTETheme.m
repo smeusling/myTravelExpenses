@@ -34,7 +34,12 @@
     //[[UITabBar appearance] setBackgroundColor:[theme tabBarTintColor]];
     //[[UITabBar appearance] setTranslucent:YES];
     [[UITabBar appearance] setBarTintColor:[theme tabBarTintColor]];
-    [[UIView appearanceWhenContainedIn:[UITabBar class], nil] setTintColor: [theme tabBarButtonColor]];
+    //[[UIView appearanceWhenContainedIn:[UITabBar class], nil] setTintColor: [theme tabBarButtonColor]];
+    
+    [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : [theme tabBarButtonColor] }
+                                             forState:UIControlStateNormal];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor whiteColor] }
+                                             forState:UIControlStateSelected];
 }
 
 @end

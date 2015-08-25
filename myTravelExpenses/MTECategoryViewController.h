@@ -10,9 +10,10 @@
 #import <Charts/Charts.h>
 
 @class MTETravel;
-@interface MTECategoryViewController : UIViewController <ChartViewDelegate>
+@interface MTECategoryViewController : UIViewController <ChartViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property(nonatomic, strong)MTETravel *travel;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (weak, nonatomic) IBOutlet PieChartView *pieChartView;
 

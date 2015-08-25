@@ -1,5 +1,5 @@
 //
-//  MTEExpense.h
+//  MTEExchangeRate.h
 //  myTravelExpenses
 //
 //  Created by Stéphanie Meusling on 19.08.15.
@@ -11,14 +11,13 @@
 
 @class MTETravel;
 
-@interface MTEExpense : NSManagedObject
+@interface MTEExchangeRate : NSManagedObject
 
-@property (nonatomic, retain) NSDecimalNumber * amount;
 @property (nonatomic, retain) NSString * currencyCode;
-@property (nonatomic, retain) NSDate * date;
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSString * uuid;
-@property (nonatomic, retain) NSString * categoryId;
+@property (nonatomic, retain) NSString * travelCurrencyCode;
+@property (nonatomic, retain) NSDecimalNumber * rate;
 @property (nonatomic, retain) MTETravel *travel;
+
++ (void)getExchangeRates:(void (^)(NSDictionary *))ratesBlock;
 
 @end

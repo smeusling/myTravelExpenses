@@ -14,6 +14,9 @@
 #import "MTECategories.h"
 #import "MTECategory.h"
 #import "MTECategoryViewController.h"
+#import "MTECurrencies.h"
+#import "MTEExchangeRate.h"
+#import "MTEAddTravelViewController.h"
 
 @interface MTEExpenseListTableViewController () <MTEAddExpenseDelegate>
 
@@ -26,6 +29,8 @@
 @property (strong, nonatomic) NSArray *sortedDays;
 @property (strong, nonatomic) NSDateFormatter *sectionDateFormatter;
 @property (strong, nonatomic) NSDateFormatter *cellDateFormatter;
+
+@property (strong, nonatomic) NSNumberFormatter *currencyFormatter;
 
 
 @end
@@ -44,6 +49,12 @@
     
     MTECategoryViewController *categoryViewController = [self.tabBarController.viewControllers objectAtIndex:0];
     categoryViewController.travel = self.travel;
+    
+    MTECategoryViewController *addTravelViewController = [self.tabBarController.viewControllers objectAtIndex:2];
+    addTravelViewController.travel = self.travel;
+
+    
+    self.currencyFormatter = [MTECurrencies formatter:self.travel.currencyCode];
 
     [self setupBackgroundView];
     
@@ -119,7 +130,10 @@
     nameLabel.text = expense.name;
     
     UILabel *priceLabel = (UILabel *)[cell viewWithTag:2];
-    priceLabel.text = [NSString stringWithFormat:@"%.2f",[expense.amount floatValue]];
+    
+    NSNumberFormatter *formatter = [MTECurrencies formatter:expense.currencyCode];
+    priceLabel.text = [formatter stringFromNumber:expense.amount];
+    //priceLabel.text = [NSString stringWithFormat:@"%.2f",[expense.amount floatValue]];
     
     UIView *categoryView = (UIView *)[cell viewWithTag:3];
     categoryView.layer.cornerRadius = 10;
@@ -158,12 +172,8 @@
     amountLabel.font = [UIFont fontWithName:@"OpenSans" size:16];
     
     NSArray *expensesOnThisDay = [self.sections objectForKey:dateRepresentingThisDay];
-    float total = 0;
-    for (MTEExpense *expense in expensesOnThisDay) {
-        total += [expense.amount floatValue];
-    }
+    amountLabel.text = [self.currencyFormatter stringFromNumber:[self totalAmount:expensesOnThisDay]];
     
-    amountLabel.text = [NSString stringWithFormat:@"%.2f", total];
     [header addSubview:amountLabel];
     
     UIView *separator = [[UIView alloc]initWithFrame:CGRectMake(0, header.frame.size.height - 1, header.frame.size.width, 1)];
@@ -181,7 +191,6 @@
 
     return header;
 }
-
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 //{
@@ -234,7 +243,7 @@
     amountLabel.textAlignment = NSTextAlignmentRight;
     amountLabel.textColor = [UIColor whiteColor];
     amountLabel.font = [UIFont fontWithName:@"OpenSans" size:20];
-    amountLabel.text = [NSString stringWithFormat:@"%.2f", self.travelTotalAmount];
+    amountLabel.text = [self.currencyFormatter stringFromNumber:[self.travel totalAmount]];
     [header addSubview:amountLabel];
 
     
@@ -307,7 +316,7 @@
 
 - (void)sortExpensesByDate
 {
-    NSSortDescriptor* sortByDate = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
+    NSSortDescriptor* sortByDate = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO];
     NSMutableArray *expenses = [self.travel.expenses allObjects].mutableCopy;
     
     [expenses sortUsingDescriptors:[NSArray arrayWithObject:sortByDate]];
@@ -345,9 +354,26 @@
     [self.cellDateFormatter setDateStyle:NSDateFormatterNoStyle];
     [self.cellDateFormatter setTimeStyle:NSDateFormatterShortStyle];
     
-    
-    
 }
 
+- (NSDecimalNumber *)totalAmount:(NSArray *)expenses
+{
+    NSDecimalNumber *total = [NSDecimalNumber zero];
+    for (MTEExpense *expense in expenses) {
+        NSDecimalNumber *value = expense.amount;
+        if ([expense.currencyCode isEqualToString:self.travel.currencyCode] == NO) {
+            for (MTEExchangeRate *rate in self.travel.rates) {
+                if ([rate.travelCurrencyCode isEqualToString:self.travel.currencyCode]
+                    && [rate.currencyCode isEqualToString:expense.currencyCode]
+                    && (rate.rate != nil)) {
+                    value = [expense.amount decimalNumberByMultiplyingBy:rate.rate];
+                    break;
+                }
+            }
+        }
+        total = [total decimalNumberByAdding:value];
+    }
+    return total;
+}
 
 @end

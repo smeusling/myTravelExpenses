@@ -11,10 +11,15 @@
 #import "MTEExpense.h"
 #import "MTECategory.h"
 #import "MTECategories.h"
+#import "MTECurrencies.h"
+#import "MTEExchangeRate.h"
 
 @interface MTECategoryViewController ()
 
 @property (nonatomic, strong) MTECategories *categories;
+
+@property (nonatomic, strong) NSArray *expenses;
+@property (nonatomic, strong) NSMutableDictionary *categoryDict;
 
 @end
 
@@ -24,14 +29,143 @@
     [super viewDidLoad];
     
     self.categories = [MTECategories sharedCategories];
+    self.categoryDict = [[NSMutableDictionary alloc]init];
+    
+    self.expenses = [[NSMutableArray alloc]initWithArray:[self.travel.expenses allObjects]];
+    
+    // This will remove extra separators from tableview
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     [self setupPieChart];
+    
+    [self setupCategoryDictionary];
+    
+    [self setupHeaderView];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - Table view data source / delegate
+
+- (void)setupCategoryDictionary
+{
+    for (MTEExpense *expense in self.expenses) {
+        if([self.categoryDict objectForKey:expense.categoryId]){
+            NSDecimalNumber *total = [self.categoryDict objectForKey:expense.categoryId];
+            NSDecimalNumber *value = expense.amount;
+            
+            if ([expense.currencyCode isEqualToString:self.travel.currencyCode] == NO) {
+                for (MTEExchangeRate *rate in self.travel.rates) {
+                    if ([rate.travelCurrencyCode isEqualToString:self.travel.currencyCode]
+                        && [rate.currencyCode isEqualToString:expense.currencyCode]
+                        && (rate.rate != nil)) {
+                        value = [expense.amount decimalNumberByMultiplyingBy:rate.rate];
+                        break;
+                    }
+                }
+            }
+            total = [total decimalNumberByAdding:value];
+            
+            [self.categoryDict setObject:total forKey:expense.categoryId];
+            
+            
+        }else{
+            NSDecimalNumber *value = expense.amount;
+            
+            if ([expense.currencyCode isEqualToString:self.travel.currencyCode] == NO) {
+                for (MTEExchangeRate *rate in self.travel.rates) {
+                    if ([rate.travelCurrencyCode isEqualToString:self.travel.currencyCode]
+                        && [rate.currencyCode isEqualToString:expense.currencyCode]
+                        && (rate.rate != nil)) {
+                        value = [expense.amount decimalNumberByMultiplyingBy:rate.rate];
+                        break;
+                    }
+                }
+            }
+
+            [self.categoryDict setObject:value forKey:expense.categoryId];
+        }
+    }
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.categoryDict count];
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CategoryCell" forIndexPath:indexPath];
+    
+    NSArray *keys = [self.categoryDict allKeys];
+    
+    NSString *catId = [keys objectAtIndex:indexPath.row];
+    
+    MTECategory *category = [[MTECategories sharedCategories]categoryById:catId];
+    
+    UILabel *nameLabel = (UILabel *)[cell viewWithTag:2];
+    nameLabel.text = category.name;
+    
+    UILabel *priceLabel = (UILabel *)[cell viewWithTag:3];
+    
+    NSNumberFormatter *formatter = [MTECurrencies formatter:self.travel.currencyCode];
+    priceLabel.text = [formatter stringFromNumber:[self.categoryDict objectForKey:catId]];
+    
+    UIView *categoryView = (UIView *)[cell viewWithTag:1];
+    categoryView.layer.cornerRadius = 10;
+    categoryView.layer.masksToBounds = YES;
+    
+    categoryView.backgroundColor = category.color;
+    
+    
+    return cell;
+}
+
+- (void)setupHeaderView
+{
+    UIView *header = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 40)];
+    
+    header.backgroundColor = [UIColor whiteColor];
+    
+    UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 10, header.frame.size.width -20, header.frame.size.height - 20)];
+    titleLabel.backgroundColor = [UIColor whiteColor];
+    titleLabel.textAlignment = NSTextAlignmentLeft;
+    titleLabel.textColor = [UIColor blackColor];
+    titleLabel.font = [UIFont fontWithName:@"OpenSans-Light" size:15];
+    titleLabel.text = @"Total".uppercaseString;
+    
+    [header addSubview:titleLabel];
+    
+    UIView *separator = [[UIView alloc]initWithFrame:CGRectMake(0, header.frame.size.height - 1, header.frame.size.width, 1)];
+    
+    separator.backgroundColor = [UIColor colorWithRed:230/255.f green:230/255.f blue:230/255.f alpha:1];
+    
+    [header addSubview:separator];
+    
+    UIView *separatorTop = [[UIView alloc]initWithFrame:CGRectMake(0, 0, header.frame.size.width, 1)];
+    
+    separatorTop.backgroundColor = [UIColor colorWithRed:230/255.f green:230/255.f blue:230/255.f alpha:1];
+    
+    [header addSubview:separatorTop];
+    
+    
+    self.tableView.tableHeaderView = header;
+    
+}
+
+
 
 #pragma mark - ChartViewDelegate
 
@@ -50,9 +184,11 @@
     
     self.pieChartView.delegate = self;
     
+    [self.pieChartView setUserInteractionEnabled:NO];
+    
     self.pieChartView.usePercentValuesEnabled = YES;
     self.pieChartView.holeTransparent = YES;
-    self.pieChartView.centerTextFont = [UIFont fontWithName:@"OpenSans-Light" size:12.f];
+    self.pieChartView.centerTextFont = [UIFont fontWithName:@"OpenSans" size:12.f];
     self.pieChartView.holeRadiusPercent = 0.58;
     self.pieChartView.transparentCircleRadiusPercent = 0.61;
     self.pieChartView.descriptionText = @"";
@@ -63,6 +199,7 @@
     
     
     ChartLegend *l = self.pieChartView.legend;
+    [l setEnabled:NO];
     l.position = ChartLegendPositionRightOfChart;
     l.xEntrySpace = 7.0;
     l.yEntrySpace = 0.0;
@@ -76,13 +213,10 @@
     NSMutableArray *colors = [[NSMutableArray alloc] init];
     
     NSArray *expenses = [[NSArray alloc]initWithArray:[self.travel.expenses allObjects]];
-
-    float totalAmount = 0;
     
     NSMutableDictionary *catDict = [[NSMutableDictionary alloc]init];
     for (int i = 0; i < [expenses count]; i++){
         MTEExpense *expense = expenses[i];
-        totalAmount += [expense.amount floatValue];
         
         NSNumber *amount = [catDict objectForKey:expense.categoryId];
         if(amount) {
@@ -103,37 +237,14 @@
         [xVals addObject:cat.name];
         [colors addObject:cat.color];
     }
-    self.pieChartView.centerText = [NSString stringWithFormat:@"%.2f", totalAmount];
     
-//    [yVals1 addObject:[[BarChartDataEntry alloc] initWithValue:345 xIndex:0]];
-//    [yVals1 addObject:[[BarChartDataEntry alloc] initWithValue:234 xIndex:1]];
-//    [yVals1 addObject:[[BarChartDataEntry alloc] initWithValue:1234 xIndex:2]];
-//    [yVals1 addObject:[[BarChartDataEntry alloc] initWithValue:23 xIndex:3]];
-//    
-//    NSMutableArray *xVals = [[NSMutableArray alloc] init];
-//    
-////    for (int i = 0; i < count; i++)
-////    {
-////        [xVals addObject:parties[i % parties.count]];
-////    }
-//    
-//    [xVals addObject:@"Transport"];
-//    [xVals addObject:@"Hebergement"];
-//    [xVals addObject:@"Café"];
-//    [xVals addObject:@"Souvenirs"];
+    NSNumberFormatter *formatter = [MTECurrencies formatter:self.travel.currencyCode];
     
-    PieChartDataSet *dataSet = [[PieChartDataSet alloc] initWithYVals:yVals1 label:@"Election Results"];
+    
+    self.pieChartView.centerText = [NSString stringWithFormat:@"Dépenses Totales\n%@ ",[formatter stringFromNumber:[self.travel totalAmount]]];
+    
+    PieChartDataSet *dataSet = [[PieChartDataSet alloc] initWithYVals:yVals1 label:@"Catégories"];
     dataSet.sliceSpace = 3.0;
-    
-    // add a lot of colors
-    
-//    NSMutableArray *colors = [[NSMutableArray alloc] init];
-//    [colors addObjectsFromArray:ChartColorTemplates.vordiplom];
-//    [colors addObjectsFromArray:ChartColorTemplates.joyful];
-//    [colors addObjectsFromArray:ChartColorTemplates.colorful];
-//    [colors addObjectsFromArray:ChartColorTemplates.liberty];
-////    [colors addObjectsFromArray:ChartColorTemplates.pastel];
-////    [colors addObject:[UIColor colorWithRed:51/255.f green:181/255.f blue:229/255.f alpha:1.f]];
     
     dataSet.colors = colors;
     
@@ -145,7 +256,7 @@
     pFormatter.multiplier = @1.f;
     pFormatter.percentSymbol = @" %";
     [data setValueFormatter:pFormatter];
-    [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:11.f]];
+    [data setValueFont:[UIFont fontWithName:@"OpenSans" size:11.f]];
     [data setValueTextColor:UIColor.whiteColor];
     
     self.pieChartView.data = data;

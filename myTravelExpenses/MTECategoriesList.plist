@@ -8,7 +8,7 @@
 		<key>name</key>
 		<string>Hébérgement</string>
 		<key>color</key>
-		<string>f688fd</string>
+		<string>9777a8</string>
 	</dict>
 	<dict>
 		<key>id</key>
@@ -16,7 +16,7 @@
 		<key>name</key>
 		<string>Transport</string>
 		<key>color</key>
-		<string>88bcfd</string>
+		<string>48a0dc</string>
 	</dict>
 	<dict>
 		<key>id</key>
@@ -24,7 +24,7 @@
 		<key>name</key>
 		<string>Repas</string>
 		<key>color</key>
-		<string>88fdd5</string>
+		<string>ed7161</string>
 	</dict>
 	<dict>
 		<key>id</key>
@@ -32,7 +32,7 @@
 		<key>name</key>
 		<string>Café</string>
 		<key>color</key>
-		<string>bf88fd</string>
+		<string>88c057</string>
 	</dict>
 	<dict>
 		<key>id</key>
@@ -40,7 +40,7 @@
 		<key>name</key>
 		<string>Apéro</string>
 		<key>color</key>
-		<string>fd9688</string>
+		<string>e54edc</string>
 	</dict>
 	<dict>
 		<key>id</key>
@@ -48,7 +48,7 @@
 		<key>name</key>
 		<string>Bar</string>
 		<key>color</key>
-		<string>eefd88</string>
+		<string>4fcac9</string>
 	</dict>
 	<dict>
 		<key>id</key>
@@ -56,7 +56,7 @@
 		<key>name</key>
 		<string>Souvenirs</string>
 		<key>color</key>
-		<string>f688fd</string>
+		<string>ca4f61</string>
 	</dict>
 	<dict>
 		<key>id</key>
@@ -64,7 +64,7 @@
 		<key>name</key>
 		<string>Visite</string>
 		<key>color</key>
-		<string>9efd88</string>
+		<string>4fca9a</string>
 	</dict>
 </array>
 </plist>

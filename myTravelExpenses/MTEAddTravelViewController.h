@@ -12,7 +12,9 @@
 
 @protocol MTEAddTravelDelegate;
 
-@interface MTEAddTravelViewController : UIViewController <UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface MTEAddTravelViewController : UIViewController <UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate>
+
+@property (strong, nonatomic) MTETravel *travel;
 
 @property (nonatomic, weak) id<MTEAddTravelDelegate> addTravelDelegate;
 
@@ -21,8 +23,12 @@
 @property (weak, nonatomic) IBOutlet UITextField *endDateTextField;
 @property (weak, nonatomic) IBOutlet UITextField *currencyCodeTextField;
 @property (weak, nonatomic) IBOutlet UIButton *addPhotoButton;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIImageView *buttonImageView;
+@property (weak, nonatomic) IBOutlet UIButton *addTravelButton;
 
 - (IBAction)addPhotoButtonClicked:(id)sender;
+- (IBAction)addTravelButtonClicked:(id)sender;
 
 @end
 

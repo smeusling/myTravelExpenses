@@ -9,6 +9,7 @@
 #import "MTEModel.h"
 #import "MTETravel.h"
 #import "MTEExpense.h"
+#import "MTEExchangeRate.h"
 
 @interface MTEModel()
 
@@ -162,6 +163,14 @@
     MTETravel *travel = [NSEntityDescription
                          insertNewObjectForEntityForName:@"Travel"
                          inManagedObjectContext:context];
+    travel = [self updateTravel:travel name:name startDate:startDate endDate:endDate image:image currencyCode:currencyCode];
+
+    return travel;
+}
+
+-(MTETravel *)updateTravel:(MTETravel *)travel name:(NSString *)name startDate:(NSDate *)startDate endDate:(NSDate *)endDate image:(NSData *)image currencyCode:(NSString *)currencyCode
+{
+    NSManagedObjectContext *context = [self managedObjectContext];
     travel.uuid = [[NSUUID UUID] UUIDString];
     travel.name = name;
     travel.startDate = startDate;
@@ -173,11 +182,13 @@
     if (![context save:&error]) {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
     }
-
+    
     return travel;
 }
 
--(MTEExpense *)createExpenseWithName:(NSString *)name date:(NSDate *)date amount:(NSNumber *)amount travel:(MTETravel *)travel currencyCode:(NSString *)currencyCode categoryId:(NSString *)categoryId
+
+
+-(MTEExpense *)createExpenseWithName:(NSString *)name date:(NSDate *)date amount:(NSDecimalNumber *)amount travel:(MTETravel *)travel currencyCode:(NSString *)currencyCode categoryId:(NSString *)categoryId
 {
     NSManagedObjectContext *context = [self managedObjectContext];
     MTEExpense *expense = [NSEntityDescription
@@ -202,6 +213,29 @@
     }
 
     return expense;
+}
+
+- (MTEExchangeRate *)addExchangeRate:(MTETravel *)travel currencyCode:(NSString *)currencyCode rate:(NSDecimalNumber *)rate
+{
+    NSManagedObjectContext *context = [self managedObjectContext];
+    MTEExchangeRate *exchangeRate = (MTEExchangeRate *)[NSEntityDescription insertNewObjectForEntityForName:@"ExchangeRate" inManagedObjectContext:context];
+    exchangeRate.travel = travel;
+    exchangeRate.travelCurrencyCode = travel.currencyCode;
+    exchangeRate.currencyCode = currencyCode;
+    exchangeRate.rate = rate;
+    
+    NSMutableSet *rates = [travel mutableSetValueForKey:@"rates"];
+    [rates addObject:exchangeRate];
+    
+    travel.rates = rates;
+    
+    NSError *error;
+    if (![context save:&error]) {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
+
+    
+    return exchangeRate;
 }
 
 
