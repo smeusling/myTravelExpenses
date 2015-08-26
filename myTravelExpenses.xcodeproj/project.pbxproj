@@ -135,14 +135,13 @@
 		50657C3B1B8CCB1F00BDBBEC /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
 		50657C3C1B8CCB1F00BDBBEC /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
 		5070F2461B8E1F1300BB823C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
-		5070F2471B8E1F1300BB823C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5070F2511B8E29F600BB823C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5070F2531B8E29F800BB823C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5070F2551B8E314200BB823C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/MTECategoriesList.plist; sourceTree = "<group>"; };
 		5070F2571B8E314600BB823C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = fr; path = fr.lproj/MTECategoriesList.plist; sourceTree = "<group>"; };
 		5070F25B1B8E325400BB823C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Currencies.strings; sourceTree = "<group>"; };
 		5070F25D1B8E325B00BB823C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Currencies.strings; sourceTree = "<group>"; };
-		5074FEE21AD05451009FD06D /* myTravelExpenses.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myTravelExpenses.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5074FEE21AD05451009FD06D /* TravEx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravEx.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5074FEE61AD05451009FD06D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5074FEE71AD05451009FD06D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5074FEE91AD05451009FD06D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -248,7 +247,7 @@
 		5074FEE31AD05451009FD06D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5074FEE21AD05451009FD06D /* myTravelExpenses.app */,
+				5074FEE21AD05451009FD06D /* TravEx.app */,
 				5074FEFB1AD05451009FD06D /* myTravelExpensesTests.xctest */,
 			);
 			name = Products;
@@ -466,7 +465,7 @@
 			);
 			name = myTravelExpenses;
 			productName = myTravelExpenses;
-			productReference = 5074FEE21AD05451009FD06D /* myTravelExpenses.app */;
+			productReference = 5074FEE21AD05451009FD06D /* TravEx.app */;
 			productType = "com.apple.product-type.application";
 		};
 		5074FEFA1AD05451009FD06D /* myTravelExpensesTests */ = {
@@ -711,7 +710,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				5074FEF51AD05451009FD06D /* Base */,
-				5070F2471B8E1F1300BB823C /* fr */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
@@ -805,7 +803,8 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = myTravelExpenses/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TravEx;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -817,7 +816,8 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = myTravelExpenses/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TravEx;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

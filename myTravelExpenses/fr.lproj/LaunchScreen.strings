@@ -3,10 +3,10 @@
 "8ie-xW-0ye.text" = "  Copyright (c) 2015 smeusling. All rights reserved.";
 
 /* Class = "UILabel"; text = "Travel Expenses"; ObjectID = "Fon-5c-9IU"; */
-"Fon-5c-9IU.text" = "Travel Expenses";
+"Fon-5c-9IU.text" = "Dépenses de Voyage";
 
 /* Class = "UILabel"; text = "My"; ObjectID = "TnK-ae-aXs"; */
-"TnK-ae-aXs.text" = "My";
+"TnK-ae-aXs.text" = "Mes";
 
 /* Class = "UILabel"; text = "myTravelExpenses"; ObjectID = "kId-c2-rCX"; */
 "kId-c2-rCX.text" = "myTravelExpenses";

@@ -23,11 +23,11 @@
 "Save" = "Sauver";
 "Categories" = "Cateégories";
 
-"EmptyTravelExpense" = "Aucunes dépenses à afficher";
+"EmptyTravelExpense" = "Aucunes dépenses";
 "Total" = "Total";
 "TotalExpense" = "Dépenses Totales\n%@ ";
-"TravelExpense" = "Dépenses de voyage";
-"EmptyTravel" = "Aucun voyage à afficher";
+"TravelExpense" = "Mes Voyages";
+"EmptyTravel" = "Aucun voyage";
 "AddTravel" = "Ajouter un voyage";
 
 "TakePhoto" = "Prendre une photo";

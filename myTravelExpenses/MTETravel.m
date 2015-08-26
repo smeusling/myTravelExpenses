@@ -48,7 +48,7 @@
 - (NSDecimalNumber *)totalAmountInProfileCurrency
 {
     NSDecimalNumber *total = [self totalAmount];
-    if ([self.currencyCode isEqualToString:[MTEConfigUtil profileCurrencyCode]] == NO) {
+    if ([self.currencyCode isEqualToString:[MTEConfigUtil profileCurrencyCode]] == NO && self.profileCurrencyRate) {
         total = [total decimalNumberByMultiplyingBy:self.profileCurrencyRate];
     }
     return total;

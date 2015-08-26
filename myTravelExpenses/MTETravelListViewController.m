@@ -35,7 +35,7 @@
     [super viewDidLoad];
     
     [self loadTravelData];
-//    
+    
 //    for (MTETravel *travel in self.travels) {
 //        [[[MTEModel sharedInstance]managedObjectContext] deleteObject:travel];
 //
@@ -110,7 +110,9 @@
     NSError *error = nil;
     NSArray *fetchedObjects = [[[MTEModel sharedInstance]managedObjectContext] executeFetchRequest:fetchRequest error:&error];
     
-    self.travels = fetchedObjects.mutableCopy;
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"startDate" ascending:NO];
+    NSArray *orderedArray = [fetchedObjects sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    self.travels = orderedArray.mutableCopy;
 }
 
 #pragma mark - Table view data source / delegate
@@ -197,8 +199,7 @@
 
 - (void)addTravel:(MTETravel *)travel
 {
-    [self.travels addObject:travel];
-    [self.tableView reloadData];
+    [self reloadTravelData];
     [self setupBackgroundView];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
