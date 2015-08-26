@@ -23,6 +23,10 @@
     UITabBarItem *dailyItem = [self.tabBar.items objectAtIndex:1];
     UITabBarItem *editItem = [self.tabBar.items objectAtIndex:2];
     
+    catItem.title = NSLocalizedString(@"TabPie", nil);
+    dailyItem.title = NSLocalizedString(@"TabDaily", nil);
+    editItem.title = NSLocalizedString(@"TabEdit", nil);
+    
     UIImage *catImageSelected = [UIImage imageNamed:@"tab-pie.png"];
     UIImage *dailyImageSelected = [UIImage imageNamed:@"tab-daily.png"];
     UIImage *editImageSelected = [UIImage imageNamed:@"tab-edit.png"];

@@ -37,4 +37,9 @@
 "EnterName" = "Entrer un nom";
 "EnterDescription" = "Entrer une description";
 "EnterCategory" = "Choisissez une catégories";
-"Today" = "Ajourd'hui";
+"Today" = "Aujourd'hui";
+"Save" = "Sauver";
+
+"TabDaily" = "Journal";
+"TabPie" = "Catégorie";
+"TabEdit" = "Editer";

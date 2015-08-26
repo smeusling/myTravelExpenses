@@ -53,15 +53,19 @@
         self.startDate = self.travel.startDate;
         self.endDate = self.travel.endDate;
         self.currencyCode = self.travel.currencyCode;
-        self.buttonImageView.image = [UIImage imageWithData:self.travel.image];
-        [self.addTravelButton setTitle:@"Modifier" forState:UIControlStateNormal];
+        if(self.travel.image){
+            self.buttonImageView.image = [UIImage imageWithData:self.travel.image];
+        }else{
+            self.buttonImageView.backgroundColor = [[MTEThemeManager sharedTheme]buttonColor];
+        }
+        [self.addTravelButton setTitle:NSLocalizedString(@"Save", nil) forState:UIControlStateNormal];
     }else{
         self.isNewTravel = YES;
         self.startDate = [NSDate date];
         self.endDate = [NSDate date];
         self.currencyCode = self.profileCurrencyCode;
         self.buttonImageView.backgroundColor = [[MTEThemeManager sharedTheme]buttonColor];
-        [self.addTravelButton setTitle:@"Ajouter" forState:UIControlStateNormal];
+        self.addTravelButton.hidden = YES;
     }
     
     [self.buttonImageView setClipsToBounds:YES];

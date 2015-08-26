@@ -40,3 +40,8 @@
 "EnterDescription" = "Enter description";
 "EnterCategory" = "Choose a category";
 "Today" = "Today";
+"Save" = "Save";
+
+"TabDaily" = "Daily";
+"TabPie" = "Category";
+"TabEdit" = "Edit";

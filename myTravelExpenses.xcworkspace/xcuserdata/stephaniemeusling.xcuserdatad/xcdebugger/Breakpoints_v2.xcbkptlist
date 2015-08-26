@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myTravelExpenses/MTETravelListViewController.m"
-            timestampString = "462311113.908637"
+            timestampString = "462314218.898365"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
+            startingLineNumber = "245"
+            endingLineNumber = "245"
             landmarkName = "-convertDatesToStringWithFirstDate:secondDate:"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myTravelExpenses/MTEExpenseListTableViewController.m"
-            timestampString = "462292368.707986"
+            timestampString = "462314218.898365"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "259"
-            endingLineNumber = "259"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
             landmarkName = "-addExpense:"
             landmarkType = "5">
          </BreakpointContent>

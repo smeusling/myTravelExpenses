@@ -72,6 +72,7 @@
     
 }
 
+
 #pragma mark - Setup methods
 
 - (void)setupNavBar
