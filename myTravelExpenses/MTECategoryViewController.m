@@ -170,7 +170,7 @@
     titleLabel.textAlignment = NSTextAlignmentLeft;
     titleLabel.textColor = [UIColor blackColor];
     titleLabel.font = [UIFont fontWithName:@"OpenSans-Light" size:15];
-    titleLabel.text = @"Total".uppercaseString;
+    titleLabel.text = NSLocalizedString(@"Total", nil).uppercaseString;
     
     [header addSubview:titleLabel];
     
@@ -267,9 +267,9 @@
     NSNumberFormatter *formatter = [MTECurrencies formatter:self.travel.currencyCode];
     
     
-    self.pieChartView.centerText = [NSString stringWithFormat:@"Dépenses Totales\n%@ ",[formatter stringFromNumber:[self.travel totalAmount]]];
+    self.pieChartView.centerText = [NSString stringWithFormat:NSLocalizedString(@"TotalExpense", nil),[formatter stringFromNumber:[self.travel totalAmount]]];
     
-    PieChartDataSet *dataSet = [[PieChartDataSet alloc] initWithYVals:yVals1 label:@"Catégories"];
+    PieChartDataSet *dataSet = [[PieChartDataSet alloc] initWithYVals:yVals1 label:NSLocalizedString(@"Categories", nil)];
     dataSet.sliceSpace = 3.0;
     
     dataSet.colors = colors;

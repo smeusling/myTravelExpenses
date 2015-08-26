@@ -35,12 +35,15 @@
     [super viewDidLoad];
     
     [self loadTravelData];
-    
+//    
 //    for (MTETravel *travel in self.travels) {
 //        [[[MTEModel sharedInstance]managedObjectContext] deleteObject:travel];
 //
 //    }
 //    [[[MTEModel sharedInstance]managedObjectContext] save:nil];
+    
+    // This will remove extra separators from tableview
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
 
     self.tableView.allowsMultipleSelectionDuringEditing = NO;
@@ -62,7 +65,7 @@
 
 - (void)setupNavBar
 {
-    self.title = @"Travel Expenses";
+    self.title = NSLocalizedString(@"TravelExpense", nil);
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"menu-button"] style:UIBarButtonItemStylePlain target:self action:@selector(menuButtonTapped)];
     
@@ -85,7 +88,7 @@
                      loadNibNamed:@"MTETravelListEmptyView"
                      owner:self options:nil]
                     firstObject];
-    view.placeholderLabel.text = @"No Travel Yet";
+    view.placeholderLabel.text = NSLocalizedString(@"EmptyTravel", nil);
     return view;
 }
 

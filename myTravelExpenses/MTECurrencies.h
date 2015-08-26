@@ -20,6 +20,7 @@
 - (NSString *)currencySymbolForCode:(NSString *)code;
 
 + (NSNumberFormatter *)formatter:(NSString *)currencyCode;
++ (NSNumberFormatter *)formatter10Digits:(NSString *)currencyCode;
 + (NSNumberFormatter *)formatterNoCurrency10Digits:(NSString *)currencyCode;
 
 @end

@@ -1,0 +1,66 @@
+
+/* Class = "UITabBarItem"; title = "Category"; ObjectID = "2XW-ab-IgV"; */
+"2XW-ab-IgV.title" = "Category";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "3nO-KJ-f2D"; */
+"3nO-KJ-f2D.text" = "Detail";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "7Xy-bj-z8F"; */
+"7Xy-bj-z8F.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "Selectionner une catégorie"; ObjectID = "86f-ia-81P"; */
+"86f-ia-81P.placeholder" = "Selectionner une catégorie";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "CCN-8u-uyo"; */
+"CCN-8u-uyo.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "Enter name"; ObjectID = "DkN-Pc-TQX"; */
+"DkN-Pc-TQX.placeholder" = "Enter name";
+
+/* Class = "UITextField"; placeholder = "Entrer une description..."; ObjectID = "M0O-4W-uaN"; */
+"M0O-4W-uaN.placeholder" = "Entrer une description...";
+
+/* Class = "UITabBarItem"; title = "Daily"; ObjectID = "NcV-hW-DSn"; */
+"NcV-hW-DSn.title" = "Daily";
+
+/* Class = "UITabBarItem"; title = "Edit"; ObjectID = "Oml-0W-QGs"; */
+"Oml-0W-QGs.title" = "Edit";
+
+/* Class = "UITabBarItem"; title = "Edit"; ObjectID = "PaM-zj-2y0"; */
+"PaM-zj-2y0.title" = "Edit";
+
+/* Class = "UITextField"; placeholder = "End Date"; ObjectID = "Qhj-x8-s1k"; */
+"Qhj-x8-s1k.placeholder" = "End Date";
+
+/* Class = "UILabel"; text = "5675.56CHF"; ObjectID = "RcY-Tj-b9F"; */
+"RcY-Tj-b9F.text" = "5675.56CHF";
+
+/* Class = "UITextField"; placeholder = "Montant"; ObjectID = "T9S-uW-Z3n"; */
+"T9S-uW-Z3n.placeholder" = "Montant";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Vf3-1E-ypS"; */
+"Vf3-1E-ypS.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "WCd-XL-kY6"; */
+"WCd-XL-kY6.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Japon"; ObjectID = "Wq2-Is-xsL"; */
+"Wq2-Is-xsL.text" = "Japon";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "XBj-Kz-6dd"; */
+"XBj-Kz-6dd.text" = "Title";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "bGS-x5-4gY"; */
+"bGS-x5-4gY.text" = "Label";
+
+/* Class = "UILabel"; text = "345$="; ObjectID = "c17-HV-Nda"; */
+"c17-HV-Nda.text" = "345$=";
+
+/* Class = "UILabel"; text = "25 avril - 30 mai 2015"; ObjectID = "f1a-OV-yxS"; */
+"f1a-OV-yxS.text" = "25 avril - 30 mai 2015";
+
+/* Class = "UITextField"; placeholder = "Start Date"; ObjectID = "uoZ-xd-kWQ"; */
+"uoZ-xd-kWQ.placeholder" = "Start Date";
+
+/* Class = "UITextField"; placeholder = "Currency code"; ObjectID = "y5V-Xf-FV8"; */
+"y5V-Xf-FV8.placeholder" = "Currency code";

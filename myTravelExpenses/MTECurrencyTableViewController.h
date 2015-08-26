@@ -11,6 +11,7 @@
 @protocol MTECurrencyPickerDelegate <NSObject>
 
 - (void)selectedCurrencyWithCode:(NSString *)code;
+- (void)cancelCurrencyPicker;
 
 @end
 

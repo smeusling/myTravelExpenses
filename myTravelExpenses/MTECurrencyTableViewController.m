@@ -32,7 +32,17 @@
     
     self.searchSections = [[MTECurrencies sharedInstance] sections];
     self.searchCodesBySections = [[MTECurrencies sharedInstance] currencyCodesBySections];
+    
+    [self setupNavBar];
 }
+
+#pragma mark - Setup
+
+- (void)setupNavBar
+{
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:NSLocalizedString(@"Close", nil) style:UIBarButtonItemStylePlain target:self action:@selector(closeButtonTapped)];
+}
+
 
 - (void)reloadSearchDataAndSections
 {
@@ -158,6 +168,12 @@
     }
     [self.delegate selectedCurrencyWithCode:code];
 }
+
+- (void)closeButtonTapped
+{
+    [self.delegate cancelCurrencyPicker];
+}
+
 
 @end
 

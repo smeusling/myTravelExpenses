@@ -1,0 +1,39 @@
+/* 
+  Localizable.strings
+  myTravelExpenses
+
+  Created by Stéphanie Meusling on 26.08.15.
+  Copyright (c) 2015 smeusling. All rights reserved.
+*/
+
+/* Currency exchange rate format */
+"ExchangeRateFormat" = "%@ vaut";
+
+/* Error message title when user enters an invalid exchange rate */
+"InvalidExchangeRate" = "Le taux de change spécifé n'est pas valide";
+
+/* Dialog title prompting the user to enter an exchange rate between 2 currencies */
+"ExchangeRateDialogTitleFormat" = "Merci de spécifier le taux de change de %@ vers %@";
+
+/* Dialog message prompting the user to enter an exchange rate between 2 currencies */
+"ExchangeRateDialogMessageFormat" = "\nCombien de %@ obtenez vous pour %@?\n\nCe taux sera utilisé pour tous les autres paiements en %@ de cet évènement. Les taux peuvent être modifiés par la suite depuis la vue d'edition de l'évènement.";
+
+"AddExpense" = "Ajouter une dépense";
+"Close" = "Fermer";
+"Save" = "Sauver";
+"Categories" = "Cateégories";
+
+"EmptyTravelExpense" = "Aucunes dépenses à afficher";
+"Total" = "Total";
+"TotalExpense" = "Dépenses Totales\n%@ ";
+"TravelExpense" = "Dépenses de voyage";
+"EmptyTravel" = "Aucun voyage à afficher";
+"AddTravel" = "Ajouter un voyage";
+
+"TakePhoto" = "Prendre une photo";
+"LibraryPhoto" = "Bibliothèque photo";
+"Cancel" = "Annuler";
+"OK" = "OK";
+"EnterName" = "Entrer un nom";
+"EnterDescription" = "Entrer une description";
+"EnterCategory" = "Choisissez une catégories";

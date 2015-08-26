@@ -96,7 +96,7 @@
                                      loadNibNamed:@"MTETravelListEmptyView"
                                      owner:self options:nil]
                                     firstObject];
-    view.placeholderLabel.text = @"No Travel Expenses Yet";
+    view.placeholderLabel.text = NSLocalizedString(@"EmptyTravelExpense", nil);
     return view;
 }
 
@@ -229,7 +229,7 @@
     titleLabel.textAlignment = NSTextAlignmentLeft;
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.font = [UIFont fontWithName:@"OpenSans-Light" size:20];
-    titleLabel.text = @"Total";
+    titleLabel.text = NSLocalizedString(@"Total", nil);
     
     [header addSubview:titleLabel];
     

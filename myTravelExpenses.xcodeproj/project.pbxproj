@@ -10,7 +10,6 @@
 		50150B5F1AEADDAD005A63CF /* MTEModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50150B5E1AEADDAD005A63CF /* MTEModel.m */; };
 		502C2E3D1AEA9255001D0B88 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 502C2E3C1AEA9255001D0B88 /* CoreData.framework */; };
 		502C2E411AEA937A001D0B88 /* myTravelExpenses.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 502C2E3F1AEA937A001D0B88 /* myTravelExpenses.xcdatamodeld */; };
-		50657BC51B824B2300BDBBEC /* MTECategoriesList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50657BC41B824B2300BDBBEC /* MTECategoriesList.plist */; };
 		50657BC81B824DC200BDBBEC /* MTECategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 50657BC71B824DC200BDBBEC /* MTECategory.m */; };
 		50657BCB1B824FC700BDBBEC /* MTECategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 50657BCA1B824FC700BDBBEC /* MTECategories.m */; };
 		50657BCE1B82510600BDBBEC /* UIColor+HexColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 50657BCD1B82510600BDBBEC /* UIColor+HexColors.m */; };
@@ -36,6 +35,9 @@
 		50657C351B849BA900BDBBEC /* MTECurrencyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50657C341B849BA900BDBBEC /* MTECurrencyTableViewController.m */; };
 		50657C381B8CC86A00BDBBEC /* MTETravelTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50657C371B8CC86A00BDBBEC /* MTETravelTabBarController.m */; };
 		50657C3D1B8CCB1F00BDBBEC /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 50657C3C1B8CCB1F00BDBBEC /* UIImage+Color.m */; };
+		5070F2501B8E29F600BB823C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5070F2521B8E29F600BB823C /* Localizable.strings */; };
+		5070F2541B8E314200BB823C /* MTECategoriesList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5070F2561B8E314200BB823C /* MTECategoriesList.plist */; };
+		5070F25A1B8E325400BB823C /* Currencies.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5070F25C1B8E325400BB823C /* Currencies.strings */; };
 		5074FEE81AD05451009FD06D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FEE71AD05451009FD06D /* main.m */; };
 		5074FEEB1AD05451009FD06D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FEEA1AD05451009FD06D /* AppDelegate.m */; };
 		5074FEF11AD05451009FD06D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5074FEEF1AD05451009FD06D /* Main.storyboard */; };
@@ -106,7 +108,6 @@
 		502C2E3C1AEA9255001D0B88 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		502C2E3E1AEA9306001D0B88 /* myTravelExpenses-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "myTravelExpenses-Prefix.pch"; sourceTree = "<group>"; };
 		502C2E401AEA937A001D0B88 /* myTravelExpenses.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myTravelExpenses.xcdatamodel; sourceTree = "<group>"; };
-		50657BC41B824B2300BDBBEC /* MTECategoriesList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MTECategoriesList.plist; sourceTree = "<group>"; };
 		50657BC61B824DC200BDBBEC /* MTECategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTECategory.h; sourceTree = "<group>"; };
 		50657BC71B824DC200BDBBEC /* MTECategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTECategory.m; sourceTree = "<group>"; };
 		50657BC91B824FC700BDBBEC /* MTECategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTECategories.h; sourceTree = "<group>"; };
@@ -133,6 +134,14 @@
 		50657C371B8CC86A00BDBBEC /* MTETravelTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTETravelTabBarController.m; sourceTree = "<group>"; };
 		50657C3B1B8CCB1F00BDBBEC /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
 		50657C3C1B8CCB1F00BDBBEC /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
+		5070F2461B8E1F1300BB823C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		5070F2471B8E1F1300BB823C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		5070F2511B8E29F600BB823C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5070F2531B8E29F800BB823C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5070F2551B8E314200BB823C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/MTECategoriesList.plist; sourceTree = "<group>"; };
+		5070F2571B8E314600BB823C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = fr; path = fr.lproj/MTECategoriesList.plist; sourceTree = "<group>"; };
+		5070F25B1B8E325400BB823C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Currencies.strings; sourceTree = "<group>"; };
+		5070F25D1B8E325B00BB823C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Currencies.strings; sourceTree = "<group>"; };
 		5074FEE21AD05451009FD06D /* myTravelExpenses.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myTravelExpenses.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5074FEE61AD05451009FD06D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5074FEE71AD05451009FD06D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -269,7 +278,9 @@
 				5074FEE61AD05451009FD06D /* Info.plist */,
 				5074FEE71AD05451009FD06D /* main.m */,
 				502C2E3E1AEA9306001D0B88 /* myTravelExpenses-Prefix.pch */,
-				50657BC41B824B2300BDBBEC /* MTECategoriesList.plist */,
+				5070F2561B8E314200BB823C /* MTECategoriesList.plist */,
+				5070F2521B8E29F600BB823C /* Localizable.strings */,
+				5070F25C1B8E325400BB823C /* Currencies.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -501,6 +512,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = 5074FED91AD05451009FD06D;
 			productRefGroup = 5074FEE31AD05451009FD06D /* Products */;
@@ -541,12 +553,14 @@
 				5074FEF11AD05451009FD06D /* Main.storyboard in Resources */,
 				50657BD91B83166900BDBBEC /* OpenSans-Italic.ttf in Resources */,
 				50657BD51B83165C00BDBBEC /* OpenSans-Bold.ttf in Resources */,
+				5070F25A1B8E325400BB823C /* Currencies.strings in Resources */,
 				50657BD71B83166200BDBBEC /* OpenSans-ExtraBold.ttf in Resources */,
 				50657BD61B83165F00BDBBEC /* OpenSans-BoldItalic.ttf in Resources */,
-				50657BC51B824B2300BDBBEC /* MTECategoriesList.plist in Resources */,
+				5070F2541B8E314200BB823C /* MTECategoriesList.plist in Resources */,
 				5074FEF61AD05451009FD06D /* LaunchScreen.xib in Resources */,
 				50657C141B84849300BDBBEC /* currencies.csv in Resources */,
 				50657BDA1B83166D00BDBBEC /* OpenSans-Light.ttf in Resources */,
+				5070F2501B8E29F600BB823C /* Localizable.strings in Resources */,
 				50657BDC1B83167400BDBBEC /* OpenSans-Regular.ttf in Resources */,
 				50657BDD1B83167900BDBBEC /* OpenSans-Semibold.ttf in Resources */,
 				5074FEF31AD05451009FD06D /* Images.xcassets in Resources */,
@@ -657,10 +671,38 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		5070F2521B8E29F600BB823C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5070F2511B8E29F600BB823C /* Base */,
+				5070F2531B8E29F800BB823C /* fr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		5070F2561B8E314200BB823C /* MTECategoriesList.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5070F2551B8E314200BB823C /* Base */,
+				5070F2571B8E314600BB823C /* fr */,
+			);
+			name = MTECategoriesList.plist;
+			sourceTree = "<group>";
+		};
+		5070F25C1B8E325400BB823C /* Currencies.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5070F25B1B8E325400BB823C /* Base */,
+				5070F25D1B8E325B00BB823C /* fr */,
+			);
+			name = Currencies.strings;
+			sourceTree = "<group>";
+		};
 		5074FEEF1AD05451009FD06D /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				5074FEF01AD05451009FD06D /* Base */,
+				5070F2461B8E1F1300BB823C /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -669,6 +711,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5074FEF51AD05451009FD06D /* Base */,
+				5070F2471B8E1F1300BB823C /* fr */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";

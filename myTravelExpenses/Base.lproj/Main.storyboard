@@ -33,7 +33,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="2OV-Nl-JIm">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleAspectFill" restorationIdentifier="TravelTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="TravelTableViewCell" id="DZv-tC-3XF" customClass="MTETravelTableViewCell">
                                         <rect key="frame" x="0.0" y="225" width="600" height="150"/>

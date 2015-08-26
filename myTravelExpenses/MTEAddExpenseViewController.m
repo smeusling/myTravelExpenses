@@ -50,6 +50,8 @@
     [self setupTextFields];
     [self setupDatePickers];
     
+    self.amount = [NSDecimalNumber zero];
+    
     self.currencyCode = self.travel.currencyCode;
     
     self.categories = [[MTECategories sharedCategories] categories];
@@ -63,19 +65,22 @@
 
 - (void)setupNavBar
 {
-    self.title = @"Add Expense";
+    self.title = NSLocalizedString(@"AddExpense", nil);
 
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(closeButtonTapped)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:NSLocalizedString(@"Close", nil) style:UIBarButtonItemStylePlain target:self action:@selector(closeButtonTapped)];
 
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveButtonTapped)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:NSLocalizedString(@"Save", nil) style:UIBarButtonItemStylePlain target:self action:@selector(saveButtonTapped)];
 }
 
 - (void)setupTextFields
 {
+    self.descriptionTextField.placeholder = NSLocalizedString(@"EnterDescription", nil);
+    self.categoryTextField.placeholder = NSLocalizedString(@"EnterCategory", nil);
+    
     NSNumberFormatter *formatter = [MTECurrencies formatter:self.travel.currencyCode];
     self.amountTextField.currencyNumberFormatter = formatter;
     
-    [self.amountTextField setAmount:[NSDecimalNumber zero]];
+    [self.amountTextField setAmount:self.amount];
     [self.amountTextField addTarget:self action:@selector(amountDidChange:) forControlEvents:UIControlEventEditingChanged];
     
     self.dateTextField.text = [self.formatter stringFromDate:self.expenseDate];
@@ -110,7 +115,7 @@
     NSAttributedString *att = [[NSAttributedString alloc]
                                initWithString:cat.name
                                attributes:@{
-                                            NSFontAttributeName:[UIFont fontWithName:@"Avenir-Light" size:18.0]
+                                            NSFontAttributeName:[UIFont fontWithName:@"OpenSans-Light" size:18.0]
                                             }];
     return att;
 }
@@ -231,6 +236,18 @@
 {
     self.currencyCode = code;
     self.currencyTextField.text = code;//[[MTECurrencies sharedInstance] currencyFullNameForCode:self.currencyCode];
+    
+    NSNumberFormatter *formatter = [MTECurrencies formatter:code];
+    self.amountTextField.currencyNumberFormatter = formatter;
+    
+    [self.amountTextField setAmount:self.amount];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)cancelCurrencyPicker
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
@@ -251,7 +268,7 @@
 - (IBAction)openCategoryList:(id)sender
 {
     [self.selectedTextField resignFirstResponder];
-    CZPickerView *picker = [[CZPickerView alloc] initWithHeaderTitle:@"Fruits" cancelButtonTitle:@"Cancel" confirmButtonTitle:@"Confirm"];
+    CZPickerView *picker = [[CZPickerView alloc] initWithHeaderTitle: NSLocalizedString(@"Categories", nil) cancelButtonTitle:nil confirmButtonTitle:nil];
     picker.delegate = self;
     picker.dataSource = self;
     picker.needFooterView = NO;

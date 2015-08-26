@@ -146,6 +146,18 @@
     return formatter;
 }
 
++ (NSNumberFormatter *)formatter10Digits:(NSString *)currencyCode
+{
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    formatter.minimumIntegerDigits = 1;
+    formatter.locale = [NSLocale currentLocale];
+    formatter.maximumFractionDigits = 6;
+    formatter.usesGroupingSeparator = YES;
+    formatter.numberStyle = kCFNumberFormatterCurrencyStyle;
+    formatter.currencySymbol = [[MTECurrencies sharedInstance] currencySymbolForCode:currencyCode];
+    return formatter;
+}
+
 + (NSNumberFormatter *)formatterNoCurrency10Digits:(NSString *)currencyCode
 {
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];

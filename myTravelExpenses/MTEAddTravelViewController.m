@@ -79,8 +79,11 @@
     [self setupTextFields];
     [self setupDatePickers];
     
-    [self.currencyCodeTextField addTarget:self action:@selector(openCurrencyList)forControlEvents:UIControlEventTouchDown];
-
+    if(self.isNewTravel){
+        [self.currencyCodeTextField addTarget:self action:@selector(openCurrencyList)forControlEvents:UIControlEventTouchDown];
+    }else{
+        self.currencyCodeTextField.userInteractionEnabled = NO;
+    }
 }
 
 #pragma mark - Table view data source / delegate
@@ -102,8 +105,11 @@
     
     MTEExchangeRate *rate = [self.rates objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = [[MTECurrencies sharedInstance] currencyFullNameForCode:rate.currencyCode];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@",rate.rate ];
+    NSNumberFormatter *formatter = [MTECurrencies formatter:rate.currencyCode];
+    cell.textLabel.text = [NSString stringWithFormat:NSLocalizedString(@"ExchangeRateFormat", nil), [formatter stringFromNumber:[NSDecimalNumber one]]];
+    
+    NSNumberFormatter *travelFormatter = [MTECurrencies formatter10Digits:self.travel.currencyCode];
+    cell.detailTextLabel.text = [travelFormatter stringFromNumber:rate.rate];
     
     return cell;
 }
@@ -112,16 +118,16 @@
 
 - (void)setupNavBar
 {
-    self.navigationItem.title = @"Add Travel";
+    self.navigationItem.title = NSLocalizedString(@"AddTravel", nil);
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(closeButtonTapped)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:NSLocalizedString(@"Close", nil) style:UIBarButtonItemStylePlain target:self action:@selector(closeButtonTapped)];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveButtonTapped)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:NSLocalizedString(@"Save", nil) style:UIBarButtonItemStylePlain target:self action:@selector(saveButtonTapped)];
 }
 
 - (void)setupTextFields
 {
-    
+    self.nameTextField.placeholder = NSLocalizedString(@"EnterName", nil);
     self.currencyCodeTextField.text = [[MTECurrencies sharedInstance] currencyFullNameForCode:self.currencyCode];
     self.startDateTextField.text = [self.formatter stringFromDate:self.startDate];
     self.endDateTextField.text = [self.formatter stringFromDate:self.endDate];
@@ -245,7 +251,7 @@
                                  preferredStyle:UIAlertControllerStyleActionSheet];
 
     UIAlertAction* takePhoto = [UIAlertAction
-                         actionWithTitle:@"Prendre une photo"
+                         actionWithTitle:NSLocalizedString(@"TakePhoto", nil)
                          style:UIAlertActionStyleDefault
                          handler:^(UIAlertAction * action)
                          {
@@ -255,7 +261,7 @@
                          }];
 
     UIAlertAction* photoFromLibrary = [UIAlertAction
-                         actionWithTitle:@"Bibliothèque photo"
+                         actionWithTitle:NSLocalizedString(@"LibraryPhoto", nil)
                          style:UIAlertActionStyleDefault
                          handler:^(UIAlertAction * action)
                          {
@@ -265,7 +271,7 @@
                          }];
 
     UIAlertAction* cancel = [UIAlertAction
-                             actionWithTitle:@"Annuler"
+                             actionWithTitle:NSLocalizedString(@"Cancel", nil)
                              style:UIAlertActionStyleDefault
                              handler:^(UIAlertAction * action)
                              {
@@ -341,6 +347,11 @@
     self.currencyCode = code;
     self.currencyCodeTextField.text = [[MTECurrencies sharedInstance] currencyFullNameForCode:self.currencyCode];
     
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)cancelCurrencyPicker
+{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
