@@ -19,6 +19,7 @@
 #import "MTEExpenseListTableViewController.h"
 #import "MTECurrencies.h"
 #import <QuartzCore/QuartzCore.h>
+#import "MTEConfigUtil.h"
 
 @interface MTETravelListViewController () <MTEAddTravelDelegate>
 
@@ -33,21 +34,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Test listing all FailedBankInfos from the store
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Travel"
-                                              inManagedObjectContext:[[MTEModel sharedInstance]managedObjectContext]];
-    [fetchRequest setEntity:entity];
-    NSError *error = nil;
-    NSArray *fetchedObjects = [[[MTEModel sharedInstance]managedObjectContext] executeFetchRequest:fetchRequest error:&error];
+    [self loadTravelData];
     
-    self.travels = fetchedObjects.mutableCopy;
+//    for (MTETravel *travel in self.travels) {
+//        [[[MTEModel sharedInstance]managedObjectContext] deleteObject:travel];
+//
+//    }
+//    [[[MTEModel sharedInstance]managedObjectContext] save:nil];
+
 
     self.tableView.allowsMultipleSelectionDuringEditing = NO;
 
     [self setupBackgroundView];
     //self.profile = [MTEConfigUtil profile];
     [self setupNavBar];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTravelData) name:@"MTEExpenseAdded" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTravelData) name:@"MTEExpenseRemoved" object:nil];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"MTEExpenseAdded" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"MTEExpenseRemoved" object:nil];
 }
 
 - (void)setupNavBar
@@ -79,7 +89,26 @@
     return view;
 }
 
+#pragma mark - Loading data
 
+-(void)reloadTravelData
+{
+    [self loadTravelData];
+    [self.tableView reloadData];
+}
+
+-(void)loadTravelData
+{
+    // Test listing all FailedBankInfos from the store
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Travel"
+                                              inManagedObjectContext:[[MTEModel sharedInstance]managedObjectContext]];
+    [fetchRequest setEntity:entity];
+    NSError *error = nil;
+    NSArray *fetchedObjects = [[[MTEModel sharedInstance]managedObjectContext] executeFetchRequest:fetchRequest error:&error];
+    
+    self.travels = fetchedObjects.mutableCopy;
+}
 
 #pragma mark - Table view data source / delegate
 
@@ -110,8 +139,16 @@
     
     NSNumberFormatter *formatter = [MTECurrencies formatter:travel.currencyCode];
 
-    cell.travelCurrency.text = [formatter stringFromNumber:[travel totalAmount]];
-//    cell.travelUserCurrency.text = self.profile.currency.name;
+    if([travel.currencyCode isEqualToString:[MTEConfigUtil profileCurrencyCode]]){
+        cell.travelCurrency.hidden = YES;
+    }else{
+        cell.travelCurrency.hidden = NO;
+        cell.travelCurrency.text = [NSString stringWithFormat:@"%@ =",[formatter stringFromNumber:[travel totalAmount]]];
+    }
+    
+    
+    NSNumberFormatter *profileFormatter = [MTECurrencies formatter:[MTEConfigUtil profileCurrencyCode]];
+    cell.travelUserCurrency.text = [profileFormatter stringFromNumber:[travel totalAmountInProfileCurrency]];
     
     return cell;
     
@@ -120,7 +157,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 150;
+    return 200;
 }
 
 
@@ -198,7 +235,19 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"dd MMM yyyy"];
     
-   return [NSString stringWithFormat:@"%@ - %@",[formatter stringFromDate:firstDate], [formatter stringFromDate:secondDate] ];
+    NSDateFormatter *formatterWithoutYear = [[NSDateFormatter alloc] init];
+    [formatterWithoutYear setDateFormat:@"dd MMM"];
+    
+    NSDateComponents *firstDatecomponents = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:firstDate];
+    
+    NSDateComponents *secondDatecomponents = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:secondDate];
+    
+    if([firstDatecomponents year]==[secondDatecomponents year]){
+        return [NSString stringWithFormat:@"%@ - %@",[formatterWithoutYear stringFromDate:firstDate], [formatter stringFromDate:secondDate] ];
+    }else{
+        return [NSString stringWithFormat:@"%@ - %@",[formatter stringFromDate:firstDate], [formatter stringFromDate:secondDate] ];
+    }
+   
 }
 
 #pragma mark - Nav Bar button clicked

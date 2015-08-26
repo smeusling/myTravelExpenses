@@ -19,9 +19,9 @@
 - (void)saveContext;
 
 - (MTETravel *)createTravel;
-- (MTETravel *)createTravelWithName:(NSString *)name startDate:(NSDate *)startDate endDate:(NSDate *)endDate image:(NSData *)image currencyCode:(NSString *)currencyCode;
+- (MTETravel *)createTravelWithName:(NSString *)name startDate:(NSDate *)startDate endDate:(NSDate *)endDate image:(NSData *)image currencyCode:(NSString *)currencyCode profileCurrencyRate:(NSDecimalNumber *)profileCurrencyRate;
 
--(MTETravel *)updateTravel:(MTETravel *)travel name:(NSString *)name startDate:(NSDate *)startDate endDate:(NSDate *)endDate image:(NSData *)image currencyCode:(NSString *)currencyCode;
+-(MTETravel *)updateTravel:(MTETravel *)travel name:(NSString *)name startDate:(NSDate *)startDate endDate:(NSDate *)endDate image:(NSData *)image currencyCode:(NSString *)currencyCode profileCurrencyRate:(NSDecimalNumber *)profileCurrencyRate;
 
 - (MTEExpense *)createExpenseWithName:(NSString *)name date:(NSDate *)date amount:(NSDecimalNumber *)amount travel:(MTETravel *)travel currencyCode:(NSString *)currencyCode categoryId:(NSString *)categoryId;
 

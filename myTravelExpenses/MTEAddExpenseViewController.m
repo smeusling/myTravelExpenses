@@ -50,6 +50,8 @@
     [self setupTextFields];
     [self setupDatePickers];
     
+    self.currencyCode = self.travel.currencyCode;
+    
     self.categories = [[MTECategories sharedCategories] categories];
     
     [self.categoryTextField addTarget:self action:@selector(openCategoryList:)forControlEvents:UIControlEventTouchDown];
@@ -153,7 +155,62 @@
 
 - (void)saveButtonTapped
 {
-    [self addExpense];
+    BOOL searchForRate = YES;
+    // Need to look for an exchange rate?
+    if ([self.currencyCode isEqualToString:self.travel.currencyCode] == NO) {
+        // Is this exchange rate already set in the database?
+        for (MTEExchangeRate *rate in self.travel.rates) {
+            if ([rate.travelCurrencyCode isEqualToString:self.travel.currencyCode]
+                && [rate.currencyCode isEqualToString:self.currencyCode]
+                && (rate.rate != nil)) {
+                // This exchange rate is already there and valid
+                searchForRate = NO;
+                return;
+            }
+        }
+        
+        if(searchForRate){
+            [self showActivityView];
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                [MTEExchangeRate getExchangeRates:^(NSDictionary *rates) {
+                    NSDecimalNumber *usdToEventCurrencyRate;
+                    if ([self.travel.currencyCode isEqualToString:@"USD"] == NO) {
+                        usdToEventCurrencyRate = [rates valueForKey:self.travel.currencyCode];
+                    } else {
+                        usdToEventCurrencyRate = [NSDecimalNumber one];
+                    }
+                    NSDecimalNumber *usdToPaymentCurrencyRate;
+                    if ([self.currencyCode isEqualToString:@"USD"] == NO) {
+                        usdToPaymentCurrencyRate = [rates valueForKey:self.currencyCode];
+                    } else {
+                        usdToPaymentCurrencyRate = [NSDecimalNumber one];
+                    }
+                    
+                    if (usdToEventCurrencyRate && usdToPaymentCurrencyRate) {
+                        [[MTEModel sharedInstance] addExchangeRate:self.travel currencyCode:self.currencyCode rate:[usdToEventCurrencyRate decimalNumberByDividingBy:usdToPaymentCurrencyRate]];
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [self hideActivityView];
+                            [self dismissViewControllerAnimated:YES completion:nil];
+                            [self addExpense];
+                        });
+                    } else {
+                        // Ask user for the rate as it could not be found automatically
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [self hideActivityView];
+                            [self promptForRate:NO];
+                        });
+                    }
+                }];
+            });
+        }else{
+            [self dismissViewControllerAnimated:YES completion:nil];
+            [self addExpense];
+        }
+    }else{
+        [self dismissViewControllerAnimated:YES completion:nil];
+        [self addExpense];
+    }
 }
 
 #pragma mark - TextField Delegate
@@ -174,53 +231,6 @@
 {
     self.currencyCode = code;
     self.currencyTextField.text = code;//[[MTECurrencies sharedInstance] currencyFullNameForCode:self.currencyCode];
-    
-    // Need to look for an exchange rate?
-    if ([self.currencyCode isEqualToString:self.travel.currencyCode] == NO) {
-        // Is this exchange rate already set in the database?
-        for (MTEExchangeRate *rate in self.travel.rates) {
-            if ([rate.travelCurrencyCode isEqualToString:self.travel.currencyCode]
-                && [rate.currencyCode isEqualToString:self.currencyCode]
-                && (rate.rate != nil)) {
-                // This exchange rate is already there and valid
-                return;
-            }
-        }
-        
-        [self showActivityView];
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [MTEExchangeRate getExchangeRates:^(NSDictionary *rates) {
-                NSDecimalNumber *usdToEventCurrencyRate;
-                if ([self.travel.currencyCode isEqualToString:@"USD"] == NO) {
-                    usdToEventCurrencyRate = [rates valueForKey:self.travel.currencyCode];
-                } else {
-                    usdToEventCurrencyRate = [NSDecimalNumber one];
-                }
-                NSDecimalNumber *usdToPaymentCurrencyRate;
-                if ([self.currencyCode isEqualToString:@"USD"] == NO) {
-                    usdToPaymentCurrencyRate = [rates valueForKey:self.currencyCode];
-                } else {
-                    usdToPaymentCurrencyRate = [NSDecimalNumber one];
-                }
-                
-                if (usdToEventCurrencyRate && usdToPaymentCurrencyRate) {
-                    [[MTEModel sharedInstance] addExchangeRate:self.travel currencyCode:self.currencyCode rate:[usdToEventCurrencyRate decimalNumberByDividingBy:usdToPaymentCurrencyRate]];
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self hideActivityView];
-                    });
-                } else {
-                    // Ask user for the rate as it could not be found automatically
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self hideActivityView];
-                        [self promptForRate:NO];
-                    });
-                }
-            }];
-        });
-    }
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
@@ -235,6 +245,7 @@
     if (delegate) {
         [delegate addExpense:newExpense];
     }
+    
 }
 
 - (IBAction)openCategoryList:(id)sender
@@ -311,6 +322,8 @@
         [self promptForRate:YES];
     } else {
         [[MTEModel sharedInstance] addExchangeRate:self.travel currencyCode:self.currencyCode rate:rate];
+        [self dismissViewControllerAnimated:YES completion:nil];
+        [self addExpense];
     }
 }
 

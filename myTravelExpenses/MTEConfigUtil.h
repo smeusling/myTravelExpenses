@@ -10,10 +10,8 @@
 
 @interface MTEConfigUtil : NSObject
 
-//+ (MTEProfile *)profile;
-//+ (void)setProfile:(MTEProfile*)profile;
-//
-//+ (NSArray *)travelDataTest;
-//+ (void)setTravelDataTest:(NSArray *)travelDataTest;
++ (NSString *)profileCurrencyCode;
+
++ (void)setProfileCurrencyCode:(NSString *)profileCurrencyCode;
 
 @end

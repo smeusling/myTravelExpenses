@@ -17,6 +17,7 @@
 #import "MTECurrencies.h"
 #import "MTEExchangeRate.h"
 #import "MTEAddTravelViewController.h"
+#import "MTEModel.h"
 
 @interface MTEExpenseListTableViewController () <MTEAddExpenseDelegate>
 
@@ -61,6 +62,8 @@
     self.categories = [MTECategories sharedCategories];
     
     self.travelTotalAmount = 0;
+    
+    self.tableView.allowsMultipleSelectionDuringEditing = NO;
     
     [self sortExpensesByDate];
     
@@ -192,36 +195,28 @@
     return header;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return 50;
-//}
+// Override to support conditional editing of the table view.
+// This only needs to be implemented if you are going to be returning NO
+// for some items. By default, all items are editable.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return YES if you want the specified item to be editable.
+    return YES;
+}
 
-
-//// Override to support conditional editing of the table view.
-//// This only needs to be implemented if you are going to be returning NO
-//// for some items. By default, all items are editable.
-//- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-//    // Return YES if you want the specified item to be editable.
-//    return YES;
-//}
-//
-//// Override to support editing the table view.
-//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        MTETravel *travel = self.travels[indexPath.row];
-//        [[[MTEModel sharedInstance]managedObjectContext] deleteObject:travel];
-//        [[[MTEModel sharedInstance]managedObjectContext] save:nil];
-//        [self.travels removeObjectAtIndex:indexPath.row];
-//        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
-//        [self setupBackgroundView];
-//    }
-//}
-//
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    self.selectedTravel = self.travels[indexPath.row];
-//}
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        MTETravel *travel = self.expenses[indexPath.row];
+        [[[MTEModel sharedInstance]managedObjectContext] deleteObject:travel];
+        [[[MTEModel sharedInstance]managedObjectContext] save:nil];
+        [self.expenses removeObjectAtIndex:indexPath.row];
+        [self sortExpensesByDate];
+        [self setupHeaderView];
+        [self.tableView reloadData];
+        [self setupBackgroundView];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"MTEExpenseRemoved" object:self userInfo:@{@"travel":travel}];
+    }
+}
 
 - (void)setupHeaderView
 {
@@ -262,6 +257,8 @@
 - (void)addExpense:(MTEExpense *)expense
 {
     [self.expenses addObject:expense];
+    [self sortExpensesByDate];
+    [self setupHeaderView];
     [self.tableView reloadData];
     [self setupBackgroundView];
     [self dismissViewControllerAnimated:YES completion:nil];

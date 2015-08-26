@@ -19,8 +19,10 @@
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSDate * startDate;
 @property (nonatomic, retain) NSString * uuid;
+@property (nonatomic, retain) NSDecimalNumber * profileCurrencyRate;
 @property (nonatomic, retain) NSSet *expenses;
 @property (nonatomic, retain) NSSet *rates;
+
 @end
 
 @interface MTETravel (CoreDataGeneratedAccessors)
@@ -36,5 +38,6 @@
 - (void)removeRates:(NSSet *)values;
 
 - (NSDecimalNumber *)totalAmount;
+- (NSDecimalNumber *)totalAmountInProfileCurrency;
 
 @end

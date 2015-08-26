@@ -9,6 +9,8 @@
 #import "MTETravel.h"
 #import "MTEExchangeRate.h"
 #import "MTEExpense.h"
+#import "AFNetworking.h"
+#import "MTEConfigUtil.h"
 
 
 @implementation MTETravel
@@ -19,6 +21,7 @@
 @dynamic name;
 @dynamic startDate;
 @dynamic uuid;
+@dynamic profileCurrencyRate;
 @dynamic expenses;
 @dynamic rates;
 
@@ -38,6 +41,15 @@
             }
         }
         total = [total decimalNumberByAdding:value];
+    }
+    return total;
+}
+
+- (NSDecimalNumber *)totalAmountInProfileCurrency
+{
+    NSDecimalNumber *total = [self totalAmount];
+    if ([self.currencyCode isEqualToString:[MTEConfigUtil profileCurrencyCode]] == NO) {
+        total = [total decimalNumberByMultiplyingBy:self.profileCurrencyRate];
     }
     return total;
 }

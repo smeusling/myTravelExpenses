@@ -157,18 +157,18 @@
     return travel;
 }
 
--(MTETravel *)createTravelWithName:(NSString *)name startDate:(NSDate *)startDate endDate:(NSDate *)endDate image:(NSData *)image currencyCode:(NSString *)currencyCode
+-(MTETravel *)createTravelWithName:(NSString *)name startDate:(NSDate *)startDate endDate:(NSDate *)endDate image:(NSData *)image currencyCode:(NSString *)currencyCode profileCurrencyRate:(NSDecimalNumber *)profileCurrencyRate
 {
     NSManagedObjectContext *context = [self managedObjectContext];
     MTETravel *travel = [NSEntityDescription
                          insertNewObjectForEntityForName:@"Travel"
                          inManagedObjectContext:context];
-    travel = [self updateTravel:travel name:name startDate:startDate endDate:endDate image:image currencyCode:currencyCode];
+    travel = [self updateTravel:travel name:name startDate:startDate endDate:endDate image:image currencyCode:currencyCode profileCurrencyRate:profileCurrencyRate];
 
     return travel;
 }
 
--(MTETravel *)updateTravel:(MTETravel *)travel name:(NSString *)name startDate:(NSDate *)startDate endDate:(NSDate *)endDate image:(NSData *)image currencyCode:(NSString *)currencyCode
+-(MTETravel *)updateTravel:(MTETravel *)travel name:(NSString *)name startDate:(NSDate *)startDate endDate:(NSDate *)endDate image:(NSData *)image currencyCode:(NSString *)currencyCode profileCurrencyRate:(NSDecimalNumber *)profileCurrencyRate
 {
     NSManagedObjectContext *context = [self managedObjectContext];
     travel.uuid = [[NSUUID UUID] UUIDString];
@@ -177,6 +177,7 @@
     travel.endDate = endDate;
     travel.image = image;
     travel.currencyCode = currencyCode;
+    travel.profileCurrencyRate = profileCurrencyRate;
     
     NSError *error;
     if (![context save:&error]) {
@@ -211,6 +212,8 @@
     if (![context save:&error]) {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
     }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"MTEExpenseAdded" object:self userInfo:@{@"travel":travel}];
 
     return expense;
 }

@@ -13,6 +13,7 @@
 #import "MTEExchangeRate.h"
 #import "MTETravel.h"
 #import "MTETheme.h"
+#import "MTEConfigUtil.h"
 
 @interface MTEAddTravelViewController () <MTECurrencyPickerDelegate>
 
@@ -20,11 +21,16 @@
 @property (nonatomic, strong) NSDate *endDate;
 @property (nonatomic, strong) NSString *currencyCode;
 @property (nonatomic, strong) NSMutableArray *rates;
+@property (strong, nonatomic) UIActivityIndicatorView *activityView;
 
 @property (nonatomic, strong) NSDateFormatter *formatter;
 
 @property (nonatomic, strong)UIImagePickerController *imagePickerController;
 @property (nonatomic, strong)UIImage *travelImage;
+
+@property (nonatomic, strong)NSDecimalNumber *profileCurrencyRate;
+
+@property (nonatomic, strong)NSString *profileCurrencyCode;
 
 @property BOOL isNewTravel;
 
@@ -37,6 +43,8 @@
     
     self.formatter = [[NSDateFormatter alloc] init];
     [self.formatter setDateFormat:@"dd MMMM yyyy"];
+    
+     self.profileCurrencyCode = [MTEConfigUtil profileCurrencyCode];
     
     if(self.travel){
         self.isNewTravel = NO;
@@ -51,7 +59,7 @@
         self.isNewTravel = YES;
         self.startDate = [NSDate date];
         self.endDate = [NSDate date];
-        self.currencyCode = [[NSLocale currentLocale] objectForKey:NSLocaleCurrencyCode];
+        self.currencyCode = self.profileCurrencyCode;
         self.buttonImageView.backgroundColor = [[MTEThemeManager sharedTheme]buttonColor];
         [self.addTravelButton setTitle:@"Ajouter" forState:UIControlStateNormal];
     }
@@ -163,7 +171,44 @@
 
 - (void)saveButtonTapped
 {
-    [self addTravel];
+    // Need to look for an exchange rate?
+    if ([self.currencyCode isEqualToString:self.profileCurrencyCode] == NO) {
+        
+        [self showActivityView];
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [MTEExchangeRate getExchangeRates:^(NSDictionary *rates) {
+                NSDecimalNumber *usdToEventCurrencyRate;
+                if ([self.profileCurrencyCode isEqualToString:@"USD"] == NO) {
+                    usdToEventCurrencyRate = [rates valueForKey:self.profileCurrencyCode];
+                } else {
+                    usdToEventCurrencyRate = [NSDecimalNumber one];
+                }
+                NSDecimalNumber *usdToPaymentCurrencyRate;
+                if ([self.currencyCode isEqualToString:@"USD"] == NO) {
+                    usdToPaymentCurrencyRate = [rates valueForKey:self.currencyCode];
+                } else {
+                    usdToPaymentCurrencyRate = [NSDecimalNumber one];
+                }
+                
+                if (usdToEventCurrencyRate && usdToPaymentCurrencyRate) {
+                    self.profileCurrencyRate = [usdToEventCurrencyRate decimalNumberByDividingBy:usdToPaymentCurrencyRate];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self hideActivityView];
+                        [self addTravel];
+                    });
+                } else {
+                    // Ask user for the rate as it could not be found automatically
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self hideActivityView];
+                        [self promptForRate:NO];
+                    });
+                }
+            }];
+        });
+    }else{
+        [self addTravel];
+    }
 }
 
 #pragma mark - Other method
@@ -184,7 +229,7 @@
         imageData = UIImageJPEGRepresentation(self.travelImage, 1.0);
     }
 
-    MTETravel *newTravel = [[MTEModel sharedInstance]createTravelWithName:self.nameTextField.text startDate:self.startDate endDate:self.endDate image:imageData currencyCode:self.currencyCode];
+    MTETravel *newTravel = [[MTEModel sharedInstance]createTravelWithName:self.nameTextField.text startDate:self.startDate endDate:self.endDate image:imageData currencyCode:self.currencyCode profileCurrencyRate:self.profileCurrencyRate];
 
     id<MTEAddTravelDelegate> delegate = self.addTravelDelegate;
     if (delegate) {
@@ -248,7 +293,7 @@
             imageData = UIImageJPEGRepresentation(self.travelImage, 1.0);
         }
         
-        self.travel = [[MTEModel sharedInstance]updateTravel:self.travel name:self.nameTextField.text startDate:self.startDate endDate:self.endDate image:imageData currencyCode:self.currencyCode];
+        self.travel = [[MTEModel sharedInstance]updateTravel:self.travel name:self.nameTextField.text startDate:self.startDate endDate:self.endDate image:imageData currencyCode:self.currencyCode profileCurrencyRate:self.profileCurrencyRate];
     }
     
 }
@@ -308,6 +353,64 @@
     
     [self presentViewController:navigationController animated:YES completion:nil];
 }
+
+- (void)showActivityView
+{
+    if (self.activityView == nil) {
+        self.activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        self.activityView.color = [UIColor blackColor];
+        self.activityView.center = CGPointMake(self.view.bounds.size.width / 2.0, self.view.bounds.size.height / 2.0);
+        [self.view addSubview:self.activityView];
+        [self.activityView startAnimating];
+    }
+}
+
+- (void)hideActivityView
+{
+    if (self.activityView != nil) {
+        [self.activityView stopAnimating];
+        [self.activityView removeFromSuperview];
+        self.activityView = nil;
+    }
+}
+
+- (void)promptForRate:(BOOL)askingAgain
+{
+    NSString *nameForEventCurrency = [[MTECurrencies sharedInstance] currencySymbolForCode:self.profileCurrencyCode];
+    NSString *nameForPaymentCurrency = [[MTECurrencies sharedInstance] currencySymbolForCode:self.currencyCode];
+    NSNumberFormatter *formatter = [MTECurrencies formatter:self.currencyCode];
+    NSString *title;
+    if (askingAgain) {
+        title = NSLocalizedString(@"InvalidExchangeRate", nil);
+    } else {
+        NSString *format = NSLocalizedString(@"ExchangeRateDialogTitleFormat", nil);
+        title = [NSString stringWithFormat:format, nameForPaymentCurrency, nameForEventCurrency];
+    }
+    NSString *format = NSLocalizedString(@"ExchangeRateDialogMessageFormat", nil);
+    NSString *message = [NSString stringWithFormat:format, nameForEventCurrency, [formatter stringFromNumber:[NSNumber numberWithInt:1]], nameForPaymentCurrency];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
+    [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
+    [alert show];
+    UITextField *textField = [alert textFieldAtIndex:0];
+    textField.keyboardType = UIKeyboardTypeDecimalPad;
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    // Handle "OK"
+    UITextField *textField = [alertView textFieldAtIndex:0];
+    NSString *rateString = textField.text;
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    formatter.locale = [NSLocale currentLocale];
+    NSDecimalNumber *rate = [NSDecimalNumber decimalNumberWithDecimal:[[formatter numberFromString:rateString] decimalValue]];
+    if ([rate isEqualToNumber:[NSDecimalNumber notANumber]] || [rate isEqualToNumber:[NSDecimalNumber zero]]) {
+        // Ask again, rate is not valid
+        [self promptForRate:YES];
+    } else {
+        [self addTravel];
+    }
+}
+
 
 
 @end

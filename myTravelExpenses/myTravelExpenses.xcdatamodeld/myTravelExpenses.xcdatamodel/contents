@@ -20,14 +20,15 @@
         <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="profileCurrencyRate" optional="YES" attributeType="Decimal" defaultValueString="1" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" storedInTruthFile="YES" syncable="YES"/>
         <relationship name="expenses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="travel" inverseEntity="Expense" syncable="YES"/>
         <relationship name="rates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExchangeRate" inverseName="travel" inverseEntity="ExchangeRate" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Expense" positionX="-108" positionY="-999" width="128" height="148"/>
-        <element name="Travel" positionX="-63" positionY="-774" width="128" height="163"/>
         <element name="ExchangeRate" positionX="243" positionY="-900" width="128" height="103"/>
+        <element name="Expense" positionX="-108" positionY="-999" width="128" height="148"/>
+        <element name="Travel" positionX="-63" positionY="-774" width="128" height="178"/>
     </elements>
 </model>

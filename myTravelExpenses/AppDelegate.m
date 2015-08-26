@@ -11,6 +11,7 @@
 #import "MTETheme.h"
 #import "MTETravel.h"
 #import "MTEExpense.h"
+#import "MTEConfigUtil.h"
 
 @interface AppDelegate ()
 
@@ -24,6 +25,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [MTEThemeManager customizeAppAppearance];
+    
+    [MTEConfigUtil setProfileCurrencyCode:[[NSLocale currentLocale] objectForKey:NSLocaleCurrencyCode]];
     // Override point for customization after application launch.
 //    [MTEHelper initProfile];
 //    [MTEHelper initTravelDataTest];

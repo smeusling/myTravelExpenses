@@ -42,7 +42,33 @@
     
     [self setupHeaderView];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTravelData:) name:@"MTEExpenseAdded" object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTravelData:) name:@"MTEExpenseRemoved" object:nil];
+    
+    
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"MTEExpenseAdded" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"MTEExpenseRemoved" object:nil];
+}
+
+
+- (void)reloadTravelData:(NSNotification *)notification
+{
+    self.travel = notification.userInfo[@"travel"];
+    
+    self.categoryDict = [[NSMutableDictionary alloc]init];
+    
+    self.expenses = [[NSMutableArray alloc]initWithArray:[self.travel.expenses allObjects]];
+    
+    [self setupPieChart];
+    
+    [self setupCategoryDictionary];
+    
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
