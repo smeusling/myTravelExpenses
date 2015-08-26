@@ -342,6 +342,8 @@
     // Create a sorted list of days
     NSArray *unsortedDays = [self.sections allKeys];
     self.sortedDays = [unsortedDays sortedArrayUsingSelector:@selector(compare:)];
+    NSArray* reversedArray = [[self.sortedDays reverseObjectEnumerator] allObjects];
+    self.sortedDays = reversedArray.mutableCopy;
     
     self.sectionDateFormatter = [[NSDateFormatter alloc] init];
     [self.sectionDateFormatter setDateStyle:NSDateFormatterLongStyle];
