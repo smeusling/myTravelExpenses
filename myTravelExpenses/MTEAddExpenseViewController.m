@@ -70,8 +70,10 @@
 
 - (void)setupTextFields
 {
-    NSNumberFormatter *formatter = [MTECurrencies formatter:self.currencyCode];
+    NSNumberFormatter *formatter = [MTECurrencies formatter:self.travel.currencyCode];
     self.amountTextField.currencyNumberFormatter = formatter;
+    
+    [self.amountTextField setAmount:[NSDecimalNumber zero]];
     [self.amountTextField addTarget:self action:@selector(amountDidChange:) forControlEvents:UIControlEventEditingChanged];
     
     self.dateTextField.text = [self.formatter stringFromDate:self.expenseDate];
