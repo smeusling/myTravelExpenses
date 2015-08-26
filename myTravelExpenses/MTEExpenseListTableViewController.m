@@ -18,6 +18,7 @@
 #import "MTEExchangeRate.h"
 #import "MTEAddTravelViewController.h"
 #import "MTEModel.h"
+#import "MTEUtil.h"
 
 @interface MTEExpenseListTableViewController () <MTEAddExpenseDelegate>
 
@@ -165,7 +166,12 @@
     titleLabel.textColor = [UIColor blackColor];
     titleLabel.font = [UIFont fontWithName:@"OpenSans" size:16];
     NSDate *dateRepresentingThisDay = [self.sortedDays objectAtIndex:section];
-    titleLabel.text = [self.sectionDateFormatter stringFromDate:dateRepresentingThisDay];
+    if([MTEUtil isSameDayWithDate1:dateRepresentingThisDay date2:[NSDate date]]){
+        titleLabel.text = NSLocalizedString(@"Today", nil).uppercaseString;
+    }else{
+        titleLabel.text = [self.sectionDateFormatter stringFromDate:dateRepresentingThisDay];
+    }
+    
 
     [header addSubview:titleLabel];
     
