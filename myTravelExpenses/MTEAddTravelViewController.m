@@ -130,6 +130,10 @@
 
 - (void)setupTextFields
 {
+    self.startDateLabel.text = NSLocalizedString(@"StartDate", nil).uppercaseString;
+    self.endDateLabel.text = NSLocalizedString(@"EndDate", nil).uppercaseString;
+    self.currencyLabel.text = NSLocalizedString(@"MainCurrency", nil).uppercaseString;
+    
     self.nameTextField.placeholder = NSLocalizedString(@"EnterName", nil);
     self.currencyCodeTextField.text = [[MTECurrencies sharedInstance] currencyFullNameForCode:self.currencyCode];
     self.startDateTextField.text = [self.formatter stringFromDate:self.startDate];
@@ -138,17 +142,35 @@
 
 - (void)setupDatePickers
 {
+    
+    UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    toolBar.barStyle = UIBarStyleDefault;
+    
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneTouched:)];
+    
+    doneButton.tintColor = [UIColor darkGrayColor];
+    
+    [toolBar setItems:[NSArray arrayWithObjects:doneButton, nil]];
+    
     UIDatePicker *datePicker = [[UIDatePicker alloc]init];
     datePicker.datePickerMode = UIDatePickerModeDate;
     [datePicker setDate:[NSDate date]];
     [datePicker addTarget:self action:@selector(updateStartDateTextField:) forControlEvents:UIControlEventValueChanged];
     [self.startDateTextField setInputView:datePicker];
+    self.startDateTextField.inputAccessoryView = toolBar;
     
     UIDatePicker *endDatePicker = [[UIDatePicker alloc]init];
     endDatePicker.datePickerMode = UIDatePickerModeDate;
     [endDatePicker setDate:[NSDate date]];
     [endDatePicker addTarget:self action:@selector(updateEndDateTextField:) forControlEvents:UIControlEventValueChanged];
     [self.endDateTextField setInputView:endDatePicker];
+    self.endDateTextField.inputAccessoryView = toolBar;
+}
+
+- (void)doneTouched:(UIBarButtonItem *)sender
+{
+    [self.startDateTextField resignFirstResponder];
+    [self.endDateTextField resignFirstResponder];
 }
 
 #pragma mark - DatePicker
@@ -341,6 +363,11 @@
         return NO;
     }
     return YES;  // Hide both keyboard and blinking cursor.
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return NO;
 }
 
 

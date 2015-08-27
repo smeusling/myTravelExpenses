@@ -50,3 +50,7 @@
 
 "Delete" = "Delete";
 "Edit" = "Edit";
+
+"StartDate" = "Start date";
+"EndDate" = "End date";
+"MainCurrency" = "Main Currency";

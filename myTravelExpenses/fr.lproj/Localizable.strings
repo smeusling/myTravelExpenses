@@ -49,3 +49,7 @@
 
 "Delete" = "Supprimer";
 "Edit" = "Modifier";
+
+"StartDate" = "Date d'arrivée";
+"EndDate" = "Date de départ";
+"MainCurrency" = "Monnaie principale";
