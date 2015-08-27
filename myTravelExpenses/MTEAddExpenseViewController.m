@@ -56,6 +56,8 @@
     
     self.categories = [[MTECategories sharedCategories] categories];
     
+    self.selectedCategory = [[MTECategories sharedCategories]categoryById:@"cat9"];
+    
     [self.categoryTextField addTarget:self action:@selector(openCategoryList:)forControlEvents:UIControlEventTouchDown];
     [self.currencyTextField addTarget:self action:@selector(openCurrencyList)forControlEvents:UIControlEventTouchDown];
 

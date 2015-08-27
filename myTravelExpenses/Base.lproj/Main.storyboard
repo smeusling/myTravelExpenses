@@ -99,9 +99,21 @@
                                                         <constraint firstAttribute="trailing" secondItem="c17-HV-Nda" secondAttribute="trailing" constant="10" id="vYh-Qm-EMg"/>
                                                     </constraints>
                                                 </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P1Y-X7-YeU">
+                                                    <rect key="frame" x="542" y="8" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="Ohu-3Y-dfX"/>
+                                                        <constraint firstAttribute="width" constant="50" id="diJ-ju-x31"/>
+                                                    </constraints>
+                                                    <state key="normal" image="edit-travel-button">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="P1Y-X7-YeU" firstAttribute="top" secondItem="rCC-4o-tP6" secondAttribute="topMargin" id="0oH-PY-8p2"/>
                                                 <constraint firstItem="epI-4M-GWb" firstAttribute="leading" secondItem="rCC-4o-tP6" secondAttribute="leading" id="48w-QJ-yS9"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="P1Y-X7-YeU" secondAttribute="trailing" id="4M2-CP-bUk"/>
                                                 <constraint firstAttribute="bottom" secondItem="aZ0-2j-LSt" secondAttribute="bottom" id="8wP-s6-WBx"/>
                                                 <constraint firstItem="epI-4M-GWb" firstAttribute="top" secondItem="rCC-4o-tP6" secondAttribute="top" id="Dzh-jX-c6h"/>
                                                 <constraint firstItem="aZ0-2j-LSt" firstAttribute="leading" secondItem="rCC-4o-tP6" secondAttribute="leading" id="WCQ-Z9-w8e"/>
@@ -115,6 +127,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
+                                            <outlet property="editButton" destination="P1Y-X7-YeU" id="wJl-CX-pFq"/>
                                             <outlet property="travelCurrency" destination="c17-HV-Nda" id="90w-d7-IUV"/>
                                             <outlet property="travelDates" destination="f1a-OV-yxS" id="fEu-Zm-nel"/>
                                             <outlet property="travelImageView" destination="epI-4M-GWb" id="B0O-k2-WnG"/>
@@ -424,7 +437,6 @@
                     <connections>
                         <segue destination="IB4-7w-kTt" kind="relationship" relationship="viewControllers" id="jsN-pN-i69"/>
                         <segue destination="Vn7-9c-yBl" kind="relationship" relationship="viewControllers" id="n4R-uD-uYJ"/>
-                        <segue destination="GKO-zS-0zK" kind="relationship" relationship="viewControllers" id="y9x-1n-ahr"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qIW-WQ-Pt7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -443,12 +455,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DkN-Pc-TQX">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DkN-Pc-TQX">
                                 <rect key="frame" x="21" y="84" width="558" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Start Date" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uoZ-xd-kWQ">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Start Date" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uoZ-xd-kWQ">
                                 <rect key="frame" x="21" y="160" width="150" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="ClL-6h-mRw"/>
@@ -459,7 +471,7 @@
                                     <outlet property="delegate" destination="GKO-zS-0zK" id="4Z9-hs-0KX"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="End Date" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qhj-x8-s1k">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="End Date" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qhj-x8-s1k">
                                 <rect key="frame" x="21" y="232" width="150" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -467,10 +479,10 @@
                                     <outlet property="delegate" destination="GKO-zS-0zK" id="zeU-6k-Y4i"/>
                                 </connections>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xKc-CD-3Ka">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xKc-CD-3Ka">
                                 <rect key="frame" x="477" y="160" width="102" height="102"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M9x-UZ-4hQ">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M9x-UZ-4hQ">
                                 <rect key="frame" x="477" y="160" width="102" height="102"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="102" id="V9e-ge-F7a"/>
@@ -483,13 +495,13 @@
                                     <action selector="addPhotoButtonClicked:" destination="GKO-zS-0zK" eventType="touchUpInside" id="H0m-N9-vOS"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Currency code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y5V-Xf-FV8">
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Currency code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y5V-Xf-FV8">
                                 <rect key="frame" x="20" y="320" width="558" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Lc1-qY-urQ">
-                                <rect key="frame" x="0.0" y="370" width="600" height="128"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Lc1-qY-urQ">
+                                <rect key="frame" x="0.0" y="370" width="600" height="230"/>
                                 <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CurrencyRateCell" textLabel="XBj-Kz-6dd" detailTextLabel="3nO-KJ-f2D" style="IBUITableViewCellStyleValue1" id="amj-Fk-9IV">
@@ -519,25 +531,13 @@
                                     <outlet property="delegate" destination="GKO-zS-0zK" id="2m2-Tb-PZw"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WCd-XL-kY6">
-                                <rect key="frame" x="218" y="503" width="163" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="163" id="R1z-IA-8FX"/>
-                                </constraints>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="addTravelButtonClicked:" destination="GKO-zS-0zK" eventType="touchUpInside" id="jx6-Ai-BJk"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="uoZ-xd-kWQ" firstAttribute="leading" secondItem="DkN-Pc-TQX" secondAttribute="leading" id="3bN-5f-aaJ"/>
                             <constraint firstAttribute="trailing" secondItem="Lc1-qY-urQ" secondAttribute="trailing" id="81j-WP-L7x"/>
+                            <constraint firstItem="ITU-fI-wZP" firstAttribute="top" secondItem="Lc1-qY-urQ" secondAttribute="bottom" id="AKk-cW-vD2"/>
                             <constraint firstItem="xKc-CD-3Ka" firstAttribute="bottom" secondItem="M9x-UZ-4hQ" secondAttribute="bottom" id="Acb-fE-T1V"/>
-                            <constraint firstAttribute="centerX" secondItem="WCd-XL-kY6" secondAttribute="centerX" constant="0.5" id="CFx-Tz-fve"/>
                             <constraint firstItem="Lc1-qY-urQ" firstAttribute="top" secondItem="y5V-Xf-FV8" secondAttribute="bottom" constant="20" id="CRE-nr-3QF"/>
                             <constraint firstItem="DkN-Pc-TQX" firstAttribute="top" secondItem="8OL-hj-Wot" secondAttribute="bottom" constant="20" id="EDu-13-Hzo"/>
                             <constraint firstAttribute="trailingMargin" secondItem="DkN-Pc-TQX" secondAttribute="trailing" constant="5" id="HxJ-Gh-kec"/>
@@ -556,8 +556,6 @@
                             <constraint firstItem="uoZ-xd-kWQ" firstAttribute="top" secondItem="DkN-Pc-TQX" secondAttribute="bottom" constant="46" id="gNk-a8-jwG"/>
                             <constraint firstAttribute="bottom" secondItem="Lc1-qY-urQ" secondAttribute="bottom" id="pQl-dz-oCQ"/>
                             <constraint firstItem="DkN-Pc-TQX" firstAttribute="leading" secondItem="4cK-eA-lZ7" secondAttribute="leadingMargin" constant="5" id="r2h-bJ-RmZ"/>
-                            <constraint firstItem="ITU-fI-wZP" firstAttribute="top" secondItem="WCd-XL-kY6" secondAttribute="bottom" constant="18" id="r60-7h-EZP"/>
-                            <constraint firstItem="WCd-XL-kY6" firstAttribute="top" secondItem="Lc1-qY-urQ" secondAttribute="bottom" constant="5" id="tPR-dM-CQz"/>
                             <constraint firstItem="xKc-CD-3Ka" firstAttribute="trailing" secondItem="M9x-UZ-4hQ" secondAttribute="trailing" id="vyG-f7-6vJ"/>
                             <constraint firstItem="DkN-Pc-TQX" firstAttribute="trailing" secondItem="M9x-UZ-4hQ" secondAttribute="trailing" id="ybG-e6-SQR"/>
                             <constraint firstItem="y5V-Xf-FV8" firstAttribute="trailing" secondItem="M9x-UZ-4hQ" secondAttribute="trailing" constant="-1" id="zxc-Lt-Zrf"/>
@@ -571,7 +569,6 @@
                     <tabBarItem key="tabBarItem" title="Edit" image="tab-edit" id="PaM-zj-2y0"/>
                     <connections>
                         <outlet property="addPhotoButton" destination="M9x-UZ-4hQ" id="CC4-YR-SC3"/>
-                        <outlet property="addTravelButton" destination="WCd-XL-kY6" id="ioO-Oa-rAi"/>
                         <outlet property="buttonImageView" destination="xKc-CD-3Ka" id="Isc-17-5Bd"/>
                         <outlet property="currencyCodeTextField" destination="y5V-Xf-FV8" id="EGh-Yz-Bap"/>
                         <outlet property="endDateTextField" destination="Qhj-x8-s1k" id="TGm-vQ-5Dk"/>
@@ -592,10 +589,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableFooterView" contentMode="redraw" id="O3Q-Qx-ilG">
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="BHK-To-ZBd">
                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="1tl-hb-7e8" id="t6t-JZ-G9T"/>
+                            </connections>
                         </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CurrencyCell" id="9ji-NR-spo">
@@ -610,8 +610,20 @@
                             <outlet property="delegate" destination="1tl-hb-7e8" id="L86-Fx-Lj6"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="NId-H3-U3k" id="1yt-o4-2rV"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ptp-wI-Hgz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="NId-H3-U3k">
+                    <connections>
+                        <outlet property="delegate" destination="1tl-hb-7e8" id="awE-gj-GnN"/>
+                        <outlet property="searchBar" destination="BHK-To-ZBd" id="Opb-5P-Vg2"/>
+                        <outlet property="searchContentsController" destination="1tl-hb-7e8" id="92d-OG-gen"/>
+                        <outlet property="searchResultsDataSource" destination="1tl-hb-7e8" id="xON-EP-2Vj"/>
+                        <outlet property="searchResultsDelegate" destination="1tl-hb-7e8" id="BJO-Od-G7n"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="2528" y="2584"/>
         </scene>
@@ -634,6 +646,7 @@
     </scenes>
     <resources>
         <image name="add-photo-button" width="102" height="102"/>
+        <image name="edit-travel-button" width="30" height="30"/>
         <image name="gradient" width="249" height="80"/>
         <image name="tab-daily" width="25" height="25"/>
         <image name="tab-edit" width="25" height="25"/>

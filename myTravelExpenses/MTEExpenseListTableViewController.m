@@ -52,10 +52,6 @@
     MTECategoryViewController *categoryViewController = [self.tabBarController.viewControllers objectAtIndex:0];
     categoryViewController.travel = self.travel;
     
-    MTECategoryViewController *addTravelViewController = [self.tabBarController.viewControllers objectAtIndex:2];
-    addTravelViewController.travel = self.travel;
-
-    
     self.currencyFormatter = [MTECurrencies formatter:self.travel.currencyCode];
 
     [self setupBackgroundView];

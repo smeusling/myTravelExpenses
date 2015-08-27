@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "japon.jpg"
+      "filename" : "plane-2.jpg"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "japon@2x.jpg"
+      "filename" : "plane-1.jpg"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "japon@3x.jpg"
+      "filename" : "plane.jpg"
     }
   ],
   "info" : {

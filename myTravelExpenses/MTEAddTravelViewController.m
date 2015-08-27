@@ -58,22 +58,16 @@
         }else{
             self.buttonImageView.backgroundColor = [[MTEThemeManager sharedTheme]buttonColor];
         }
-        [self.addTravelButton setTitle:NSLocalizedString(@"Save", nil) forState:UIControlStateNormal];
     }else{
         self.isNewTravel = YES;
         self.startDate = [NSDate date];
         self.endDate = [NSDate date];
         self.currencyCode = self.profileCurrencyCode;
         self.buttonImageView.backgroundColor = [[MTEThemeManager sharedTheme]buttonColor];
-        self.addTravelButton.hidden = YES;
     }
     
     [self.buttonImageView setClipsToBounds:YES];
     self.buttonImageView.layer.cornerRadius = self.buttonImageView.frame.size.width / 2;
-    
-    
-    self.addTravelButton.backgroundColor = [[MTEThemeManager sharedTheme]buttonColor];
-    [self.addTravelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
 
     // This will remove extra separators from tableview
@@ -122,7 +116,12 @@
 
 - (void)setupNavBar
 {
-    self.navigationItem.title = NSLocalizedString(@"AddTravel", nil);
+    if(self.isNewTravel){
+        self.navigationItem.title = NSLocalizedString(@"AddTravel", nil);
+    }else{
+        self.navigationItem.title = NSLocalizedString(@"EditTravel", nil);
+    }
+    
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:NSLocalizedString(@"Close", nil) style:UIBarButtonItemStylePlain target:self action:@selector(closeButtonTapped)];
     
@@ -181,44 +180,62 @@
 
 - (void)saveButtonTapped
 {
-    // Need to look for an exchange rate?
-    if ([self.currencyCode isEqualToString:self.profileCurrencyCode] == NO) {
-        
-        [self showActivityView];
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [MTEExchangeRate getExchangeRates:^(NSDictionary *rates) {
-                NSDecimalNumber *usdToEventCurrencyRate;
-                if ([self.profileCurrencyCode isEqualToString:@"USD"] == NO) {
-                    usdToEventCurrencyRate = [rates valueForKey:self.profileCurrencyCode];
-                } else {
-                    usdToEventCurrencyRate = [NSDecimalNumber one];
-                }
-                NSDecimalNumber *usdToPaymentCurrencyRate;
-                if ([self.currencyCode isEqualToString:@"USD"] == NO) {
-                    usdToPaymentCurrencyRate = [rates valueForKey:self.currencyCode];
-                } else {
-                    usdToPaymentCurrencyRate = [NSDecimalNumber one];
-                }
-                
-                if (usdToEventCurrencyRate && usdToPaymentCurrencyRate) {
-                    self.profileCurrencyRate = [usdToEventCurrencyRate decimalNumberByDividingBy:usdToPaymentCurrencyRate];
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self hideActivityView];
-                        [self addTravel];
-                    });
-                } else {
-                    // Ask user for the rate as it could not be found automatically
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self hideActivityView];
-                        [self promptForRate:NO];
-                    });
-                }
-            }];
-        });
+    if(self.isNewTravel){
+        // Need to look for an exchange rate?
+        if ([self.currencyCode isEqualToString:self.profileCurrencyCode] == NO) {
+            
+            [self showActivityView];
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                [MTEExchangeRate getExchangeRates:^(NSDictionary *rates) {
+                    NSDecimalNumber *usdToEventCurrencyRate;
+                    if ([self.profileCurrencyCode isEqualToString:@"USD"] == NO) {
+                        usdToEventCurrencyRate = [rates valueForKey:self.profileCurrencyCode];
+                    } else {
+                        usdToEventCurrencyRate = [NSDecimalNumber one];
+                    }
+                    NSDecimalNumber *usdToPaymentCurrencyRate;
+                    if ([self.currencyCode isEqualToString:@"USD"] == NO) {
+                        usdToPaymentCurrencyRate = [rates valueForKey:self.currencyCode];
+                    } else {
+                        usdToPaymentCurrencyRate = [NSDecimalNumber one];
+                    }
+                    
+                    if (usdToEventCurrencyRate && usdToPaymentCurrencyRate) {
+                        self.profileCurrencyRate = [usdToEventCurrencyRate decimalNumberByDividingBy:usdToPaymentCurrencyRate];
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [self hideActivityView];
+                            [self addTravel];
+                        });
+                    } else {
+                        // Ask user for the rate as it could not be found automatically
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [self hideActivityView];
+                            [self promptForRate:NO];
+                        });
+                    }
+                }];
+            });
+        }else{
+            [self addTravel];
+        }
     }else{
-        [self addTravel];
+        //edit
+        NSData *imageData;
+        
+        if(self.travelImage){
+            
+            imageData = UIImageJPEGRepresentation(self.travelImage, 1.0);
+        }
+        
+        self.travel = [[MTEModel sharedInstance]updateTravel:self.travel name:self.nameTextField.text startDate:self.startDate endDate:self.endDate image:imageData currencyCode:self.currencyCode profileCurrencyRate:self.profileCurrencyRate];
+        
+        id<MTEAddTravelDelegate> delegate = self.addTravelDelegate;
+        if (delegate) {
+            [delegate editTravel:self.travel];
+        }
     }
+    
 }
 
 #pragma mark - Other method
@@ -289,23 +306,6 @@
     [view addAction:cancel];
     [self presentViewController:view animated:YES completion:nil];
 
-}
-
-- (IBAction)addTravelButtonClicked:(id)sender
-{
-    if(self.isNewTravel){
-        [self addTravel];
-    }else{
-        NSData *imageData;
-        
-        if(self.travelImage){
-            
-            imageData = UIImageJPEGRepresentation(self.travelImage, 1.0);
-        }
-        
-        self.travel = [[MTEModel sharedInstance]updateTravel:self.travel name:self.nameTextField.text startDate:self.startDate endDate:self.endDate image:imageData currencyCode:self.currencyCode profileCurrencyRate:self.profileCurrencyRate];
-    }
-    
 }
 
 - (void)showImagePickerForSourceType:(UIImagePickerControllerSourceType)sourceType

@@ -21,33 +21,23 @@
     
     UITabBarItem *catItem = [self.tabBar.items objectAtIndex:0];
     UITabBarItem *dailyItem = [self.tabBar.items objectAtIndex:1];
-    UITabBarItem *editItem = [self.tabBar.items objectAtIndex:2];
     
     catItem.title = NSLocalizedString(@"TabPie", nil);
     dailyItem.title = NSLocalizedString(@"TabDaily", nil);
-    editItem.title = NSLocalizedString(@"TabEdit", nil);
     
     UIImage *catImageSelected = [UIImage imageNamed:@"tab-pie.png"];
     UIImage *dailyImageSelected = [UIImage imageNamed:@"tab-daily.png"];
-    UIImage *editImageSelected = [UIImage imageNamed:@"tab-edit.png"];
     
     UIColor *color = [[MTEThemeManager sharedTheme] tabBarButtonColor];
     
     UIImage *catImage = [catImageSelected imageWithColor:color];
     UIImage *dailyImage = [dailyImageSelected imageWithColor:color];
-    UIImage *editImage = [editImageSelected imageWithColor:color];
     
     catItem.image = [catImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     catItem.selectedImage = catImageSelected;
     
     dailyItem.image = [dailyImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     dailyItem.selectedImage = dailyImageSelected;
-    
-    editItem.image = [editImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    editItem.selectedImage = editImageSelected;
-    
-    
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {

@@ -25,6 +25,7 @@
 
 @property (nonatomic, strong) NSMutableArray *travels;
 @property (nonatomic, strong) MTETravel *selectedTravel;
+@property (nonatomic, strong) MTETravel *selectedTravelForEdition;
 //@property (nonatomic, strong) MTEProfile *profile;
 
 @end
@@ -144,7 +145,7 @@
     if(travel.image){
         cell.travelImageView.image = [UIImage imageWithData:travel.image];
     }else{
-        cell.travelImageView.image = [UIImage imageNamed:@"japon"];
+        cell.travelImageView.image = [UIImage imageNamed:@"plane"];
     }
     
     NSNumberFormatter *formatter = [MTECurrencies formatter:travel.currencyCode];
@@ -159,6 +160,9 @@
     
     NSNumberFormatter *profileFormatter = [MTECurrencies formatter:[MTEConfigUtil profileCurrencyCode]];
     cell.travelUserCurrency.text = [profileFormatter stringFromNumber:[travel totalAmountInProfileCurrency]];
+    
+//    cell.editButton.tag = indexPath.row;
+//    [cell.editButton addTarget:self action:@selector(editButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     return cell;
     
@@ -179,16 +183,28 @@
     return YES;
 }
 
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
+-(NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewRowAction *delete = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:NSLocalizedString(@"Delete", nil) handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
         MTETravel *travel = self.travels[indexPath.row];
         [[[MTEModel sharedInstance]managedObjectContext] deleteObject:travel];
         [[[MTEModel sharedInstance]managedObjectContext] save:nil];
         [self.travels removeObjectAtIndex:indexPath.row];
         [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
         [self setupBackgroundView];
-    }
+    }];
+    
+    UITableViewRowAction *edit = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:NSLocalizedString(@"Edit", nil) handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
+        self.selectedTravelForEdition = self.travels[indexPath.row];
+        [self addButtonTapped];
+    }];
+    
+    return @[delete,edit];
+}
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -199,14 +215,21 @@
 #pragma mark - MTEAddTravelDelegate
 - (void)addTravelCancelled
 {
+    self.selectedTravelForEdition = nil;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)addTravel:(MTETravel *)travel
 {
+    self.selectedTravelForEdition = nil;
     [self reloadTravelData];
     [self setupBackgroundView];
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)editTravel:(MTETravel *)travel
+{
+    [self addTravel:travel];
 }
 
 #pragma mark - Segue 
@@ -265,6 +288,7 @@
 {
     MTEAddTravelViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MTEAddTravelViewController"];
     viewController.addTravelDelegate = self;
+    viewController.travel = self.selectedTravelForEdition;
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
     
     [self presentViewController:navigationController animated:YES completion:nil];
@@ -273,6 +297,13 @@
 - (void)menuButtonTapped
 {
     [self takeScreenShot];
+}
+
+- (IBAction)editButtonPressed:(id)sender
+{
+    UIButton *button = (UIButton *)sender;
+    self.selectedTravelForEdition = self.travels[button.tag];
+    [self addButtonTapped];
 }
 
 -(void)takeScreenShot

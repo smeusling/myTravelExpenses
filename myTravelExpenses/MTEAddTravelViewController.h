@@ -25,10 +25,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *addPhotoButton;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *buttonImageView;
-@property (weak, nonatomic) IBOutlet UIButton *addTravelButton;
 
 - (IBAction)addPhotoButtonClicked:(id)sender;
-- (IBAction)addTravelButtonClicked:(id)sender;
 
 @end
 
@@ -36,5 +34,6 @@
 
 - (void)addTravelCancelled;
 - (void)addTravel:(MTETravel *)travel;
+- (void)editTravel:(MTETravel *)travel;
 
 @end

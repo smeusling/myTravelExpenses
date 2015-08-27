@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *travelDates;
 @property (weak, nonatomic) IBOutlet UILabel *travelUserCurrency;
 @property (weak, nonatomic) IBOutlet UILabel *travelCurrency;
+@property (weak, nonatomic) IBOutlet UIButton *editButton;
 
 @end
