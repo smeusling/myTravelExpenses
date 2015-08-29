@@ -24,7 +24,7 @@
 		<key>name</key>
 		<string>Meal</string>
 		<key>color</key>
-		<string>ed7161</string>
+		<string>4fca9a</string>
 	</dict>
 	<dict>
 		<key>id</key>
@@ -72,7 +72,7 @@
 		<key>name</key>
 		<string>Other</string>
 		<key>color</key>
-		<string>4fca9a</string>
+		<string>eb9e09</string>
 	</dict>
 </array>
 </plist>
