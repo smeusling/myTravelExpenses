@@ -20,6 +20,7 @@
 #import "MTEModel.h"
 #import "MTEUtil.h"
 #import "MTETheme.h"
+#import "NSString+EDAdditions.h"
 
 @interface MTEExpenseListTableViewController () <MTEAddExpenseDelegate>
 
@@ -129,8 +130,8 @@
     MTEExpense *expense = [expensesOnThisDay objectAtIndex:indexPath.row];
     
     UILabel *nameLabel = (UILabel *)[cell viewWithTag:1];
-    nameLabel.text = expense.name;
-    
+    nameLabel.text = [expense.name ed_stringByAddingNewLines];
+                      
     UILabel *priceLabel = (UILabel *)[cell viewWithTag:2];
     
     NSNumberFormatter *formatter = [MTECurrencies formatter:expense.currencyCode];
@@ -210,15 +211,18 @@
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        MTETravel *travel = self.expenses[indexPath.row];
-        [[[MTEModel sharedInstance]managedObjectContext] deleteObject:travel];
+        
+        NSDate *dateRepresentingThisDay = [self.sortedDays objectAtIndex:indexPath.section];
+        NSArray *expensesOnThisDay = [self.sections objectForKey:dateRepresentingThisDay];
+        MTEExpense *expense = [expensesOnThisDay objectAtIndex:indexPath.row];
+        [[[MTEModel sharedInstance]managedObjectContext] deleteObject:expense];
         [[[MTEModel sharedInstance]managedObjectContext] save:nil];
-        [self.expenses removeObjectAtIndex:indexPath.row];
+        [self.expenses removeObject:expense];
         [self sortExpensesByDate];
         [self setupHeaderView];
         [self.tableView reloadData];
         [self setupBackgroundView];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"MTEExpenseRemoved" object:self userInfo:@{@"travel":travel}];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"MTEExpenseRemoved" object:self userInfo:@{@"travel":self.travel}];
     }
 }
 

@@ -117,6 +117,7 @@
             [self.categoryDict setObject:value forKey:expense.categoryId];
         }
     }
+    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -135,7 +136,12 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CategoryCell" forIndexPath:indexPath];
     
-    NSArray *keys = [self.categoryDict allKeys];
+    NSArray *keys = [self.categoryDict keysSortedByValueUsingComparator:
+                           ^NSComparisonResult(id obj1, id obj2) {
+                               return [obj2 compare:obj1];
+                           }];
+    
+    //NSArray *keys = [self.categoryDict allKeys];
     
     NSString *catId = [keys objectAtIndex:indexPath.row];
     

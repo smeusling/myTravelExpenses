@@ -199,7 +199,7 @@
                 && (rate.rate != nil)) {
                 // This exchange rate is already there and valid
                 searchForRate = NO;
-                return;
+                break;
             }
         }
         
