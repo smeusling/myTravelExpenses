@@ -73,7 +73,7 @@
                                                                             target:nil
                                                                             action:nil];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"menu-button"] style:UIBarButtonItemStylePlain target:self action:@selector(menuButtonTapped)];
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"menu-button"] style:UIBarButtonItemStylePlain target:self action:@selector(menuButtonTapped)];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"add-button"] style:UIBarButtonItemStylePlain target:self action:@selector(addButtonTapped)];
 }
@@ -215,12 +215,14 @@
 #pragma mark - MTEAddTravelDelegate
 - (void)addTravelCancelled
 {
+    [self.tableView setEditing:NO animated:YES];
     self.selectedTravelForEdition = nil;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)addTravel:(MTETravel *)travel
 {
+    [self.tableView setEditing:NO animated:YES];
     self.selectedTravelForEdition = nil;
     [self reloadTravelData];
     [self setupBackgroundView];
@@ -296,7 +298,7 @@
 
 - (void)menuButtonTapped
 {
-    [self takeScreenShot];
+    //[self takeScreenShot];
 }
 
 - (IBAction)editButtonPressed:(id)sender
@@ -306,18 +308,18 @@
     [self addButtonTapped];
 }
 
--(void)takeScreenShot
-{
-    UIWindow *window = [[[UIApplication sharedApplication] windows] objectAtIndex:0];
-    if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)])
-        UIGraphicsBeginImageContextWithOptions(window.bounds.size, NO, [UIScreen mainScreen].scale);
-    else
-        UIGraphicsBeginImageContext(window.bounds.size);
-    
-    [window.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    self.imageView.image = image;
-}
+//-(void)takeScreenShot
+//{
+//    UIWindow *window = [[[UIApplication sharedApplication] windows] objectAtIndex:0];
+//    if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)])
+//        UIGraphicsBeginImageContextWithOptions(window.bounds.size, NO, [UIScreen mainScreen].scale);
+//    else
+//        UIGraphicsBeginImageContext(window.bounds.size);
+//    
+//    [window.layer renderInContext:UIGraphicsGetCurrentContext()];
+//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    self.imageView.image = image;
+//}
 
 @end

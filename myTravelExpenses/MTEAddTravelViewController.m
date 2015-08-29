@@ -14,6 +14,7 @@
 #import "MTETravel.h"
 #import "MTETheme.h"
 #import "MTEConfigUtil.h"
+#import "MTETravelCurrenciesTableViewController.h"
 
 @interface MTEAddTravelViewController () <MTECurrencyPickerDelegate>
 
@@ -33,6 +34,8 @@
 @property (nonatomic, strong)NSString *profileCurrencyCode;
 
 @property BOOL isNewTravel;
+
+@property BOOL animated;
 
 @end
 
@@ -54,62 +57,64 @@
         self.endDate = self.travel.endDate;
         self.currencyCode = self.travel.currencyCode;
         if(self.travel.image){
-            self.buttonImageView.image = [UIImage imageWithData:self.travel.image];
+            self.travelImage = [UIImage imageWithData:self.travel.image];
+            self.buttonImageView.image = self.travelImage;
         }else{
             self.buttonImageView.backgroundColor = [[MTEThemeManager sharedTheme]buttonColor];
         }
+        if(self.travel.profileCurrencyRate){
+            self.profileCurrencyRate = self.travel.profileCurrencyRate;
+            self.exchangeRateLabel.hidden = NO;
+            self.mainCurrencyRateLabel.hidden = NO;
+            self.profileCurrencyRateLabel.hidden = NO;
+            self.mainToProfileRateTextField.hidden = NO;
+        }else{
+            self.exchangeRateLabel.hidden = YES;
+            self.mainCurrencyRateLabel.hidden = YES;
+            self.profileCurrencyRateLabel.hidden = YES;
+            self.mainToProfileRateTextField.hidden = YES;
+        }
+        
+        if([self.travel.rates count]>0){
+            self.manageOtherCurrencyButton.hidden = NO;
+        }else{
+            self.manageOtherCurrencyButton.hidden = YES;
+        }
+        
+        self.currencyCodeTextField.userInteractionEnabled = NO;
+        [self.currencyCodeTextField setTextColor:[UIColor grayColor]];
+        
     }else{
         self.isNewTravel = YES;
         self.startDate = [NSDate date];
         self.endDate = [NSDate date];
         self.currencyCode = self.profileCurrencyCode;
         self.buttonImageView.backgroundColor = [[MTEThemeManager sharedTheme]buttonColor];
+        self.exchangeRateLabel.hidden = YES;
+        self.mainCurrencyRateLabel.hidden = YES;
+        self.profileCurrencyRateLabel.hidden = YES;
+        self.mainToProfileRateTextField.hidden = YES;
+        self.manageOtherCurrencyButton.hidden = YES;
+        [self.currencyCodeTextField addTarget:self action:@selector(openCurrencyList)forControlEvents:UIControlEventTouchDown];
+        [self.currencyCodeTextField setTextColor:[UIColor blackColor]];
     }
     
     [self.buttonImageView setClipsToBounds:YES];
     self.buttonImageView.layer.cornerRadius = self.buttonImageView.frame.size.width / 2;
     
-
-    // This will remove extra separators from tableview
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    
     [self setupNavBar];
     [self setupTextFields];
     [self setupDatePickers];
     
-    if(self.isNewTravel){
-        [self.currencyCodeTextField addTarget:self action:@selector(openCurrencyList)forControlEvents:UIControlEventTouchDown];
-    }else{
-        self.currencyCodeTextField.userInteractionEnabled = NO;
-    }
-}
-
-#pragma mark - Table view data source / delegate
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [self.rates count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CurrencyRateCell" forIndexPath:indexPath];
-    
-    MTEExchangeRate *rate = [self.rates objectAtIndex:indexPath.row];
-    
-    NSNumberFormatter *formatter = [MTECurrencies formatter:rate.currencyCode];
-    cell.textLabel.text = [NSString stringWithFormat:NSLocalizedString(@"ExchangeRateFormat", nil), [formatter stringFromNumber:[NSDecimalNumber one]]];
-    
-    NSNumberFormatter *travelFormatter = [MTECurrencies formatter10Digits:self.travel.currencyCode];
-    cell.detailTextLabel.text = [travelFormatter stringFromNumber:rate.rate];
-    
-    return cell;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
 }
 
 #pragma mark - Setup
@@ -130,6 +135,18 @@
 
 - (void)setupTextFields
 {
+    self.exchangeRateLabel.text = NSLocalizedString(@"ExchangeRateTitle", nil).uppercaseString;
+    self.mainCurrencyRateLabel.text = [NSString stringWithFormat:@"1 %@ = ",[[MTECurrencies sharedInstance] currencySymbolForCode:self.travel.currencyCode]];
+    self.profileCurrencyRateLabel.text = [[MTECurrencies sharedInstance] currencySymbolForCode:[MTEConfigUtil profileCurrencyCode]];
+    
+    [self.mainToProfileRateTextField addTarget:self action:@selector(amountDidChange:) forControlEvents:UIControlEventEditingChanged];
+    
+    self.mainToProfileRateTextField.text = [NSString stringWithFormat:@"%@",self.travel.profileCurrencyRate];
+    [self.manageOtherCurrencyButton setTitle:NSLocalizedString(@"ManageOtherCurrency", nil).uppercaseString forState:UIControlStateNormal] ;
+    self.manageOtherCurrencyButton.backgroundColor = [[MTEThemeManager sharedTheme]buttonColor];
+    self.manageOtherCurrencyButton.layer.cornerRadius = 5;
+    
+    
     self.startDateLabel.text = NSLocalizedString(@"StartDate", nil).uppercaseString;
     self.endDateLabel.text = NSLocalizedString(@"EndDate", nil).uppercaseString;
     self.currencyLabel.text = NSLocalizedString(@"MainCurrency", nil).uppercaseString;
@@ -154,23 +171,27 @@
     
     UIDatePicker *datePicker = [[UIDatePicker alloc]init];
     datePicker.datePickerMode = UIDatePickerModeDate;
-    [datePicker setDate:[NSDate date]];
+    [datePicker setDate:self.startDate];
     [datePicker addTarget:self action:@selector(updateStartDateTextField:) forControlEvents:UIControlEventValueChanged];
     [self.startDateTextField setInputView:datePicker];
     self.startDateTextField.inputAccessoryView = toolBar;
     
     UIDatePicker *endDatePicker = [[UIDatePicker alloc]init];
     endDatePicker.datePickerMode = UIDatePickerModeDate;
-    [endDatePicker setDate:[NSDate date]];
+    [endDatePicker setDate:self.endDate];
     [endDatePicker addTarget:self action:@selector(updateEndDateTextField:) forControlEvents:UIControlEventValueChanged];
     [self.endDateTextField setInputView:endDatePicker];
     self.endDateTextField.inputAccessoryView = toolBar;
+    
+    self.mainToProfileRateTextField.inputAccessoryView = toolBar;
 }
 
 - (void)doneTouched:(UIBarButtonItem *)sender
 {
     [self.startDateTextField resignFirstResponder];
     [self.endDateTextField resignFirstResponder];
+    [self.mainToProfileRateTextField resignFirstResponder];
+
 }
 
 #pragma mark - DatePicker
@@ -203,44 +224,7 @@
 - (void)saveButtonTapped
 {
     if(self.isNewTravel){
-        // Need to look for an exchange rate?
-        if ([self.currencyCode isEqualToString:self.profileCurrencyCode] == NO) {
-            
-            [self showActivityView];
-            
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                [MTEExchangeRate getExchangeRates:^(NSDictionary *rates) {
-                    NSDecimalNumber *usdToEventCurrencyRate;
-                    if ([self.profileCurrencyCode isEqualToString:@"USD"] == NO) {
-                        usdToEventCurrencyRate = [rates valueForKey:self.profileCurrencyCode];
-                    } else {
-                        usdToEventCurrencyRate = [NSDecimalNumber one];
-                    }
-                    NSDecimalNumber *usdToPaymentCurrencyRate;
-                    if ([self.currencyCode isEqualToString:@"USD"] == NO) {
-                        usdToPaymentCurrencyRate = [rates valueForKey:self.currencyCode];
-                    } else {
-                        usdToPaymentCurrencyRate = [NSDecimalNumber one];
-                    }
-                    
-                    if (usdToEventCurrencyRate && usdToPaymentCurrencyRate) {
-                        self.profileCurrencyRate = [usdToEventCurrencyRate decimalNumberByDividingBy:usdToPaymentCurrencyRate];
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            [self hideActivityView];
-                            [self addTravel];
-                        });
-                    } else {
-                        // Ask user for the rate as it could not be found automatically
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            [self hideActivityView];
-                            [self promptForRate:NO];
-                        });
-                    }
-                }];
-            });
-        }else{
-            [self addTravel];
-        }
+        [self addTravel];
     }else{
         //edit
         NSData *imageData;
@@ -330,6 +314,15 @@
 
 }
 
+- (IBAction)manageOtherCurrencyButtonClicked:(id)sender
+{
+    MTETravelCurrenciesTableViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MTETravelCurrenciesTableViewController"];
+    viewController.travel = self.travel;
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    
+    [self presentViewController:navigationController animated:YES completion:nil];
+}
+
 - (void)showImagePickerForSourceType:(UIImagePickerControllerSourceType)sourceType
 {
     UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
@@ -339,6 +332,11 @@
 
     self.imagePickerController = imagePickerController;
     [self presentViewController:self.imagePickerController animated:YES completion:nil];
+}
+
+- (void)amountDidChange:(UITextField *)textField
+{
+    self.profileCurrencyRate = [NSDecimalNumber decimalNumberWithString:textField.text];
 }
 
 #pragma mark - UIImagePickerControllerDelegate
@@ -378,6 +376,48 @@
     self.currencyCode = code;
     self.currencyCodeTextField.text = [[MTECurrencies sharedInstance] currencyFullNameForCode:self.currencyCode];
     
+    // Need to look for an exchange rate?
+    if ([self.currencyCode isEqualToString:self.profileCurrencyCode] == NO) {
+        [self showActivityView];
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [MTEExchangeRate getExchangeRates:^(NSDictionary *rates) {
+                NSDecimalNumber *usdToEventCurrencyRate;
+                if ([self.profileCurrencyCode isEqualToString:@"USD"] == NO) {
+                    usdToEventCurrencyRate = [rates valueForKey:self.profileCurrencyCode];
+                } else {
+                    usdToEventCurrencyRate = [NSDecimalNumber one];
+                }
+                NSDecimalNumber *usdToPaymentCurrencyRate;
+                if ([self.currencyCode isEqualToString:@"USD"] == NO) {
+                    usdToPaymentCurrencyRate = [rates valueForKey:self.currencyCode];
+                } else {
+                    usdToPaymentCurrencyRate = [NSDecimalNumber one];
+                }
+                
+                if (usdToEventCurrencyRate && usdToPaymentCurrencyRate) {
+                    self.profileCurrencyRate = [usdToEventCurrencyRate decimalNumberByDividingBy:usdToPaymentCurrencyRate];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self hideActivityView];
+                        self.mainCurrencyRateLabel.hidden = NO;
+                        self.profileCurrencyRateLabel.hidden = NO;
+                        self.mainToProfileRateTextField.hidden = NO;
+                        self.exchangeRateLabel.hidden = NO;
+                        self.mainCurrencyRateLabel.text = [NSString stringWithFormat:@"1 %@ = ",[[MTECurrencies sharedInstance] currencySymbolForCode:code]];
+                        self.profileCurrencyRateLabel.text = [[MTECurrencies sharedInstance] currencySymbolForCode:[MTEConfigUtil profileCurrencyCode]];
+                        self.mainToProfileRateTextField.text = [NSString stringWithFormat:@"%@",self.profileCurrencyRate];
+                    });
+                } else {
+                    // Ask user for the rate as it could not be found automatically
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self hideActivityView];
+                        [self promptForRate:NO];
+                    });
+                }
+            }];
+        });
+    }
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -386,6 +426,28 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark - Keyboard
+-(void)keyboardWillShow {
+    // Animate the current view out of the way
+    if ([self.mainToProfileRateTextField isFirstResponder]) {
+        CGRect viewFrame = self.view.frame;
+        [UIView animateWithDuration:0.3f animations:^ {
+            self.view.frame = CGRectMake(viewFrame.origin.x, viewFrame.origin.y-160, viewFrame.size.width, viewFrame.size.height);
+        }];
+        self.animated = YES;
+    }
+}
+
+-(void)keyboardWillHide {
+    // Animate the current view back to its original position
+    if (self.animated) {
+        CGRect viewFrame = self.view.frame;
+        [UIView animateWithDuration:0.3f animations:^ {
+            self.view.frame = CGRectMake(viewFrame.origin.x, viewFrame.origin.y+160, viewFrame.size.width, viewFrame.size.height);
+        }];
+        self.animated = NO;
+    }
+}
 #pragma mark - other methods
 - (void)openCurrencyList
 {
@@ -445,11 +507,18 @@
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     formatter.locale = [NSLocale currentLocale];
     NSDecimalNumber *rate = [NSDecimalNumber decimalNumberWithDecimal:[[formatter numberFromString:rateString] decimalValue]];
+    self.profileCurrencyRate = rate;
     if ([rate isEqualToNumber:[NSDecimalNumber notANumber]] || [rate isEqualToNumber:[NSDecimalNumber zero]]) {
         // Ask again, rate is not valid
         [self promptForRate:YES];
     } else {
-        [self addTravel];
+        self.mainCurrencyRateLabel.hidden = NO;
+        self.profileCurrencyRateLabel.hidden = NO;
+        self.mainToProfileRateTextField.hidden = NO;
+        self.exchangeRateLabel.hidden = NO;
+        self.mainCurrencyRateLabel.text = [NSString stringWithFormat:@"1 %@ = ",[[MTECurrencies sharedInstance] currencySymbolForCode:self.currencyCode]];
+        self.profileCurrencyRateLabel.text = [[MTECurrencies sharedInstance] currencySymbolForCode:[MTEConfigUtil profileCurrencyCode]];
+        self.mainToProfileRateTextField.text = [NSString stringWithFormat:@"%@",self.profileCurrencyRate];
     }
 }
 

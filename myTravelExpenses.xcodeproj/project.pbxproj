@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		50150B5F1AEADDAD005A63CF /* MTEModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50150B5E1AEADDAD005A63CF /* MTEModel.m */; };
+		501F12F81B90829000AC6337 /* MTETravelCurrenciesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 501F12F71B90829000AC6337 /* MTETravelCurrenciesTableViewController.m */; };
+		501F12FB1B90961F00AC6337 /* MTETextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 501F12FA1B90961F00AC6337 /* MTETextField.m */; };
 		502C2E3D1AEA9255001D0B88 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 502C2E3C1AEA9255001D0B88 /* CoreData.framework */; };
 		502C2E411AEA937A001D0B88 /* myTravelExpenses.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 502C2E3F1AEA937A001D0B88 /* myTravelExpenses.xcdatamodeld */; };
 		50657BC81B824DC200BDBBEC /* MTECategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 50657BC71B824DC200BDBBEC /* MTECategory.m */; };
@@ -105,6 +107,11 @@
 		2C54EAD2CC319F6CE46F4779 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		50150B5D1AEADDAD005A63CF /* MTEModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTEModel.h; sourceTree = "<group>"; };
 		50150B5E1AEADDAD005A63CF /* MTEModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTEModel.m; sourceTree = "<group>"; };
+		501F12F61B90829000AC6337 /* MTETravelCurrenciesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTETravelCurrenciesTableViewController.h; sourceTree = "<group>"; };
+		501F12F71B90829000AC6337 /* MTETravelCurrenciesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTETravelCurrenciesTableViewController.m; sourceTree = "<group>"; };
+		501F12F91B90961F00AC6337 /* MTETextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTETextField.h; sourceTree = "<group>"; };
+		501F12FA1B90961F00AC6337 /* MTETextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTETextField.m; sourceTree = "<group>"; };
+		501F12FC1B90A96200AC6337 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		502C2E3C1AEA9255001D0B88 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		502C2E3E1AEA9306001D0B88 /* myTravelExpenses-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "myTravelExpenses-Prefix.pch"; sourceTree = "<group>"; };
 		502C2E401AEA937A001D0B88 /* myTravelExpenses.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myTravelExpenses.xcdatamodel; sourceTree = "<group>"; };
@@ -353,6 +360,8 @@
 				50657BD31B82764A00BDBBEC /* MTEUtil.m */,
 				50657C3B1B8CCB1F00BDBBEC /* UIImage+Color.h */,
 				50657C3C1B8CCB1F00BDBBEC /* UIImage+Color.m */,
+				501F12F91B90961F00AC6337 /* MTETextField.h */,
+				501F12FA1B90961F00AC6337 /* MTETextField.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -408,6 +417,8 @@
 				50E774731B2CBFEB00D900FC /* Cells */,
 				50657C361B8CC86A00BDBBEC /* MTETravelTabBarController.h */,
 				50657C371B8CC86A00BDBBEC /* MTETravelTabBarController.m */,
+				501F12F61B90829000AC6337 /* MTETravelCurrenciesTableViewController.h */,
+				501F12F71B90829000AC6337 /* MTETravelCurrenciesTableViewController.m */,
 			);
 			name = Travel;
 			sourceTree = "<group>";
@@ -497,6 +508,7 @@
 				TargetAttributes = {
 					5074FEE11AD05451009FD06D = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = KA8566AL49;
 					};
 					5074FEFA1AD05451009FD06D = {
 						CreatedOnToolsVersion = 6.2;
@@ -637,12 +649,14 @@
 				5074FEEB1AD05451009FD06D /* AppDelegate.m in Sources */,
 				50F70B241B68D7D30097282C /* MTECategoryViewController.m in Sources */,
 				50657C321B849A1000BDBBEC /* MTEExchangeRateTransient.m in Sources */,
+				501F12FB1B90961F00AC6337 /* MTETextField.m in Sources */,
 				50CEE97E1AF02205008D59CE /* MTEAddTravelViewController.m in Sources */,
 				50657C3D1B8CCB1F00BDBBEC /* UIImage+Color.m in Sources */,
 				5074FF0E1AD0583A009FD06D /* MTETravelListViewController.m in Sources */,
 				5074FEE81AD05451009FD06D /* main.m in Sources */,
 				5074FF191AD0852B009FD06D /* MTEConfigUtil.m in Sources */,
 				50E774811B2CC40700D900FC /* MTETravelViewController.m in Sources */,
+				501F12F81B90829000AC6337 /* MTETravelCurrenciesTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -710,6 +724,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5074FEF51AD05451009FD06D /* Base */,
+				501F12FC1B90A96200AC6337 /* fr */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
@@ -800,6 +815,7 @@
 			baseConfigurationReference = 2C54EAD2CC319F6CE46F4779 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = myTravelExpenses/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -813,6 +829,7 @@
 			baseConfigurationReference = 733BCB9308CB06F82597A890 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = myTravelExpenses/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

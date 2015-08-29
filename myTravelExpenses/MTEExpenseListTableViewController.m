@@ -19,6 +19,7 @@
 #import "MTEAddTravelViewController.h"
 #import "MTEModel.h"
 #import "MTEUtil.h"
+#import "MTETheme.h"
 
 @interface MTEExpenseListTableViewController () <MTEAddExpenseDelegate>
 
@@ -225,7 +226,7 @@
 {
     UIView *header = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 50)];
     
-    header.backgroundColor = [UIColor colorWithRed:0/255.f green:212/255.f blue:234/255.f alpha:1];
+    header.backgroundColor = [[MTEThemeManager sharedTheme]tableViewHeaderColor];//[UIColor colorWithRed:0/255.f green:212/255.f blue:234/255.f alpha:1];
     
     UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 10, header.frame.size.width -20, header.frame.size.height - 20)];
     titleLabel.backgroundColor = [UIColor clearColor];

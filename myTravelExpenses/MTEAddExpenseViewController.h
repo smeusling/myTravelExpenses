@@ -14,16 +14,19 @@
 
 @interface MTEAddExpenseViewController : UIViewController <UITextFieldDelegate>
 
+@property (weak, nonatomic) MTETravel *travel;
+
 @property (nonatomic, weak) id<MTEAddExpenseDelegate> addExpenseDelegate;
 @property (strong, nonatomic) IBOutlet UITextField *descriptionTextField;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (strong, nonatomic) IBOutlet UITextField *dateTextField;
+@property (weak, nonatomic) IBOutlet UILabel *amountLabel;
 @property (strong, nonatomic) IBOutlet TSCurrencyTextField *amountTextField;
+@property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
 @property (strong, nonatomic) IBOutlet UITextField *categoryTextField;
-@property (weak, nonatomic) IBOutlet UITextField *currencyTextField;
 
-- (IBAction)openCategoryList:(id)sender;
+- (IBAction)changeCurrencyButtonClicked:(id)sender;
 
-@property (weak, nonatomic) MTETravel *travel;
 
 @end
 

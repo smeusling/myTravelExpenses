@@ -19,6 +19,7 @@
 #import "MTEExchangeRate.h"
 #import "TSCurrencyTextField.h"
 #import "MTECurrencyTextField.h"
+#import "MTETheme.h"
 
 @interface MTEAddExpenseViewController () <CZPickerViewDataSource, CZPickerViewDelegate, MTECurrencyPickerDelegate>
 
@@ -59,7 +60,6 @@
     self.selectedCategory = [[MTECategories sharedCategories]categoryById:@"cat9"];
     
     [self.categoryTextField addTarget:self action:@selector(openCategoryList:)forControlEvents:UIControlEventTouchDown];
-    [self.currencyTextField addTarget:self action:@selector(openCurrencyList)forControlEvents:UIControlEventTouchDown];
 
 }
 
@@ -76,6 +76,10 @@
 
 - (void)setupTextFields
 {
+    self.dateLabel.text = NSLocalizedString(@"Date", nil).uppercaseString;
+    self.amountLabel.text = NSLocalizedString(@"Amount", nil).uppercaseString;
+    self.categoryLabel.text = NSLocalizedString(@"Category", nil).uppercaseString;
+
     self.descriptionTextField.placeholder = NSLocalizedString(@"EnterDescription", nil);
     self.categoryTextField.placeholder = NSLocalizedString(@"EnterCategory", nil);
     
@@ -86,7 +90,6 @@
     [self.amountTextField addTarget:self action:@selector(amountDidChange:) forControlEvents:UIControlEventEditingChanged];
     
     self.dateTextField.text = [self.formatter stringFromDate:self.expenseDate];
-    self.currencyTextField.text = self.travel.currencyCode;
 }
 
 - (void)amountDidChange:(UITextField *)textField
@@ -98,12 +101,36 @@
 
 - (void)setupDatePickers
 {
+    
+    UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    toolBar.barStyle = UIBarStyleDefault;
+    
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneTouched:)];
+    
+    doneButton.tintColor = [UIColor darkGrayColor];
+    
+    [toolBar setItems:[NSArray arrayWithObjects:doneButton, nil]];
+
     UIDatePicker *datePicker = [[UIDatePicker alloc]init];
     datePicker.datePickerMode = UIDatePickerModeDate;
     [datePicker setDate:[NSDate date]];
     [datePicker addTarget:self action:@selector(updateDateTextField:) forControlEvents:UIControlEventValueChanged];
     [self.dateTextField setInputView:datePicker];
+    
+    self.dateTextField.inputAccessoryView = toolBar;
+    self.amountTextField.inputAccessoryView = toolBar;
 }
+
+
+- (void)doneTouched:(UIBarButtonItem *)sender
+{
+    [self.dateTextField resignFirstResponder];
+    [self.amountTextField resignFirstResponder];
+    
+}
+
+
+
 
 #pragma mark - CZPickerView
 
@@ -237,7 +264,6 @@
 - (void)selectedCurrencyWithCode:(NSString *)code
 {
     self.currencyCode = code;
-    self.currencyTextField.text = code;//[[MTECurrencies sharedInstance] currencyFullNameForCode:self.currencyCode];
     
     NSNumberFormatter *formatter = [MTECurrencies formatter:code];
     self.amountTextField.currencyNumberFormatter = formatter;
@@ -271,6 +297,7 @@
 {
     [self.selectedTextField resignFirstResponder];
     CZPickerView *picker = [[CZPickerView alloc] initWithHeaderTitle: NSLocalizedString(@"Categories", nil) cancelButtonTitle:nil confirmButtonTitle:nil];
+    picker.headerBackgroundColor = [[MTEThemeManager sharedTheme]tableViewHeaderColor];
     picker.delegate = self;
     picker.dataSource = self;
     picker.needFooterView = NO;
@@ -346,5 +373,9 @@
     }
 }
 
+- (IBAction)changeCurrencyButtonClicked:(id)sender
+{
+    [self openCurrencyList];
+}
 @end
 

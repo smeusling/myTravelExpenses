@@ -54,3 +54,10 @@
 "StartDate" = "Start date";
 "EndDate" = "End date";
 "MainCurrency" = "Main Currency";
+
+"ExchangeRateTitle" = "Exchange Rate";
+"ManageOtherCurrency" = "Manage Other Currency";
+
+"Date" = "Date";
+"Amount" = "Amount";
+"Category" = "Category";

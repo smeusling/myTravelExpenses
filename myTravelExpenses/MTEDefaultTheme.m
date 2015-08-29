@@ -15,7 +15,8 @@
 
 - (UIColor *)mainColor
 {
-    return [UIColor colorWithRed:0/255.f green:228/255.f blue:255/255.f alpha:1];
+    //return [UIColor colorWithRed:0/255.f green:228/255.f blue:255/255.f alpha:1];
+    return [UIColor colorWithRed:0/255.f green:220/255.f blue:246/255.f alpha:1];
 }
 
 - (UIColor *)mainTextColor
@@ -35,7 +36,7 @@
 
 - (UIColor *)tableViewHeaderColor
 {
-    return [UIColor colorWithRed:0/255.f green:207/255.f blue:231/255.f alpha:1];
+    return [UIColor colorWithRed:0/255.f green:182/255.f blue:203/255.f alpha:1];
 }
 - (UIColor *)navBarTintColor
 {
