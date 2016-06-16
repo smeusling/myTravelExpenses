@@ -15,12 +15,14 @@
 #import "MTETheme.h"
 #import "MTEConfigUtil.h"
 #import "MTETravelCurrenciesTableViewController.h"
+#import "NSNumber+PrimativeComparison.h"
 
 @interface MTEAddTravelViewController () <MTECurrencyPickerDelegate>
 
 @property (nonatomic, strong) NSDate *startDate;
 @property (nonatomic, strong) NSDate *endDate;
 @property (nonatomic, strong) NSString *currencyCode;
+@property (nonatomic, strong) NSString *choosenCurrencyCode;
 @property (nonatomic, strong) NSMutableArray *rates;
 @property (strong, nonatomic) UIActivityIndicatorView *activityView;
 
@@ -367,19 +369,22 @@
 
 - (void)selectedCurrencyWithCode:(NSString *)code
 {
-    self.currencyCode = code;
-    self.currencyCodeTextField.text = [[MTECurrencies sharedInstance] currencyFullNameForCode:self.currencyCode];
+    self.choosenCurrencyCode = code;
     
     // Need to look for an exchange rate?
-    if ([self.currencyCode isEqualToString:self.profileCurrencyCode] == NO) {
+    if ([self.choosenCurrencyCode isEqualToString:self.profileCurrencyCode] == NO) {
         [self showActivityView];
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [MTEExchangeRate getExchangeRatesForCurrency:self.profileCurrencyCode toCurrency:self.currencyCode withCompletionHandler:^(float rate) {
-                if (rate > 0) {
-                    self.profileCurrencyRate = [[NSDecimalNumber alloc] initWithFloat:rate];
+            [MTEExchangeRate getExchangeRatesForCurrency:self.profileCurrencyCode toCurrency:self.choosenCurrencyCode withCompletionHandler:^(NSDecimalNumber *rate) {
+                if ([rate isGreaterThanInt:0] ) {
+                    self.profileCurrencyRate = rate;
+                    self.currencyCode = self.choosenCurrencyCode;
+                    
+
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [self hideActivityView];
+                        self.currencyCodeTextField.text = [[MTECurrencies sharedInstance] currencyFullNameForCode:self.currencyCode];
                         self.mainCurrencyRateLabel.hidden = NO;
                         self.profileCurrencyRateLabel.hidden = NO;
                         self.mainToProfileRateTextField.hidden = NO;
@@ -397,6 +402,9 @@
                 }
             }];
         });
+    }else{
+        self.currencyCode = self.choosenCurrencyCode;
+        self.currencyCodeTextField.text = [[MTECurrencies sharedInstance] currencyFullNameForCode:self.currencyCode];
     }
     
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -462,8 +470,8 @@
 - (void)promptForRate:(BOOL)askingAgain
 {
     NSString *nameForEventCurrency = [[MTECurrencies sharedInstance] currencySymbolForCode:self.profileCurrencyCode];
-    NSString *nameForPaymentCurrency = [[MTECurrencies sharedInstance] currencySymbolForCode:self.currencyCode];
-    NSNumberFormatter *formatter = [MTECurrencies formatter:self.currencyCode];
+    NSString *nameForPaymentCurrency = [[MTECurrencies sharedInstance] currencySymbolForCode:self.choosenCurrencyCode];
+    NSNumberFormatter *formatter = [MTECurrencies formatter:self.choosenCurrencyCode];
     NSString *title;
     if (askingAgain) {
         title = NSLocalizedString(@"InvalidExchangeRate", nil);
@@ -506,6 +514,8 @@
             // Ask again, rate is not valid
             [self promptForInfo];
         } else {
+            self.currencyCode = self.choosenCurrencyCode;
+            self.currencyCodeTextField.text = [[MTECurrencies sharedInstance] currencyFullNameForCode:self.currencyCode];
             self.mainCurrencyRateLabel.hidden = NO;
             self.profileCurrencyRateLabel.hidden = NO;
             self.mainToProfileRateTextField.hidden = NO;

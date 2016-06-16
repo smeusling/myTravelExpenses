@@ -10,6 +10,7 @@
 		50150B5F1AEADDAD005A63CF /* MTEModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50150B5E1AEADDAD005A63CF /* MTEModel.m */; };
 		501F12F81B90829000AC6337 /* MTETravelCurrenciesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 501F12F71B90829000AC6337 /* MTETravelCurrenciesTableViewController.m */; };
 		501F12FB1B90961F00AC6337 /* MTETextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 501F12FA1B90961F00AC6337 /* MTETextField.m */; };
+		502825851D132EF300326991 /* NSNumber+PrimativeComparison.m in Sources */ = {isa = PBXBuildFile; fileRef = 502825841D132EF300326991 /* NSNumber+PrimativeComparison.m */; };
 		502C2E3D1AEA9255001D0B88 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 502C2E3C1AEA9255001D0B88 /* CoreData.framework */; };
 		502C2E411AEA937A001D0B88 /* myTravelExpenses.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 502C2E3F1AEA937A001D0B88 /* myTravelExpenses.xcdatamodeld */; };
 		50657BC81B824DC200BDBBEC /* MTECategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 50657BC71B824DC200BDBBEC /* MTECategory.m */; };
@@ -126,6 +127,8 @@
 		501F12F91B90961F00AC6337 /* MTETextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTETextField.h; sourceTree = "<group>"; };
 		501F12FA1B90961F00AC6337 /* MTETextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTETextField.m; sourceTree = "<group>"; };
 		501F12FC1B90A96200AC6337 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		502825831D132EF300326991 /* NSNumber+PrimativeComparison.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSNumber+PrimativeComparison.h"; path = "Util/NSNumber+PrimativeComparison.h"; sourceTree = "<group>"; };
+		502825841D132EF300326991 /* NSNumber+PrimativeComparison.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSNumber+PrimativeComparison.m"; path = "Util/NSNumber+PrimativeComparison.m"; sourceTree = "<group>"; };
 		502C2E3C1AEA9255001D0B88 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		502C2E3E1AEA9306001D0B88 /* myTravelExpenses-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "myTravelExpenses-Prefix.pch"; sourceTree = "<group>"; };
 		502C2E401AEA937A001D0B88 /* myTravelExpenses.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myTravelExpenses.xcdatamodel; sourceTree = "<group>"; };
@@ -385,6 +388,8 @@
 				501F12FA1B90961F00AC6337 /* MTETextField.m */,
 				50D128BA1B91D7BB0048BB67 /* NSString+EDAdditions.h */,
 				50D128BB1B91D7BB0048BB67 /* NSString+EDAdditions.m */,
+				502825831D132EF300326991 /* NSNumber+PrimativeComparison.h */,
+				502825841D132EF300326991 /* NSNumber+PrimativeComparison.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -651,6 +656,7 @@
 			files = (
 				50D128BC1B91D7BB0048BB67 /* NSString+EDAdditions.m in Sources */,
 				50150B5F1AEADDAD005A63CF /* MTEModel.m in Sources */,
+				502825851D132EF300326991 /* NSNumber+PrimativeComparison.m in Sources */,
 				5074FF361AD9430B009FD06D /* MTETravelListEmptyView.m in Sources */,
 				50657C261B848C7700BDBBEC /* MTETravel.m in Sources */,
 				509AA6131B8D08FE00DDE1CD /* MTECurrencyTextField.m in Sources */,

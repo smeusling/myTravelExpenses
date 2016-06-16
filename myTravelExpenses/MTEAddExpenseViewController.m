@@ -20,11 +20,13 @@
 #import "TSCurrencyTextField.h"
 #import "MTECurrencyTextField.h"
 #import "MTETheme.h"
+#import "NSNumber+PrimativeComparison.h"
 
 @interface MTEAddExpenseViewController () <CZPickerViewDataSource, CZPickerViewDelegate, MTECurrencyPickerDelegate>
 
 @property (nonatomic, strong) NSDate *expenseDate;
 @property (nonatomic, strong) NSString *currencyCode;
+@property (nonatomic, strong) NSString *choosenCurrencyCode;
 @property (nonatomic, strong) NSArray *categories;
 @property (nonatomic, strong) MTECategory *selectedCategory;
 
@@ -34,6 +36,7 @@
 @property (nonatomic, strong) UITextField *selectedTextField;
 
 @property (nonatomic, strong) NSDecimalNumber *amount;
+@property (nonatomic, strong) NSDecimalNumber *chosenRate;
 
 @end
 
@@ -189,50 +192,9 @@
 
 - (void)saveButtonTapped
 {
-    BOOL searchForRate = YES;
-    // Need to look for an exchange rate?
-    if ([self.currencyCode isEqualToString:self.travel.currencyCode] == NO) {
-        // Is this exchange rate already set in the database?
-        for (MTEExchangeRate *rate in self.travel.rates) {
-            if ([rate.travelCurrencyCode isEqualToString:self.travel.currencyCode]
-                && [rate.currencyCode isEqualToString:self.currencyCode]
-                && (rate.rate != nil)) {
-                // This exchange rate is already there and valid
-                searchForRate = NO;
-                break;
-            }
-        }
-        
-        if(searchForRate){
-            [self showActivityView];
-            
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                [MTEExchangeRate getExchangeRatesForCurrency:self.travel.currencyCode toCurrency:self.currencyCode withCompletionHandler:^(float rate) {
-                    if (rate > 0) {
-                        NSDecimalNumber *profileCurrencyRate = [[NSDecimalNumber alloc] initWithFloat:rate];
-                        [[MTEModel sharedInstance] addExchangeRate:self.travel currencyCode:self.currencyCode rate:profileCurrencyRate];
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            [self hideActivityView];
-                            [self dismissViewControllerAnimated:YES completion:nil];
-                            [self addExpense];
-                        });
-                    } else {
-                        // Ask user for the rate as it could not be found automatically
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            [self hideActivityView];
-                            [self promptForRate:NO];
-                        });
-                    }
-                }];
-            });
-        }else{
-            [self dismissViewControllerAnimated:YES completion:nil];
-            [self addExpense];
-        }
-    }else{
-        [self dismissViewControllerAnimated:YES completion:nil];
-        [self addExpense];
-    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self addExpense];
+    [[MTEModel sharedInstance] addExchangeRate:self.travel currencyCode:self.currencyCode rate:self.chosenRate];
 }
 
 #pragma mark - TextField Delegate
@@ -251,14 +213,62 @@
 
 - (void)selectedCurrencyWithCode:(NSString *)code
 {
-    self.currencyCode = code;
+    self.choosenCurrencyCode = code;
     
-    NSNumberFormatter *formatter = [MTECurrencies formatter:code];
+    BOOL searchForRate = YES;
+    // Need to look for an exchange rate?
+    if ([self.choosenCurrencyCode isEqualToString:self.travel.currencyCode] == NO) {
+        // Is this exchange rate already set in the database?
+        for (MTEExchangeRate *rate in self.travel.rates) {
+            if ([rate.travelCurrencyCode isEqualToString:self.travel.currencyCode]
+                && [rate.currencyCode isEqualToString:self.choosenCurrencyCode]
+                && (rate.rate != nil)) {
+                // This exchange rate is already there and valid
+                searchForRate = NO;
+                break;
+            }
+        }
+        
+        if(searchForRate){
+            [self showActivityView];
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                [MTEExchangeRate getExchangeRatesForCurrency:self.travel.currencyCode toCurrency:self.choosenCurrencyCode withCompletionHandler:^(NSDecimalNumber *rate) {
+                    if ([rate isGreaterThanInt:0] ) {
+                        self.chosenRate = rate;
+                        [self changeCurrencyCode:self.choosenCurrencyCode];
+                        
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [self hideActivityView];
+                            [self dismissViewControllerAnimated:YES completion:nil];
+                        });
+                    } else {
+                        // Ask user for the rate as it could not be found automatically
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [self hideActivityView];
+                            [self promptForRate:NO];
+                        });
+                    }
+                }];
+            });
+        }else{
+            [self changeCurrencyCode:self.choosenCurrencyCode];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+    }else{
+        [self changeCurrencyCode:self.choosenCurrencyCode];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+-(void)changeCurrencyCode:(NSString *)currencyCode
+{
+    self.currencyCode = currencyCode;
+    
+    NSNumberFormatter *formatter = [MTECurrencies formatter:currencyCode];
     self.amountTextField.currencyNumberFormatter = formatter;
     
     [self.amountTextField setAmount:self.amount];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)cancelCurrencyPicker
@@ -337,28 +347,45 @@
     NSString *format = NSLocalizedString(@"ExchangeRateDialogMessageFormat", nil);
     NSString *message = [NSString stringWithFormat:format, nameForEventCurrency, [formatter stringFromNumber:[NSNumber numberWithInt:1]], nameForPaymentCurrency];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
+    alert.tag = 0;
     [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
     [alert show];
     UITextField *textField = [alert textFieldAtIndex:0];
     textField.keyboardType = UIKeyboardTypeDecimalPad;
 }
 
+- (void)promptForInfo
+{
+    NSString *title = NSLocalizedString(@"ExchangeRateWarningTitle", nil);
+    NSString *message =  NSLocalizedString(@"ExchangeRateWarningMessage", nil);
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
+    alert.tag = 1;
+    [alert setAlertViewStyle:UIAlertViewStyleDefault];
+    [alert show];
+    
+}
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     // Handle "OK"
-    UITextField *textField = [alertView textFieldAtIndex:0];
-    NSString *rateString = textField.text;
-    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-    formatter.locale = [NSLocale currentLocale];
-    NSDecimalNumber *rate = [NSDecimalNumber decimalNumberWithDecimal:[[formatter numberFromString:rateString] decimalValue]];
-    if ([rate isEqualToNumber:[NSDecimalNumber notANumber]] || [rate isEqualToNumber:[NSDecimalNumber zero]]) {
-        // Ask again, rate is not valid
-        [self promptForRate:YES];
-    } else {
-        [[MTEModel sharedInstance] addExchangeRate:self.travel currencyCode:self.currencyCode rate:rate];
-        [self dismissViewControllerAnimated:YES completion:nil];
-        [self addExpense];
+    if(alertView.tag == 0){
+        UITextField *textField = [alertView textFieldAtIndex:0];
+        NSString *rateString = textField.text;
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        formatter.locale = [NSLocale currentLocale];
+        NSDecimalNumber *rate = [NSDecimalNumber decimalNumberWithDecimal:[[formatter numberFromString:rateString] decimalValue]];
+        if ([rate isEqualToNumber:[NSDecimalNumber notANumber]] || [rate isEqualToNumber:[NSDecimalNumber zero]]) {
+            // Ask again, rate is not valid
+            [self promptForInfo];
+        } else {
+            [[MTEModel sharedInstance] addExchangeRate:self.travel currencyCode:self.choosenCurrencyCode rate:rate];
+            [self dismissViewControllerAnimated:YES completion:nil];
+            [self addExpense];
+        }
+    }else{
+        
     }
+    
 }
 
 - (IBAction)changeCurrencyButtonClicked:(id)sender
