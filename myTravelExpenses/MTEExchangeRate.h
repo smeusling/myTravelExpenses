@@ -18,6 +18,6 @@
 @property (nonatomic, retain) NSDecimalNumber * rate;
 @property (nonatomic, retain) MTETravel *travel;
 
-+ (void)getExchangeRates:(void (^)(NSDictionary *))ratesBlock;
++ (void)getExchangeRatesForCurrency:(NSString *)fromCurrency toCurrency:(NSString *)toCurrency withCompletionHandler:(void (^)(float rate))rateBlock;
 
 @end

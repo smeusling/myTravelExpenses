@@ -21,23 +21,29 @@
     
     UITabBarItem *catItem = [self.tabBar.items objectAtIndex:0];
     UITabBarItem *dailyItem = [self.tabBar.items objectAtIndex:1];
+    UITabBarItem *exportItem = [self.tabBar.items objectAtIndex:2];
     
     catItem.title = NSLocalizedString(@"TabPie", nil);
     dailyItem.title = NSLocalizedString(@"TabDaily", nil);
     
     UIImage *catImageSelected = [UIImage imageNamed:@"tab-pie.png"];
     UIImage *dailyImageSelected = [UIImage imageNamed:@"tab-daily.png"];
+    UIImage *exportImageSelected = [UIImage imageNamed:@"tab-export.png"];
     
     UIColor *color = [[MTEThemeManager sharedTheme] tabBarButtonColor];
     
     UIImage *catImage = [catImageSelected imageWithColor:color];
     UIImage *dailyImage = [dailyImageSelected imageWithColor:color];
+    UIImage *exportImage = [exportImageSelected imageWithColor:color];
     
     catItem.image = [catImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     catItem.selectedImage = catImageSelected;
     
     dailyItem.image = [dailyImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     dailyItem.selectedImage = dailyImageSelected;
+    
+    exportItem.image = [exportImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    exportItem.selectedImage = exportImageSelected;
 }
 
 - (void)didReceiveMemoryWarning {

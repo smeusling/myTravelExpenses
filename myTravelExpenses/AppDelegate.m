@@ -29,6 +29,7 @@
     [MTEConfigUtil setProfileCurrencyCode:[[NSLocale currentLocale] objectForKey:NSLocaleCurrencyCode]];
     
     NSLog(@"%@",[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory  inDomains:NSUserDomainMask] lastObject]);
+    
     // Override point for customization after application launch.
 //    [MTEHelper initProfile];
 //    [MTEHelper initTravelDataTest];

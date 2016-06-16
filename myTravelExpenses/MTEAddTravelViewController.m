@@ -248,16 +248,10 @@
 
 - (void)addTravel
 {
-    //    MTETravel *newTravel = [[MTETravel alloc]initWithName:self.travelNameTextField.text
-    //                                          startDate:self.startDate
-    //                                            endDate:self.endDate
-    //                                              image:self.travelImage
-    //                                         currencies:self.currencies];
 
     NSData *imageData;
 
     if(self.travelImage){
-        //imageData = UIImagePNGRepresentation(self.travelImage);
 
         imageData = UIImageJPEGRepresentation(self.travelImage, 1.0);
     }
@@ -381,22 +375,9 @@
         [self showActivityView];
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [MTEExchangeRate getExchangeRates:^(NSDictionary *rates) {
-                NSDecimalNumber *usdToEventCurrencyRate;
-                if ([self.profileCurrencyCode isEqualToString:@"USD"] == NO) {
-                    usdToEventCurrencyRate = [rates valueForKey:self.profileCurrencyCode];
-                } else {
-                    usdToEventCurrencyRate = [NSDecimalNumber one];
-                }
-                NSDecimalNumber *usdToPaymentCurrencyRate;
-                if ([self.currencyCode isEqualToString:@"USD"] == NO) {
-                    usdToPaymentCurrencyRate = [rates valueForKey:self.currencyCode];
-                } else {
-                    usdToPaymentCurrencyRate = [NSDecimalNumber one];
-                }
-                
-                if (usdToEventCurrencyRate && usdToPaymentCurrencyRate) {
-                    self.profileCurrencyRate = [usdToEventCurrencyRate decimalNumberByDividingBy:usdToPaymentCurrencyRate];
+            [MTEExchangeRate getExchangeRatesForCurrency:self.profileCurrencyCode toCurrency:self.currencyCode withCompletionHandler:^(float rate) {
+                if (rate > 0) {
+                    self.profileCurrencyRate = [[NSDecimalNumber alloc] initWithFloat:rate];
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [self hideActivityView];
                         self.mainCurrencyRateLabel.hidden = NO;
@@ -493,32 +474,48 @@
     NSString *format = NSLocalizedString(@"ExchangeRateDialogMessageFormat", nil);
     NSString *message = [NSString stringWithFormat:format, nameForEventCurrency, [formatter stringFromNumber:[NSNumber numberWithInt:1]], nameForPaymentCurrency];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
+    alert.tag = 0;
     [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
     [alert show];
     UITextField *textField = [alert textFieldAtIndex:0];
     textField.keyboardType = UIKeyboardTypeDecimalPad;
 }
 
+- (void)promptForInfo
+{
+    NSString *title = NSLocalizedString(@"ExchangeRateWarningTitle", nil);
+    NSString *message =  NSLocalizedString(@"ExchangeRateWarningMessage", nil);
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
+    alert.tag = 1;
+    [alert setAlertViewStyle:UIAlertViewStyleDefault];
+    [alert show];
+
+}
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     // Handle "OK"
-    UITextField *textField = [alertView textFieldAtIndex:0];
-    NSString *rateString = textField.text;
-    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-    formatter.locale = [NSLocale currentLocale];
-    NSDecimalNumber *rate = [NSDecimalNumber decimalNumberWithDecimal:[[formatter numberFromString:rateString] decimalValue]];
-    self.profileCurrencyRate = rate;
-    if ([rate isEqualToNumber:[NSDecimalNumber notANumber]] || [rate isEqualToNumber:[NSDecimalNumber zero]]) {
-        // Ask again, rate is not valid
-        [self promptForRate:YES];
-    } else {
-        self.mainCurrencyRateLabel.hidden = NO;
-        self.profileCurrencyRateLabel.hidden = NO;
-        self.mainToProfileRateTextField.hidden = NO;
-        self.exchangeRateLabel.hidden = NO;
-        self.mainCurrencyRateLabel.text = [NSString stringWithFormat:@"1 %@ = ",[[MTECurrencies sharedInstance] currencySymbolForCode:self.currencyCode]];
-        self.profileCurrencyRateLabel.text = [[MTECurrencies sharedInstance] currencySymbolForCode:[MTEConfigUtil profileCurrencyCode]];
-        self.mainToProfileRateTextField.text = [NSString stringWithFormat:@"%@",self.profileCurrencyRate];
+    if(alertView.tag == 0){
+        UITextField *textField = [alertView textFieldAtIndex:0];
+        NSString *rateString = textField.text;
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        formatter.locale = [NSLocale currentLocale];
+        NSDecimalNumber *rate = [NSDecimalNumber decimalNumberWithDecimal:[[formatter numberFromString:rateString] decimalValue]];
+        self.profileCurrencyRate = rate;
+        if ([rate isEqualToNumber:[NSDecimalNumber notANumber]] || [rate isEqualToNumber:[NSDecimalNumber zero]]) {
+            // Ask again, rate is not valid
+            [self promptForInfo];
+        } else {
+            self.mainCurrencyRateLabel.hidden = NO;
+            self.profileCurrencyRateLabel.hidden = NO;
+            self.mainToProfileRateTextField.hidden = NO;
+            self.exchangeRateLabel.hidden = NO;
+            self.mainCurrencyRateLabel.text = [NSString stringWithFormat:@"1 %@ = ",[[MTECurrencies sharedInstance] currencySymbolForCode:self.currencyCode]];
+            self.profileCurrencyRateLabel.text = [[MTECurrencies sharedInstance] currencySymbolForCode:[MTEConfigUtil profileCurrencyCode]];
+            self.mainToProfileRateTextField.text = [NSString stringWithFormat:@"%@",self.profileCurrencyRate];
+        }
+    }else{
+        
     }
 }
 

@@ -14,6 +14,7 @@
 #import "MTECategories.h"
 #import "MTECategory.h"
 #import "MTECategoryViewController.h"
+#import "MTEExportViewController.h"
 #import "MTECurrencies.h"
 #import "MTEExchangeRate.h"
 #import "MTEAddTravelViewController.h"
@@ -53,6 +54,9 @@
     
     MTECategoryViewController *categoryViewController = [self.tabBarController.viewControllers objectAtIndex:0];
     categoryViewController.travel = self.travel;
+    
+    MTEExportViewController *exportViewController = [self.tabBarController.viewControllers objectAtIndex:2];
+    exportViewController.travel = self.travel;
     
     self.currencyFormatter = [MTECurrencies formatter:self.travel.currencyCode];
 

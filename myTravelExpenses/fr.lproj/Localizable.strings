@@ -18,6 +18,9 @@
 /* Dialog message prompting the user to enter an exchange rate between 2 currencies */
 "ExchangeRateDialogMessageFormat" = "\nCombien de %@ obtenez vous pour %@?\n\nCe taux sera utilisé pour tous les autres paiements en %@ de cet évènement. Les taux peuvent être modifiés par la suite depuis la vue d'edition de l'évènement.";
 
+"ExchangeRateWarningTitle" = "Attention, Taux de change invalide";
+"ExchangeRateWarningMessage" = "Le taux de change que vous avez entrer est invalide. Vous devez entrer un taux de change valide si vous voulez utiliser une monnaie différente que la monnaie de votre profile";
+
 "AddExpense" = "Ajouter une dépense";
 "Close" = "Fermer";
 "Save" = "Sauver";

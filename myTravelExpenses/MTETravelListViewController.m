@@ -56,6 +56,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTravelData) name:@"MTEExpenseAdded" object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTravelData) name:@"MTEExpenseRemoved" object:nil];
+    
+
 }
 
 - (void)dealloc

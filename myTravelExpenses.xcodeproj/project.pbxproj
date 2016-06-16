@@ -26,8 +26,6 @@
 		50657BDC1B83167400BDBBEC /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5074FF2F1AD832B3009FD06D /* OpenSans-Regular.ttf */; };
 		50657BDD1B83167900BDBBEC /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5074FF301AD832B3009FD06D /* OpenSans-Semibold.ttf */; };
 		50657BDE1B83167C00BDBBEC /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5074FF311AD832B3009FD06D /* OpenSans-SemiboldItalic.ttf */; };
-		50657BF21B83C47D00BDBBEC /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50657BF11B83C41100BDBBEC /* Charts.framework */; };
-		50657BF31B83C47D00BDBBEC /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 50657BF11B83C41100BDBBEC /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		50657C141B84849300BDBBEC /* currencies.csv in Resources */ = {isa = PBXBuildFile; fileRef = 50657C131B84849300BDBBEC /* currencies.csv */; };
 		50657C261B848C7700BDBBEC /* MTETravel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50657C251B848C7700BDBBEC /* MTETravel.m */; };
 		50657C291B848C7800BDBBEC /* MTEExpense.m in Sources */ = {isa = PBXBuildFile; fileRef = 50657C281B848C7800BDBBEC /* MTEExpense.m */; };
@@ -45,7 +43,6 @@
 		5074FEF11AD05451009FD06D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5074FEEF1AD05451009FD06D /* Main.storyboard */; };
 		5074FEF31AD05451009FD06D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5074FEF21AD05451009FD06D /* Images.xcassets */; };
 		5074FEF61AD05451009FD06D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5074FEF41AD05451009FD06D /* LaunchScreen.xib */; };
-		5074FF021AD05451009FD06D /* myTravelExpensesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF011AD05451009FD06D /* myTravelExpensesTests.m */; };
 		5074FF0E1AD0583A009FD06D /* MTETravelListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF0D1AD0583A009FD06D /* MTETravelListViewController.m */; };
 		5074FF111AD05A9B009FD06D /* MTETravelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF101AD05A9B009FD06D /* MTETravelTableViewCell.m */; };
 		5074FF191AD0852B009FD06D /* MTEConfigUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF181AD0852B009FD06D /* MTEConfigUtil.m */; };
@@ -55,6 +52,9 @@
 		5074FF331AD93FA2009FD06D /* MTETravelListEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5074FF321AD93FA2009FD06D /* MTETravelListEmptyView.xib */; };
 		5074FF361AD9430B009FD06D /* MTETravelListEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF351AD9430B009FD06D /* MTETravelListEmptyView.m */; };
 		5074FF3C1AD98514009FD06D /* MTECurrencyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5074FF3B1AD98514009FD06D /* MTECurrencyTableViewCell.m */; };
+		508F89F51CFE21FF00422146 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 508F89EE1CFE21E800422146 /* Charts.framework */; };
+		508F89F61CFE21FF00422146 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 508F89EE1CFE21E800422146 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		508F8A001CFF6AC100422146 /* MTEExportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 508F89FF1CFF6AC100422146 /* MTEExportViewController.m */; };
 		509AA6131B8D08FE00DDE1CD /* MTECurrencyTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 509AA6121B8D08FE00DDE1CD /* MTECurrencyTextField.m */; };
 		50CEE97E1AF02205008D59CE /* MTEAddTravelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50CEE97D1AF02205008D59CE /* MTEAddTravelViewController.m */; };
 		50D128BC1B91D7BB0048BB67 /* NSString+EDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 50D128BB1B91D7BB0048BB67 /* NSString+EDAdditions.m */; };
@@ -62,30 +62,44 @@
 		50E7747E1B2CC2F800D900FC /* MTEAddExpenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E7747D1B2CC2F800D900FC /* MTEAddExpenseViewController.m */; };
 		50E774811B2CC40700D900FC /* MTETravelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E774801B2CC40700D900FC /* MTETravelViewController.m */; };
 		50F70B241B68D7D30097282C /* MTECategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F70B231B68D7D30097282C /* MTECategoryViewController.m */; };
-		5F2C85C52A209FBE1B4D517E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D11A70ADBD75CC683412FD8 /* libPods.a */; };
+		7C12798983CEFE58158E5B9F /* libPods-myTravelExpenses.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C855E74196AF411B1C51D1CD /* libPods-myTravelExpenses.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		50657BF01B83C41100BDBBEC /* PBXContainerItemProxy */ = {
+		508F89ED1CFE21E800422146 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 50657BEC1B83C41100BDBBEC /* Charts.xcodeproj */;
+			containerPortal = 508F89E61CFE21E800422146 /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 5BA8EC401A9D14DC00CE82E1;
-			remoteInfo = Charts;
+			remoteInfo = "Charts-iOS";
 		};
-		50657BF41B83C47D00BDBBEC /* PBXContainerItemProxy */ = {
+		508F89EF1CFE21E800422146 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 50657BEC1B83C41100BDBBEC /* Charts.xcodeproj */;
+			containerPortal = 508F89E61CFE21E800422146 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A52C5C371BAC5CA400594CDD;
+			remoteInfo = "Charts-TV";
+		};
+		508F89F11CFE21E800422146 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 508F89E61CFE21E800422146 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 65B3F5BF1C7370BE000983D0;
+			remoteInfo = "Charts-OSX";
+		};
+		508F89F31CFE21E800422146 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 508F89E61CFE21E800422146 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06AEE7A21BDC3F8B009875AE;
+			remoteInfo = ChartsTests;
+		};
+		508F89F71CFE21FF00422146 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 508F89E61CFE21E800422146 /* Charts.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
-			remoteInfo = Charts;
-		};
-		5074FEFC1AD05451009FD06D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5074FEDA1AD05451009FD06D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5074FEE11AD05451009FD06D;
-			remoteInfo = myTravelExpenses;
+			remoteInfo = "Charts-iOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -96,7 +110,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				50657BF31B83C47D00BDBBEC /* Charts.framework in Embed Frameworks */,
+				508F89F61CFE21FF00422146 /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -104,8 +118,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1D11A70ADBD75CC683412FD8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C54EAD2CC319F6CE46F4779 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		08C3B0A5C31C000637A84787 /* Pods-myTravelExpenses.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myTravelExpenses.release.xcconfig"; path = "Pods/Target Support Files/Pods-myTravelExpenses/Pods-myTravelExpenses.release.xcconfig"; sourceTree = "<group>"; };
 		50150B5D1AEADDAD005A63CF /* MTEModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTEModel.h; sourceTree = "<group>"; };
 		50150B5E1AEADDAD005A63CF /* MTEModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTEModel.m; sourceTree = "<group>"; };
 		501F12F61B90829000AC6337 /* MTETravelCurrenciesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTETravelCurrenciesTableViewController.h; sourceTree = "<group>"; };
@@ -124,7 +137,6 @@
 		50657BCD1B82510600BDBBEC /* UIColor+HexColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexColors.m"; sourceTree = "<group>"; };
 		50657BD21B82764A00BDBBEC /* MTEUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTEUtil.h; sourceTree = "<group>"; };
 		50657BD31B82764A00BDBBEC /* MTEUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTEUtil.m; sourceTree = "<group>"; };
-		50657BEC1B83C41100BDBBEC /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../Downloads/ios-charts-master/Charts/Charts.xcodeproj"; sourceTree = "<group>"; };
 		50657C131B84849300BDBBEC /* currencies.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = currencies.csv; sourceTree = "<group>"; };
 		50657C241B848C7700BDBBEC /* MTETravel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTETravel.h; sourceTree = "<group>"; };
 		50657C251B848C7700BDBBEC /* MTETravel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTETravel.m; sourceTree = "<group>"; };
@@ -157,7 +169,6 @@
 		5074FEF01AD05451009FD06D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5074FEF21AD05451009FD06D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5074FEF51AD05451009FD06D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		5074FEFB1AD05451009FD06D /* myTravelExpensesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myTravelExpensesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5074FF001AD05451009FD06D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5074FF011AD05451009FD06D /* myTravelExpensesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myTravelExpensesTests.m; sourceTree = "<group>"; };
 		5074FF0C1AD0583A009FD06D /* MTETravelListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTETravelListViewController.h; sourceTree = "<group>"; };
@@ -187,6 +198,9 @@
 		5074FF351AD9430B009FD06D /* MTETravelListEmptyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTETravelListEmptyView.m; sourceTree = "<group>"; };
 		5074FF3A1AD98514009FD06D /* MTECurrencyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTECurrencyTableViewCell.h; sourceTree = "<group>"; };
 		5074FF3B1AD98514009FD06D /* MTECurrencyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTECurrencyTableViewCell.m; sourceTree = "<group>"; };
+		508F89E61CFE21E800422146 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../Downloads/Charts-master/Charts/Charts.xcodeproj"; sourceTree = "<group>"; };
+		508F89FE1CFF6AC100422146 /* MTEExportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTEExportViewController.h; sourceTree = "<group>"; };
+		508F89FF1CFF6AC100422146 /* MTEExportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTEExportViewController.m; sourceTree = "<group>"; };
 		509AA6111B8D08FE00DDE1CD /* MTECurrencyTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTECurrencyTextField.h; sourceTree = "<group>"; };
 		509AA6121B8D08FE00DDE1CD /* MTECurrencyTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTECurrencyTextField.m; sourceTree = "<group>"; };
 		50CEE97C1AF02205008D59CE /* MTEAddTravelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTEAddTravelViewController.h; sourceTree = "<group>"; };
@@ -201,7 +215,8 @@
 		50E774801B2CC40700D900FC /* MTETravelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTETravelViewController.m; sourceTree = "<group>"; };
 		50F70B221B68D7D30097282C /* MTECategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTECategoryViewController.h; sourceTree = "<group>"; };
 		50F70B231B68D7D30097282C /* MTECategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTECategoryViewController.m; sourceTree = "<group>"; };
-		733BCB9308CB06F82597A890 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		C73F19F5E6363154C94D3C07 /* Pods-myTravelExpenses.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myTravelExpenses.debug.xcconfig"; path = "Pods/Target Support Files/Pods-myTravelExpenses/Pods-myTravelExpenses.debug.xcconfig"; sourceTree = "<group>"; };
+		C855E74196AF411B1C51D1CD /* libPods-myTravelExpenses.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-myTravelExpenses.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,28 +224,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50657BF21B83C47D00BDBBEC /* Charts.framework in Frameworks */,
+				508F89F51CFE21FF00422146 /* Charts.framework in Frameworks */,
 				502C2E3D1AEA9255001D0B88 /* CoreData.framework in Frameworks */,
-				5F2C85C52A209FBE1B4D517E /* libPods.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5074FEF81AD05451009FD06D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				7C12798983CEFE58158E5B9F /* libPods-myTravelExpenses.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		50657BED1B83C41100BDBBEC /* Products */ = {
+		1233DBA7E9182CF9E184B535 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				50657BF11B83C41100BDBBEC /* Charts.framework */,
+				C73F19F5E6363154C94D3C07 /* Pods-myTravelExpenses.debug.xcconfig */,
+				08C3B0A5C31C000637A84787 /* Pods-myTravelExpenses.release.xcconfig */,
 			);
-			name = Products;
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		4F45D447F7BB7CD9374EA6EA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C855E74196AF411B1C51D1CD /* libPods-myTravelExpenses.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		50657BF71B84836D00BDBBEC /* Resources */ = {
@@ -244,13 +261,13 @@
 		5074FED91AD05451009FD06D = {
 			isa = PBXGroup;
 			children = (
-				50657BEC1B83C41100BDBBEC /* Charts.xcodeproj */,
+				508F89E61CFE21E800422146 /* Charts.xcodeproj */,
 				502C2E3C1AEA9255001D0B88 /* CoreData.framework */,
 				5074FEE41AD05451009FD06D /* myTravelExpenses */,
 				5074FEFE1AD05451009FD06D /* myTravelExpensesTests */,
 				5074FEE31AD05451009FD06D /* Products */,
-				98C1EF215E106D8436AE54FF /* Pods */,
-				B9C158B836B0CF747390A892 /* Frameworks */,
+				1233DBA7E9182CF9E184B535 /* Pods */,
+				4F45D447F7BB7CD9374EA6EA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -258,7 +275,6 @@
 			isa = PBXGroup;
 			children = (
 				5074FEE21AD05451009FD06D /* TravEx.app */,
-				5074FEFB1AD05451009FD06D /* myTravelExpensesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -318,6 +334,8 @@
 				50E774771B2CC0F100D900FC /* Travel */,
 				50657C331B849BA900BDBBEC /* MTECurrencyTableViewController.h */,
 				50657C341B849BA900BDBBEC /* MTECurrencyTableViewController.m */,
+				508F89FE1CFF6AC100422146 /* MTEExportViewController.h */,
+				508F89FF1CFF6AC100422146 /* MTEExportViewController.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -396,6 +414,17 @@
 			name = "Open Sans";
 			sourceTree = "<group>";
 		};
+		508F89E71CFE21E800422146 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				508F89EE1CFE21E800422146 /* Charts.framework */,
+				508F89F01CFE21E800422146 /* Charts.framework */,
+				508F89F21CFE21E800422146 /* Charts.framework */,
+				508F89F41CFE21E800422146 /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		50E774731B2CBFEB00D900FC /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -443,23 +472,6 @@
 			name = Expense;
 			sourceTree = "<group>";
 		};
-		98C1EF215E106D8436AE54FF /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				2C54EAD2CC319F6CE46F4779 /* Pods.debug.xcconfig */,
-				733BCB9308CB06F82597A890 /* Pods.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		B9C158B836B0CF747390A892 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1D11A70ADBD75CC683412FD8 /* libPods.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -467,40 +479,23 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5074FF051AD05451009FD06D /* Build configuration list for PBXNativeTarget "myTravelExpenses" */;
 			buildPhases = (
-				996E0CE167C0E6DDC55EC074 /* Check Pods Manifest.lock */,
+				91AF68034E0B508AF3351B13 /* 📦 Check Pods Manifest.lock */,
 				5074FEDE1AD05451009FD06D /* Sources */,
 				5074FEDF1AD05451009FD06D /* Frameworks */,
 				5074FEE01AD05451009FD06D /* Resources */,
-				EB3F02553CBB5CE4E08F7C52 /* Copy Pods Resources */,
 				50657BF61B83C47D00BDBBEC /* Embed Frameworks */,
+				A51B5ECE2B606600938E131F /* 📦 Embed Pods Frameworks */,
+				FBE48281A31F43BB912AA487 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				50657BF51B83C47D00BDBBEC /* PBXTargetDependency */,
+				508F89F81CFE21FF00422146 /* PBXTargetDependency */,
 			);
 			name = myTravelExpenses;
 			productName = myTravelExpenses;
 			productReference = 5074FEE21AD05451009FD06D /* TravEx.app */;
 			productType = "com.apple.product-type.application";
-		};
-		5074FEFA1AD05451009FD06D /* myTravelExpensesTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5074FF081AD05451009FD06D /* Build configuration list for PBXNativeTarget "myTravelExpensesTests" */;
-			buildPhases = (
-				5074FEF71AD05451009FD06D /* Sources */,
-				5074FEF81AD05451009FD06D /* Frameworks */,
-				5074FEF91AD05451009FD06D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				5074FEFD1AD05451009FD06D /* PBXTargetDependency */,
-			);
-			name = myTravelExpensesTests;
-			productName = myTravelExpensesTests;
-			productReference = 5074FEFB1AD05451009FD06D /* myTravelExpensesTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -514,10 +509,6 @@
 					5074FEE11AD05451009FD06D = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = KA8566AL49;
-					};
-					5074FEFA1AD05451009FD06D = {
-						CreatedOnToolsVersion = 6.2;
-						TestTargetID = 5074FEE11AD05451009FD06D;
 					};
 				};
 			};
@@ -535,24 +526,44 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 50657BED1B83C41100BDBBEC /* Products */;
-					ProjectRef = 50657BEC1B83C41100BDBBEC /* Charts.xcodeproj */;
+					ProductGroup = 508F89E71CFE21E800422146 /* Products */;
+					ProjectRef = 508F89E61CFE21E800422146 /* Charts.xcodeproj */;
 				},
 			);
 			projectRoot = "";
 			targets = (
 				5074FEE11AD05451009FD06D /* myTravelExpenses */,
-				5074FEFA1AD05451009FD06D /* myTravelExpensesTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		50657BF11B83C41100BDBBEC /* Charts.framework */ = {
+		508F89EE1CFE21E800422146 /* Charts.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Charts.framework;
-			remoteRef = 50657BF01B83C41100BDBBEC /* PBXContainerItemProxy */;
+			remoteRef = 508F89ED1CFE21E800422146 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		508F89F01CFE21E800422146 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 508F89EF1CFE21E800422146 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		508F89F21CFE21E800422146 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 508F89F11CFE21E800422146 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		508F89F41CFE21E800422146 /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = 508F89F31CFE21E800422146 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -583,24 +594,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5074FEF91AD05451009FD06D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		996E0CE167C0E6DDC55EC074 /* Check Pods Manifest.lock */ = {
+		91AF68034E0B508AF3351B13 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -608,19 +612,34 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		EB3F02553CBB5CE4E08F7C52 /* Copy Pods Resources */ = {
+		A51B5ECE2B606600938E131F /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-myTravelExpenses/Pods-myTravelExpenses-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FBE48281A31F43BB912AA487 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-myTravelExpenses/Pods-myTravelExpenses-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -653,6 +672,7 @@
 				50657C381B8CC86A00BDBBEC /* MTETravelTabBarController.m in Sources */,
 				50657BCB1B824FC700BDBBEC /* MTECategories.m in Sources */,
 				5074FEEB1AD05451009FD06D /* AppDelegate.m in Sources */,
+				508F8A001CFF6AC100422146 /* MTEExportViewController.m in Sources */,
 				50F70B241B68D7D30097282C /* MTECategoryViewController.m in Sources */,
 				50657C321B849A1000BDBBEC /* MTEExchangeRateTransient.m in Sources */,
 				501F12FB1B90961F00AC6337 /* MTETextField.m in Sources */,
@@ -666,26 +686,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5074FEF71AD05451009FD06D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5074FF021AD05451009FD06D /* myTravelExpensesTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		50657BF51B83C47D00BDBBEC /* PBXTargetDependency */ = {
+		508F89F81CFE21FF00422146 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = Charts;
-			targetProxy = 50657BF41B83C47D00BDBBEC /* PBXContainerItemProxy */;
-		};
-		5074FEFD1AD05451009FD06D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5074FEE11AD05451009FD06D /* myTravelExpenses */;
-			targetProxy = 5074FEFC1AD05451009FD06D /* PBXContainerItemProxy */;
+			name = "Charts-iOS";
+			targetProxy = 508F89F71CFE21FF00422146 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -818,10 +825,10 @@
 		};
 		5074FF061AD05451009FD06D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2C54EAD2CC319F6CE46F4779 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = C73F19F5E6363154C94D3C07 /* Pods-myTravelExpenses.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Stéphanie Meusling (AFL9JH228U)";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = myTravelExpenses/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -832,49 +839,15 @@
 		};
 		5074FF071AD05451009FD06D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 733BCB9308CB06F82597A890 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 08C3B0A5C31C000637A84787 /* Pods-myTravelExpenses.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Stéphanie Meusling (AFL9JH228U)";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = myTravelExpenses/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = TravEx;
 				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
-		5074FF091AD05451009FD06D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = myTravelExpensesTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/myTravelExpenses.app/myTravelExpenses";
-			};
-			name = Debug;
-		};
-		5074FF0A1AD05451009FD06D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = myTravelExpensesTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/myTravelExpenses.app/myTravelExpenses";
 			};
 			name = Release;
 		};
@@ -895,15 +868,6 @@
 			buildConfigurations = (
 				5074FF061AD05451009FD06D /* Debug */,
 				5074FF071AD05451009FD06D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5074FF081AD05451009FD06D /* Build configuration list for PBXNativeTarget "myTravelExpensesTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5074FF091AD05451009FD06D /* Debug */,
-				5074FF0A1AD05451009FD06D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

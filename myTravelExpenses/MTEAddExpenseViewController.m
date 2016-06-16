@@ -207,22 +207,10 @@
             [self showActivityView];
             
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                [MTEExchangeRate getExchangeRates:^(NSDictionary *rates) {
-                    NSDecimalNumber *usdToEventCurrencyRate;
-                    if ([self.travel.currencyCode isEqualToString:@"USD"] == NO) {
-                        usdToEventCurrencyRate = [rates valueForKey:self.travel.currencyCode];
-                    } else {
-                        usdToEventCurrencyRate = [NSDecimalNumber one];
-                    }
-                    NSDecimalNumber *usdToPaymentCurrencyRate;
-                    if ([self.currencyCode isEqualToString:@"USD"] == NO) {
-                        usdToPaymentCurrencyRate = [rates valueForKey:self.currencyCode];
-                    } else {
-                        usdToPaymentCurrencyRate = [NSDecimalNumber one];
-                    }
-                    
-                    if (usdToEventCurrencyRate && usdToPaymentCurrencyRate) {
-                        [[MTEModel sharedInstance] addExchangeRate:self.travel currencyCode:self.currencyCode rate:[usdToEventCurrencyRate decimalNumberByDividingBy:usdToPaymentCurrencyRate]];
+                [MTEExchangeRate getExchangeRatesForCurrency:self.travel.currencyCode toCurrency:self.currencyCode withCompletionHandler:^(float rate) {
+                    if (rate > 0) {
+                        NSDecimalNumber *profileCurrencyRate = [[NSDecimalNumber alloc] initWithFloat:rate];
+                        [[MTEModel sharedInstance] addExchangeRate:self.travel currencyCode:self.currencyCode rate:profileCurrencyRate];
                         dispatch_async(dispatch_get_main_queue(), ^{
                             [self hideActivityView];
                             [self dismissViewControllerAnimated:YES completion:nil];

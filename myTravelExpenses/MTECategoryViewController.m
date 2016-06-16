@@ -219,8 +219,8 @@
     [self.pieChartView setUserInteractionEnabled:NO];
     
     self.pieChartView.usePercentValuesEnabled = YES;
-    self.pieChartView.holeTransparent = YES;
-    self.pieChartView.centerTextFont = [UIFont fontWithName:@"OpenSans" size:12.f];
+    //self.pieChartView.holeTransparent = YES;
+    //self.pieChartView.centerTextFont = [UIFont fontWithName:@"OpenSans" size:12.f];
     self.pieChartView.holeRadiusPercent = 0.58;
     self.pieChartView.transparentCircleRadiusPercent = 0.61;
     self.pieChartView.descriptionText = @"";
@@ -293,6 +293,8 @@
     
     self.pieChartView.data = data;
     [self.pieChartView highlightValues:nil];
+    
+    //[self.pieChartView saveToCameraRoll];
 }
 
 

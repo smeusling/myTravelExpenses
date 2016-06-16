@@ -18,25 +18,21 @@
 @dynamic rate;
 @dynamic travel;
 
-+ (void)getExchangeRates:(void (^)(NSDictionary *))ratesBlock
++ (void)getExchangeRatesForCurrency:(NSString *)fromCurrency toCurrency:(NSString *)toCurrency withCompletionHandler:(void (^)(float rate))rateBlock
 {
+    NSString *apiUrl = [NSString stringWithFormat:@"http://api.fixer.io/latest?base=%@&symbols=%@", fromCurrency, toCurrency];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:@"http://finance.yahoo.com/webservice/v1/symbols/allcurrencies/quote?format=json&" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSMutableDictionary *result = [NSMutableDictionary dictionary];
-        NSArray *array = [[responseObject valueForKey:@"list"] valueForKey:@"resources"];
-        for (NSDictionary *item in array) {
-            NSDictionary *fields = [[item valueForKey:@"resource"] valueForKey:@"fields"];
-            NSString *name = [fields valueForKey:@"name"];
-            NSString *price = [fields valueForKey:@"price"];
-            if ([name hasPrefix:@"USD/"]) {
-                NSDecimalNumber *value = [NSDecimalNumber decimalNumberWithString:price];
-                [result setValue:value forKey:[name substringFromIndex:4]];
-            }
+    [manager GET:apiUrl parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *dict =[responseObject valueForKey:@"rates"];
+        if ([dict valueForKey:toCurrency]){
+            rateBlock([[dict valueForKey:toCurrency]floatValue]);
+        }else{
+            rateBlock(0);
         }
-        ratesBlock(result);
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
-        ratesBlock([NSDictionary dictionary]);
+        rateBlock(0);
     }];
 }
 
