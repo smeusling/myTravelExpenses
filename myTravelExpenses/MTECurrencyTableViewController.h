@@ -17,6 +17,7 @@
 
 @interface MTECurrencyTableViewController : UITableViewController
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (nonatomic, strong) NSArray *travelRates;
 
 @property (nonatomic, strong) id<MTECurrencyPickerDelegate> delegate;
 

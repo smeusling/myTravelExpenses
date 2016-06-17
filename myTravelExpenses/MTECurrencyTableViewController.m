@@ -8,14 +8,15 @@
 
 #import "MTECurrencyTableViewController.h"
 #import "MTECurrencies.h"
+#import "MTEExchangeRate.h"
 
 @interface MTECurrencyTableViewController()
 
-@property (nonatomic, strong) NSOrderedSet *sections;
-@property (nonatomic, strong) NSDictionary *codesBySections;
+@property (nonatomic, strong) NSMutableOrderedSet *sections;
+@property (nonatomic, strong) NSMutableDictionary *codesBySections;
 
-@property (nonatomic, strong) NSOrderedSet *searchSections;
-@property (nonatomic, strong) NSDictionary *searchCodesBySections;
+@property (nonatomic, strong) NSMutableOrderedSet *searchSections;
+@property (nonatomic, strong) NSMutableDictionary *searchCodesBySections;
 
 @property (nonatomic, strong) NSString *filterString;
 
@@ -27,11 +28,22 @@
 {
     [super viewDidLoad];
     
-    self.sections = [[MTECurrencies sharedInstance] sections];
-    self.codesBySections = [[MTECurrencies sharedInstance] currencyCodesBySections];
+    self.sections = (NSMutableOrderedSet *)[[MTECurrencies sharedInstance] sections];
+    self.codesBySections = (NSMutableDictionary *)[[MTECurrencies sharedInstance] currencyCodesBySections];
     
-    self.searchSections = [[MTECurrencies sharedInstance] sections];
-    self.searchCodesBySections = [[MTECurrencies sharedInstance] currencyCodesBySections];
+    
+    
+    if ([self.travelRates count] > 0){
+        [self.sections insertObject:@"0" atIndex:0];
+        NSMutableArray *currencies = [[NSMutableArray alloc]init];
+        for (MTEExchangeRate *rate in self.travelRates) {
+            [currencies addObject:rate.currencyCode];
+        }
+        self.codesBySections[@"0"] = currencies;
+    }
+    
+    self.searchSections = self.sections;
+    self.searchCodesBySections = self.codesBySections;
     
     [self setupNavBar];
 }
@@ -105,11 +117,17 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
+    NSString *title;
     if (tableView == self.searchDisplayController.searchResultsTableView) {
-        return [self.searchSections objectAtIndex:section];
+        title = [self.searchSections objectAtIndex:section];
     } else {
-        return [self.sections objectAtIndex:section];
+        title = [self.sections objectAtIndex:section];
     }
+    
+    if ([title isEqualToString:@"0"]){
+        title = @"Monnaies déjà utilisées";
+    }
+    return title;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

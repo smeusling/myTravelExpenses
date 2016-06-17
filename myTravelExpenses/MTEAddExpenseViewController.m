@@ -307,6 +307,7 @@
     [self.selectedTextField resignFirstResponder];
     MTECurrencyTableViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MTECurrencyTableViewController"];
     viewController.delegate = self;
+    viewController.travelRates = [NSArray arrayWithArray:[self.travel.rates allObjects]];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
     
     [self presentViewController:navigationController animated:YES completion:nil];
